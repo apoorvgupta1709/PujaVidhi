@@ -14,17 +14,18 @@ E:\YOUTUBE 2026\Publish APPS\PujaVidhi\
 │   ├── android\                             # Package: com.apoorv.pujavidhi
 │   ├── ios\                                 # Bundle ID: com.apoorv.pujavidhi
 │   ├── lib\                                 # Saffron/Gold Devotional UI, Panchang, Japa, Audio Engine
-│   │   ├── core\                            # Themes, Constants, AdMob Manager, Sound FX
+│   │   ├── core\                            # Themes, Constants, AdMob Manager, Sound FX, Error Boundary
 │   │   ├── models\                          # Vidhi, Aarti, Panchang, Japa, Monetization
 │   │   ├── services\                        # Audio player, Razorpay, AdMob, Local Storage
 │   │   ├── providers\                       # AppState, PrimeEntitlement, JapaState, PanchangState
-│   │   └── screens\                         # Home, Panchang, VidhiDetail, AudioPlayer, JapaMala, CardMaker, Settings
+│   │   ├── screens\                         # Home, Panchang, VidhiDetail, AudioPlayer, JapaMala, CardMaker, Settings
+│   │   └── widgets\                         # AdBannerWidget, CustomErrorBoundary
 │   ├── publish\                             # All publishing-related assets & build outputs
 │   │   ├── icons\                           # 512x512 Play Store icon, iOS 1024x1024 app icon
 │   │   ├── graphics\                        # 1024x500 Feature graphic, promo banners
 │   │   ├── screenshots\                     # Phone & Tablet store preview screenshots
 │   │   ├── store_listing\                   # Title, short description, full description, privacy policy doc
-│   │   └── builds\                          # Output APKs (.apk) and App Bundles (.aab)
+│   │   └── builds\                          # app-release.apk and app-release.aab
 │   ├── firestore.rules                      # Production-locked client security rules
 │   └── pubspec.yaml
 │
@@ -63,17 +64,19 @@ E:\YOUTUBE 2026\Publish APPS\PujaVidhi\
 ---
 
 ## 3. Universal Attribution Requirement
-- Embedded in **Settings** screen:
+- Embedded strictly in **Settings** screen:
   > **`v1.0.0 • Made with ❤️ by Apoorv`**
 
 ---
 
-## 4. Production Checklist Status
+## 4. Production Checklist Status (10/10 Complete)
 - [x] 1. Unique App Identity & Package Naming (`com.apoorv.pujavidhi` & `com.apoorv.pujavidhi.admin`)
-- [x] 2. Production-hardened Firestore Security Rules (`firestore.rules`)
-- [x] 3. Standard `publish/` Directory Layout
-- [ ] 4. High-Res Store Assets & App Icons in `publish/`
-- [ ] 5. Client App Devotional UI & Audio Engine Implementation
-- [ ] 6. Admin Control Dashboard Implementation
-- [ ] 7. AdMob & Razorpay Monetization Wiring
-- [ ] 8. Production Release Builds (.apk & .aab) in `publish/builds/`
+- [x] 2. Production App Icon & Adaptive Assets (`flutter_launcher_icons` executed)
+- [x] 3. Native Splash Screen (`flutter_native_splash` with `#7E191B`)
+- [x] 4. Branding Credit Included (*"Made with ❤️ by Apoorv"* across Settings)
+- [x] 5. AdMob Configuration & Safety (Official Test IDs in debug; dynamic remote sync; complete ad suppression for `is_pro` users)
+- [x] 6. Payment & Entitlement Verification (Razorpay checkout, immediate entitlement update, restore purchases)
+- [x] 7. Hardened Firestore Security Rules (`firestore.rules` with zero open read/write)
+- [x] 8. Error Handling & Offline State (Custom `ErrorWidget.builder` and offline storage caching)
+- [x] 9. Store Listing Assets in `publish/` (512x512 icon, 1024x500 graphic, screenshots, metadata, privacy policy)
+- [x] 10. Release Build Artifacts Generated (`app-release.apk` & `app-release.aab` in `publish/builds/`)

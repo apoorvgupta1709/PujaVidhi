@@ -1,5 +1,6 @@
-package com.apoorv.pujavidhi_main
+package com.apoorv.pujavidhi
 
 import io.flutter.embedding.android.FlutterActivity
 
 class MainActivity : FlutterActivity()
+

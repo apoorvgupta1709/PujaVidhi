@@ -5,7 +5,7 @@ import '../models/audio_track_model.dart';
 import '../core/sound_service.dart';
 
 class AudioService {
-  final AudioPlayer _player = AudioPlayer();
+  AudioPlayer? _player;
   AudioTrack? _currentTrack;
   bool _isPlaying = false;
   bool _isLooping = false;
@@ -29,42 +29,52 @@ class AudioService {
   Duration get duration => _duration;
 
   AudioService() {
-    _player.onPlayerStateChanged.listen((state) {
-      _isPlaying = state == PlayerState.playing;
-      _playingController.add(_isPlaying);
-    });
+    _initAudio();
+  }
 
-    _player.onPositionChanged.listen((pos) {
-      _position = pos;
-      _positionController.add(pos);
-    });
+  void _initAudio() {
+    try {
+      _player = AudioPlayer();
+      _player!.onPlayerStateChanged.listen((state) {
+        _isPlaying = state == PlayerState.playing;
+        if (!_playingController.isClosed) _playingController.add(_isPlaying);
+      });
 
-    _player.onDurationChanged.listen((dur) {
-      _duration = dur;
-      _durationController.add(dur);
-    });
+      _player!.onPositionChanged.listen((pos) {
+        _position = pos;
+        if (!_positionController.isClosed) _positionController.add(pos);
+      });
 
-    _player.onPlayerComplete.listen((_) {
-      if (_isLooping && _currentTrack != null) {
-        playTrack(_currentTrack!);
-      } else {
-        _isPlaying = false;
-        _playingController.add(false);
-      }
-    });
+      _player!.onDurationChanged.listen((dur) {
+        _duration = dur;
+        if (!_durationController.isClosed) _durationController.add(dur);
+      });
+
+      _player!.onPlayerComplete.listen((_) {
+        if (_isLooping && _currentTrack != null) {
+          playTrack(_currentTrack!);
+        } else {
+          _isPlaying = false;
+          if (!_playingController.isClosed) _playingController.add(false);
+        }
+      });
+    } catch (e) {
+      debugPrint("AudioPlayer init notice: $e");
+    }
   }
 
   Future<void> playTrack(AudioTrack track) async {
     try {
       _currentTrack = track;
-      _trackController.add(track);
+      if (!_trackController.isClosed) _trackController.add(track);
 
-      await _player.stop();
+      if (_player == null) return;
+      await _player!.stop();
       // If local asset
       if (track.localAssetPath.isNotEmpty) {
-        await _player.play(AssetSource(track.localAssetPath));
+        await _player!.play(AssetSource(track.localAssetPath));
       } else if (track.remoteStreamUrl.isNotEmpty) {
-        await _player.play(UrlSource(track.remoteStreamUrl));
+        await _player!.play(UrlSource(track.remoteStreamUrl));
       }
     } catch (e) {
       debugPrint("Audio playback error: $e");
@@ -72,15 +82,21 @@ class AudioService {
   }
 
   Future<void> pause() async {
-    await _player.pause();
+    try {
+      await _player?.pause();
+    } catch (_) {}
   }
 
   Future<void> resume() async {
-    await _player.resume();
+    try {
+      await _player?.resume();
+    } catch (_) {}
   }
 
   Future<void> seek(Duration position) async {
-    await _player.seek(position);
+    try {
+      await _player?.seek(position);
+    } catch (_) {}
   }
 
   void toggleLoop() {
@@ -96,7 +112,9 @@ class AudioService {
   }
 
   void dispose() {
-    _player.dispose();
+    try {
+      _player?.dispose();
+    } catch (_) {}
     _trackController.close();
     _playingController.close();
     _positionController.close();

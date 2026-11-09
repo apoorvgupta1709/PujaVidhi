@@ -1,5 +1,6 @@
-package com.apoorv.pujavidhi_admin
+package com.apoorv.pujavidhi.admin
 
 import io.flutter.embedding.android.FlutterActivity
 
 class MainActivity : FlutterActivity()
+

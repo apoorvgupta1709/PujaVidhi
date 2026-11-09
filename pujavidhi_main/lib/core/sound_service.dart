@@ -2,13 +2,25 @@ import 'package:flutter/services.dart';
 import 'package:audioplayers/audioplayers.dart';
 
 class SoundService {
-  static final AudioPlayer _fxPlayer = AudioPlayer();
+  static AudioPlayer? _fxPlayer;
+
+  static AudioPlayer? _getPlayer() {
+    try {
+      _fxPlayer ??= AudioPlayer();
+      return _fxPlayer;
+    } catch (_) {
+      return null;
+    }
+  }
 
   static Future<void> playTempleBell() async {
     try {
       HapticFeedback.mediumImpact();
-      await _fxPlayer.stop();
-      await _fxPlayer.play(AssetSource('audio/temple_bell.wav'));
+      final player = _getPlayer();
+      if (player != null) {
+        await player.stop();
+        await player.play(AssetSource('audio/temple_bell.wav'));
+      }
     } catch (_) {
       HapticFeedback.mediumImpact();
     }
@@ -17,8 +29,11 @@ class SoundService {
   static Future<void> playShankh() async {
     try {
       HapticFeedback.heavyImpact();
-      await _fxPlayer.stop();
-      await _fxPlayer.play(AssetSource('audio/shankh_sound.wav'));
+      final player = _getPlayer();
+      if (player != null) {
+        await player.stop();
+        await player.play(AssetSource('audio/shankh_sound.wav'));
+      }
     } catch (_) {
       HapticFeedback.heavyImpact();
     }
@@ -27,8 +42,11 @@ class SoundService {
   static Future<void> playJapaClick() async {
     try {
       HapticFeedback.selectionClick();
-      await _fxPlayer.stop();
-      await _fxPlayer.play(AssetSource('audio/japa_click.wav'));
+      final player = _getPlayer();
+      if (player != null) {
+        await player.stop();
+        await player.play(AssetSource('audio/japa_click.wav'));
+      }
     } catch (_) {
       HapticFeedback.selectionClick();
     }

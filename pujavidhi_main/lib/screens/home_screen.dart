@@ -13,7 +13,6 @@ import '../providers/auth_provider.dart';
 import '../providers/vrat_provider.dart';
 import '../services/localization_service.dart';
 import '../widgets/ad_banner_widget.dart';
-import '../widgets/auth_modal.dart';
 import 'panchang_screen.dart';
 import 'vidhi_list_screen.dart';
 import 'vidhi_detail_screen.dart';
@@ -26,6 +25,7 @@ import 'vrat_calendar_screen.dart';
 import 'virtual_diya_screen.dart';
 import 'wallpaper_gallery_screen.dart';
 import 'gita_home_screen.dart';
+import 'profile_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -97,11 +97,9 @@ class HomeScreen extends StatelessWidget {
             ),
             tooltip: authProv.isAuthenticated ? authProv.displayName : "Sign In / Profile",
             onPressed: () {
-              if (authProv.isAuthenticated) {
-                _showProfileDialog(context, authProv);
-              } else {
-                AuthModal.show(context);
-              }
+              Navigator.of(context).push(
+                MaterialPageRoute(builder: (_) => const ProfileScreen()),
+              );
             },
           ),
 
@@ -847,43 +845,6 @@ Meaning:
             }),
           ],
         ),
-      ),
-    );
-  }
-
-  void _showProfileDialog(BuildContext context, AuthProvider authProv) {
-    showDialog(
-      context: context,
-      builder: (ctx) => AlertDialog(
-        title: Text("Devotee Account", style: GoogleFonts.poppins(fontWeight: FontWeight.bold)),
-        content: Column(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text("Name: ${authProv.displayName}", style: GoogleFonts.poppins(fontWeight: FontWeight.w600)),
-            Text("Email: ${authProv.email}", style: GoogleFonts.poppins(color: AppTheme.textMuted)),
-            const SizedBox(height: 12),
-            Container(
-              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
-              decoration: BoxDecoration(color: Colors.green.withValues(alpha: 0.1), borderRadius: BorderRadius.circular(12)),
-              child: const Text("Cloud Synced with Firebase", style: TextStyle(color: Colors.green, fontSize: 11, fontWeight: FontWeight.bold)),
-            ),
-          ],
-        ),
-        actions: [
-          TextButton(
-            onPressed: () {
-              authProv.signOut();
-              Navigator.of(ctx).pop();
-            },
-            child: const Text("Sign Out", style: TextStyle(color: Colors.red)),
-          ),
-          ElevatedButton(
-            onPressed: () => Navigator.of(ctx).pop(),
-            style: ElevatedButton.styleFrom(backgroundColor: AppTheme.sacredMaroon),
-            child: const Text("Close", style: TextStyle(color: Colors.white)),
-          ),
-        ],
       ),
     );
   }

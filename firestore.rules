@@ -26,6 +26,9 @@ service cloud.firestore {
     match /gita_shlokas/{shlokaId} {
       allow read, write: if true;
     }
+    match /wallpapers/{wallpaperId} {
+      allow read, write: if true;
+    }
     match /users/{userId} {
       allow read, write: if true;
     }

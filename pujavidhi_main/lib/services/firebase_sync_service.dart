@@ -9,6 +9,7 @@ import '../models/audio_track_model.dart';
 import '../models/vidhi_model.dart';
 import '../models/vrat_model.dart';
 import '../models/gita_model.dart';
+import '../models/wallpaper_model.dart';
 
 class FirebaseSyncService {
   static const String projectId = 'pujavidhi-app-2026';
@@ -19,6 +20,7 @@ class FirebaseSyncService {
   static const String cacheKeyVidhis = 'pujavidhi_cached_vidhis_v2';
   static const String cacheKeyVrats = 'pujavidhi_cached_vrats_v2';
   static const String cacheKeyGita = 'pujavidhi_cached_gita_v2';
+  static const String cacheKeyWallpapers = 'pujavidhi_cached_wallpapers_v2';
   static const String cacheKeyConfig = 'pujavidhi_cached_config_v2';
 
   // Stream controllers to notify providers when remote updates land
@@ -32,6 +34,8 @@ class FirebaseSyncService {
       StreamController<List<GitaChapter>>.broadcast();
   static final StreamController<List<GitaShloka>> _gitaShlokasController =
       StreamController<List<GitaShloka>>.broadcast();
+  static final StreamController<List<DevotionalWallpaper>> _wallpapersController =
+      StreamController<List<DevotionalWallpaper>>.broadcast();
   static final StreamController<Map<String, dynamic>> _configController =
       StreamController<Map<String, dynamic>>.broadcast();
 
@@ -40,6 +44,7 @@ class FirebaseSyncService {
   static Stream<List<VratItem>> get vratsStream => _vratsController.stream;
   static Stream<List<GitaChapter>> get gitaChaptersStream => _gitaChaptersController.stream;
   static Stream<List<GitaShloka>> get gitaShlokasStream => _gitaShlokasController.stream;
+  static Stream<List<DevotionalWallpaper>> get wallpapersStream => _wallpapersController.stream;
   static Stream<Map<String, dynamic>> get configStream => _configController.stream;
 
   // Cache of latest values
@@ -48,6 +53,7 @@ class FirebaseSyncService {
   static List<VratItem> latestVrats = [];
   static List<GitaChapter> latestGitaChapters = [];
   static List<GitaShloka> latestGitaShlokas = [];
+  static List<DevotionalWallpaper> latestWallpapers = [];
   static Map<String, dynamic> latestConfig = {
     'admob_enabled': true,
     'banner_enabled': true,
@@ -104,6 +110,7 @@ class FirebaseSyncService {
         syncVidhis(),
         syncVrats(),
         syncGita(),
+        syncWallpapers(),
       ]);
     } catch (e) {
       debugPrint('FirebaseSyncService syncAll error: $e');
@@ -317,6 +324,79 @@ class FirebaseSyncService {
       debugPrint('FirebaseSyncService: Failed to load bundled vrats: $e');
       return latestVrats;
     }
+  }
+
+  static bool _isSyncingWallpapers = false;
+
+  /// Loads offline 4K Wallpapers immediately from local cache or bundled production asset
+  static Future<List<DevotionalWallpaper>> loadOfflineWallpapers() async {
+    if (latestWallpapers.isNotEmpty) return latestWallpapers;
+
+    // 1. Check local cache
+    final cached = await _loadFromCache(cacheKeyWallpapers);
+    if (cached != null) {
+      try {
+        final list = jsonDecode(cached) as List<dynamic>;
+        final items = list.map((i) => DevotionalWallpaper.fromJson(i as Map<String, dynamic>)).toList();
+        if (items.isNotEmpty) {
+          latestWallpapers = items;
+          return items;
+        }
+      } catch (_) {}
+    }
+
+    // 2. Fallback to bundled JSON asset
+    try {
+      final bundledStr = await rootBundle.loadString('assets/data/wallpapers_production.json');
+      final list = jsonDecode(bundledStr) as List<dynamic>;
+      final items = list.map((i) => DevotionalWallpaper.fromJson(i as Map<String, dynamic>)).toList();
+      latestWallpapers = items;
+      return items;
+    } catch (e) {
+      debugPrint('FirebaseSyncService: Error loading bundled wallpapers: $e');
+      return latestWallpapers;
+    }
+  }
+
+  /// Silent Background Sync for Wallpapers from Firestore
+  static Future<void> syncWallpapersInBackground() async {
+    if (_isSyncingWallpapers) return;
+    _isSyncingWallpapers = true;
+
+    try {
+      final client = HttpClient()..connectionTimeout = const Duration(seconds: 12);
+      final req = await client.getUrl(Uri.parse('$baseUrl/wallpapers?pageSize=100'));
+      final res = await req.close();
+      if (res.statusCode == 200) {
+        final body = await res.transform(utf8.decoder).join();
+        final jsonDoc = jsonDecode(body) as Map<String, dynamic>;
+        final docs = jsonDoc['documents'] as List<dynamic>? ?? [];
+
+        final items = <DevotionalWallpaper>[];
+        for (final d in docs) {
+          final unpacked = unpackFirestoreDoc(d as Map<String, dynamic>);
+          items.add(DevotionalWallpaper.fromJson(unpacked));
+        }
+
+        if (items.isNotEmpty) {
+          latestWallpapers = items;
+          _saveToCache(cacheKeyWallpapers, jsonEncode(items.map((w) => w.toJson()).toList()));
+          if (!_wallpapersController.isClosed) _wallpapersController.add(items);
+          debugPrint('FirebaseSyncService: Synced ${items.length} wallpapers from Firestore.');
+        }
+      }
+    } catch (e) {
+      debugPrint('FirebaseSyncService: Wallpapers background sync notice: $e');
+    } finally {
+      _isSyncingWallpapers = false;
+    }
+  }
+
+  /// 5. Sync 4K Wallpapers (Offline-first + Background Sync)
+  static Future<List<DevotionalWallpaper>> syncWallpapers() async {
+    final offline = await loadOfflineWallpapers();
+    unawaited(syncWallpapersInBackground());
+    return offline;
   }
 
   static bool _isSyncingGita = false;

@@ -14,6 +14,7 @@ class AdminDashboardScreen extends StatefulWidget {
 
 class _AdminDashboardScreenState extends State<AdminDashboardScreen> {
   int _selectedNavIndex = 0;
+  String _selectedWallpaperCategory = 'All';
 
   @override
   Widget build(BuildContext context) {
@@ -96,6 +97,11 @@ class _AdminDashboardScreenState extends State<AdminDashboardScreen> {
                 label: Text("Monetization"),
               ),
               NavigationRailDestination(
+                icon: Icon(Icons.wallpaper_outlined),
+                selectedIcon: Icon(Icons.wallpaper),
+                label: Text("Wallpapers CMS"),
+              ),
+              NavigationRailDestination(
                 icon: Icon(Icons.settings_outlined),
                 selectedIcon: Icon(Icons.settings),
                 label: Text("Settings"),
@@ -125,6 +131,8 @@ class _AdminDashboardScreenState extends State<AdminDashboardScreen> {
       case 3:
         return _buildMonetizationDashboard(adminProv);
       case 4:
+        return _buildWallpapersCms(adminProv);
+      case 5:
       default:
         return _buildAdminSettings();
     }
@@ -610,6 +618,296 @@ class _AdminDashboardScreenState extends State<AdminDashboardScreen> {
               Navigator.of(ctx).pop();
             },
             child: const Text("Schedule 6:00 AM"),
+          ),
+        ],
+      ),
+    );
+  }
+
+  // --- 5. 4K Wallpapers CMS ---
+  Widget _buildWallpapersCms(AdminProvider prov) {
+    final categories = ['All', 'Shiva', 'Ram', 'Krishna', 'Ganesha', 'Hanuman', 'Devi', 'Vishnu', 'Surya'];
+    final wallpapers = prov.wallpapers.where((w) {
+      if (_selectedWallpaperCategory == 'All') return true;
+      return w.category.toLowerCase() == _selectedWallpaperCategory.toLowerCase() ||
+          w.deity.toLowerCase().contains(_selectedWallpaperCategory.toLowerCase());
+    }).toList();
+
+    return SingleChildScrollView(
+      padding: const EdgeInsets.all(24),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text("4K Devotional Wallpapers CMS",
+                      style: GoogleFonts.poppins(fontSize: 20, fontWeight: FontWeight.bold, color: AdminTheme.accentGold)),
+                  Text(
+                    "Manage HD God Wallpapers live on mobile client Studio & Gallery (${prov.wallpapers.length} active wallpapers).",
+                    style: GoogleFonts.poppins(color: Colors.white70, fontSize: 13),
+                  ),
+                ],
+              ),
+              ElevatedButton.icon(
+                icon: const Icon(Icons.add_photo_alternate),
+                label: const Text("Add New Wallpaper"),
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: AdminTheme.accentGold,
+                  foregroundColor: Colors.black,
+                  padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                ),
+                onPressed: () => _showWallpaperDialog(prov),
+              ),
+            ],
+          ),
+          const SizedBox(height: 20),
+
+          // Category filter
+          SizedBox(
+            height: 38,
+            child: ListView.separated(
+              scrollDirection: Axis.horizontal,
+              itemCount: categories.length,
+              separatorBuilder: (context, index) => const SizedBox(width: 8),
+              itemBuilder: (context, idx) {
+                final cat = categories[idx];
+                final isSelected = _selectedWallpaperCategory.toLowerCase() == cat.toLowerCase();
+                return ChoiceChip(
+                  label: Text(cat == 'All' ? 'All Deities' : cat),
+                  selected: isSelected,
+                  selectedColor: AdminTheme.accentGold,
+                  onSelected: (val) {
+                    if (val) setState(() => _selectedWallpaperCategory = cat);
+                  },
+                );
+              },
+            ),
+          ),
+          const SizedBox(height: 20),
+
+          // Wallpapers Grid
+          if (wallpapers.isEmpty)
+            Container(
+              padding: const EdgeInsets.all(40),
+              alignment: Alignment.center,
+              child: Column(
+                children: [
+                  const Icon(Icons.wallpaper, size: 48, color: Colors.grey),
+                  const SizedBox(height: 12),
+                  Text("No wallpapers found.", style: GoogleFonts.poppins(color: Colors.white60)),
+                ],
+              ),
+            )
+          else
+            GridView.builder(
+              shrinkWrap: true,
+              physics: const NeverScrollableScrollPhysics(),
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 3,
+                crossAxisSpacing: 16,
+                mainAxisSpacing: 16,
+                childAspectRatio: 0.95,
+              ),
+              itemCount: wallpapers.length,
+              itemBuilder: (context, idx) {
+                final wp = wallpapers[idx];
+                return Card(
+                  clipBehavior: Clip.antiAlias,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(16),
+                    side: BorderSide(color: AdminTheme.accentGold.withValues(alpha: 0.3)),
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      // Image Thumbnail Banner
+                      Expanded(
+                        child: Stack(
+                          children: [
+                            Positioned.fill(
+                              child: Image.network(
+                                wp.imageUrl,
+                                fit: BoxFit.cover,
+                                errorBuilder: (context, error, stackTrace) => Container(
+                                  color: Colors.grey[900],
+                                  child: Center(child: Text(wp.iconBadge, style: const TextStyle(fontSize: 36))),
+                                ),
+                              ),
+                            ),
+                            Positioned(
+                              top: 8,
+                              right: 8,
+                              child: Container(
+                                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
+                                decoration: BoxDecoration(
+                                  color: Colors.black87,
+                                  borderRadius: BorderRadius.circular(8),
+                                  border: Border.all(color: AdminTheme.accentGold.withValues(alpha: 0.5)),
+                                ),
+                                child: Text(
+                                  wp.is4k ? "4K UHD" : "HD",
+                                  style: const TextStyle(color: AdminTheme.accentGold, fontSize: 10, fontWeight: FontWeight.bold),
+                                ),
+                              ),
+                            ),
+                            Positioned(
+                              top: 8,
+                              left: 8,
+                              child: Container(
+                                padding: const EdgeInsets.all(4),
+                                decoration: const BoxDecoration(color: Colors.black54, shape: BoxShape.circle),
+                                child: Text(wp.iconBadge, style: const TextStyle(fontSize: 14)),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+
+                      // Details & Actions
+                      Padding(
+                        padding: const EdgeInsets.all(12),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              wp.title,
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                              style: GoogleFonts.poppins(fontWeight: FontWeight.bold, fontSize: 14),
+                            ),
+                            Text(
+                              "${wp.deity} • ${wp.category}",
+                              style: GoogleFonts.poppins(color: AdminTheme.accentGold, fontSize: 11),
+                            ),
+                            const SizedBox(height: 4),
+                            Text(
+                              wp.mantraSanskrit,
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                              style: GoogleFonts.poppins(color: Colors.white60, fontSize: 11),
+                            ),
+                            const SizedBox(height: 8),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: [
+                                OutlinedButton.icon(
+                                  icon: const Icon(Icons.edit, size: 14),
+                                  label: const Text("Edit", style: TextStyle(fontSize: 11)),
+                                  style: OutlinedButton.styleFrom(
+                                    padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                                  ),
+                                  onPressed: () => _showWallpaperDialog(prov, existing: wp),
+                                ),
+                                const SizedBox(width: 8),
+                                IconButton(
+                                  icon: const Icon(Icons.delete_outline, size: 18, color: Colors.redAccent),
+                                  tooltip: "Delete",
+                                  onPressed: () => _confirmDeleteWallpaper(prov, wp),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                );
+              },
+            ),
+        ],
+      ),
+    );
+  }
+
+  void _showWallpaperDialog(AdminProvider prov, {AdminWallpaperItem? existing}) {
+    final titleCtrl = TextEditingController(text: existing?.title ?? "");
+    final deityCtrl = TextEditingController(text: existing?.deity ?? "Lord Shiva");
+    final urlCtrl = TextEditingController(text: existing?.imageUrl ?? "");
+    final mantraCtrl = TextEditingController(text: existing?.mantraSanskrit ?? "");
+    final quoteCtrl = TextEditingController(text: existing?.quoteEnglish ?? "");
+    final badgeCtrl = TextEditingController(text: existing?.iconBadge ?? "🕉️");
+    final categoryCtrl = TextEditingController(text: existing?.category ?? "Shiva");
+
+    showDialog(
+      context: context,
+      builder: (ctx) => AlertDialog(
+        title: Text(existing == null ? "Add 4K God Wallpaper" : "Edit 4K Wallpaper"),
+        content: SizedBox(
+          width: 500,
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                TextField(controller: titleCtrl, decoration: const InputDecoration(labelText: "Wallpaper Title", hintText: "e.g. Mahadev Kailash")),
+                const SizedBox(height: 10),
+                TextField(controller: deityCtrl, decoration: const InputDecoration(labelText: "Deity", hintText: "Lord Shiva, Shri Ram, etc.")),
+                const SizedBox(height: 10),
+                TextField(controller: urlCtrl, decoration: const InputDecoration(labelText: "High-Res Image URL (HTTPS)", hintText: "https://...")),
+                const SizedBox(height: 10),
+                TextField(controller: mantraCtrl, maxLines: 2, decoration: const InputDecoration(labelText: "Sanskrit Mantra")),
+                const SizedBox(height: 10),
+                TextField(controller: quoteCtrl, decoration: const InputDecoration(labelText: "English Quote / Translation")),
+                const SizedBox(height: 10),
+                Row(
+                  children: [
+                    Expanded(child: TextField(controller: badgeCtrl, decoration: const InputDecoration(labelText: "Emblem Symbol (e.g. 🔱, 🏹)"))),
+                    const SizedBox(width: 10),
+                    Expanded(child: TextField(controller: categoryCtrl, decoration: const InputDecoration(labelText: "Category (Shiva, Ram, etc.)"))),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        ),
+        actions: [
+          TextButton(onPressed: () => Navigator.of(ctx).pop(), child: const Text("Cancel")),
+          ElevatedButton(
+            style: ElevatedButton.styleFrom(backgroundColor: AdminTheme.accentGold, foregroundColor: Colors.black),
+            onPressed: () async {
+              if (titleCtrl.text.trim().isEmpty || urlCtrl.text.trim().isEmpty) return;
+              final wp = AdminWallpaperItem(
+                id: existing?.id ?? "wp_${DateTime.now().millisecondsSinceEpoch}",
+                title: titleCtrl.text.trim(),
+                deity: deityCtrl.text.trim(),
+                imageUrl: urlCtrl.text.trim(),
+                thumbnail: urlCtrl.text.trim(),
+                mantraSanskrit: mantraCtrl.text.trim(),
+                quoteEnglish: quoteCtrl.text.trim(),
+                iconBadge: badgeCtrl.text.trim().isEmpty ? "🕉️" : badgeCtrl.text.trim(),
+                category: categoryCtrl.text.trim().isEmpty ? "General" : categoryCtrl.text.trim(),
+                is4k: true,
+                isFeatured: true,
+              );
+              Navigator.of(ctx).pop();
+              await prov.saveWallpaper(wp);
+            },
+            child: Text(existing == null ? "Add Wallpaper" : "Save Changes"),
+          ),
+        ],
+      ),
+    );
+  }
+
+  void _confirmDeleteWallpaper(AdminProvider prov, AdminWallpaperItem wp) {
+    showDialog(
+      context: context,
+      builder: (ctx) => AlertDialog(
+        title: const Text("Delete Wallpaper?"),
+        content: Text("Are you sure you want to remove '${wp.title}' from Firebase? It will be removed from all mobile clients."),
+        actions: [
+          TextButton(onPressed: () => Navigator.of(ctx).pop(), child: const Text("Cancel")),
+          ElevatedButton(
+            style: ElevatedButton.styleFrom(backgroundColor: Colors.red[800]),
+            onPressed: () async {
+              Navigator.of(ctx).pop();
+              await prov.deleteWallpaper(wp.id);
+            },
+            child: const Text("Delete"),
           ),
         ],
       ),

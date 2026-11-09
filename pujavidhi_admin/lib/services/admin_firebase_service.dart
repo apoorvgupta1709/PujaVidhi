@@ -170,4 +170,50 @@ class AdminFirebaseService {
     map['updatedAt'] = DateTime.now().toUtc().toIso8601String();
     return await setDocument('daily_suvichar', broadcast.id, map);
   }
+
+  /// Delete document from collection
+  static Future<bool> deleteDocument(String collection, String docId) async {
+    try {
+      final client = HttpClient()..connectionTimeout = const Duration(seconds: 10);
+      final req = await client.deleteUrl(Uri.parse('$baseUrl/$collection/$docId'));
+      final res = await req.close();
+      return res.statusCode == 200;
+    } catch (e) {
+      debugPrint('AdminFirebaseService.deleteDocument error: $e');
+      return false;
+    }
+  }
+
+  /// Fetch all 4K Wallpapers from Firestore
+  static Future<List<AdminWallpaperItem>> fetchWallpapers() async {
+    try {
+      final client = HttpClient()..connectionTimeout = const Duration(seconds: 10);
+      final req = await client.getUrl(Uri.parse('$baseUrl/wallpapers?pageSize=100'));
+      final res = await req.close();
+      if (res.statusCode == 200) {
+        final body = await res.transform(utf8.decoder).join();
+        final root = jsonDecode(body) as Map<String, dynamic>;
+        final docs = root['documents'] as List<dynamic>? ?? [];
+        return docs.map((d) {
+          final unpacked = _unpackFirestoreDoc(d as Map<String, dynamic>);
+          return AdminWallpaperItem.fromJson(unpacked);
+        }).toList();
+      }
+    } catch (e) {
+      debugPrint('AdminFirebaseService.fetchWallpapers error: $e');
+    }
+    return [];
+  }
+
+  /// Push (Add or Update) 4K Wallpaper to Firestore
+  static Future<bool> pushWallpaper(AdminWallpaperItem wp) async {
+    final map = wp.toJson();
+    map['updatedAt'] = DateTime.now().toUtc().toIso8601String();
+    return await setDocument('wallpapers', wp.id, map);
+  }
+
+  /// Delete 4K Wallpaper from Firestore
+  static Future<bool> deleteWallpaper(String id) async {
+    return await deleteDocument('wallpapers', id);
+  }
 }

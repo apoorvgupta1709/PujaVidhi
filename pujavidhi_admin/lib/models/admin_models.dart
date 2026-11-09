@@ -201,3 +201,73 @@ class AdminMonetizationConfig {
     );
   }
 }
+
+class AdminWallpaperItem {
+  final String id;
+  String title;
+  String deity;
+  String imageUrl;
+  String thumbnail;
+  String mantraSanskrit;
+  String quoteEnglish;
+  List<String> gradientColors;
+  String iconBadge;
+  bool isFeatured;
+  bool is4k;
+  int downloadsCount;
+  String category;
+
+  AdminWallpaperItem({
+    required this.id,
+    required this.title,
+    required this.deity,
+    required this.imageUrl,
+    this.thumbnail = '',
+    this.mantraSanskrit = '',
+    this.quoteEnglish = '',
+    this.gradientColors = const ['#1E1B4B', '#312E81', '#6366F1'],
+    this.iconBadge = '🕉️',
+    this.isFeatured = true,
+    this.is4k = true,
+    this.downloadsCount = 108,
+    this.category = 'General',
+  });
+
+  Map<String, dynamic> toJson() => {
+    'id': id,
+    'title': title,
+    'deity': deity,
+    'imageUrl': imageUrl,
+    'thumbnail': thumbnail,
+    'mantraSanskrit': mantraSanskrit,
+    'quoteEnglish': quoteEnglish,
+    'gradientColors': gradientColors,
+    'iconBadge': iconBadge,
+    'isFeatured': isFeatured,
+    'is4k': is4k,
+    'downloadsCount': downloadsCount,
+    'category': category,
+  };
+
+  factory AdminWallpaperItem.fromJson(Map<String, dynamic> json) {
+    List<String> colors = ['#1E1B4B', '#312E81', '#6366F1'];
+    if (json['gradientColors'] is List) {
+      colors = (json['gradientColors'] as List).map((c) => c.toString()).toList();
+    }
+    return AdminWallpaperItem(
+      id: json['id']?.toString() ?? 'wp_${DateTime.now().millisecondsSinceEpoch}',
+      title: json['title']?.toString() ?? 'Divine Darshan',
+      deity: json['deity']?.toString() ?? 'All Deities',
+      imageUrl: json['imageUrl']?.toString() ?? '',
+      thumbnail: json['thumbnail']?.toString() ?? json['imageUrl']?.toString() ?? '',
+      mantraSanskrit: json['mantraSanskrit']?.toString() ?? '',
+      quoteEnglish: json['quoteEnglish']?.toString() ?? '',
+      gradientColors: colors,
+      iconBadge: json['iconBadge']?.toString() ?? '🕉️',
+      isFeatured: json['isFeatured'] == true || json['isFeatured'] == 'true',
+      is4k: json['is4k'] != false && json['is4k'] != 'false',
+      downloadsCount: int.tryParse(json['downloadsCount']?.toString() ?? '108') ?? 108,
+      category: json['category']?.toString() ?? 'General',
+    );
+  }
+}

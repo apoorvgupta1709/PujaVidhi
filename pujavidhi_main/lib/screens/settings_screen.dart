@@ -7,8 +7,8 @@ import '../providers/app_provider.dart';
 import '../providers/ishta_devta_provider.dart';
 import '../providers/auth_provider.dart';
 import '../services/localization_service.dart';
-import '../widgets/auth_modal.dart';
 import 'bhakt_prime_screen.dart';
+import 'profile_screen.dart';
 
 class SettingsScreen extends StatelessWidget {
   const SettingsScreen({super.key});
@@ -85,11 +85,9 @@ class SettingsScreen extends StatelessWidget {
                   ),
                   trailing: const Icon(Icons.arrow_forward_ios, size: 14),
                   onTap: () {
-                    if (auth.isAuthenticated) {
-                      _showSignOutDialog(context, auth);
-                    } else {
-                      AuthModal.show(context);
-                    }
+                    Navigator.of(context).push(
+                      MaterialPageRoute(builder: (_) => const ProfileScreen()),
+                    );
                   },
                 ),
                 const Divider(height: 1),
@@ -197,27 +195,6 @@ class SettingsScreen extends StatelessWidget {
           ),
 
           const SizedBox(height: 24),
-        ],
-      ),
-    );
-  }
-
-  void _showSignOutDialog(BuildContext context, AuthProvider auth) {
-    showDialog(
-      context: context,
-      builder: (ctx) => AlertDialog(
-        title: const Text("Devotee Account"),
-        content: Text("Signed in as ${auth.displayName} (${auth.email}). Would you like to sign out?"),
-        actions: [
-          TextButton(onPressed: () => Navigator.of(ctx).pop(), child: const Text("Cancel")),
-          ElevatedButton(
-            onPressed: () {
-              auth.signOut();
-              Navigator.of(ctx).pop();
-            },
-            style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
-            child: const Text("Sign Out", style: TextStyle(color: Colors.white)),
-          ),
         ],
       ),
     );

@@ -339,22 +339,30 @@ class FirebaseSyncService {
         chapters.sort((a, b) => a.chapterNumber.compareTo(b.chapterNumber));
       }
 
-      final shReq = await client.getUrl(Uri.parse('$baseUrl/gita_shlokas?pageSize=100'));
-      final shRes = await shReq.close();
-      if (shRes.statusCode == 200) {
-        final body = await shRes.transform(utf8.decoder).join();
-        final jsonDoc = jsonDecode(body) as Map<String, dynamic>;
-        final docs = jsonDoc['documents'] as List<dynamic>? ?? [];
-        for (final d in docs) {
-          final unpacked = unpackFirestoreDoc(d as Map<String, dynamic>);
-          shlokas.add(GitaShloka.fromJson(unpacked));
+      String? pageToken;
+      do {
+        final url = '$baseUrl/gita_shlokas?pageSize=300${pageToken != null ? '&pageToken=$pageToken' : ''}';
+        final shReq = await client.getUrl(Uri.parse(url));
+        final shRes = await shReq.close();
+        if (shRes.statusCode == 200) {
+          final body = await shRes.transform(utf8.decoder).join();
+          final jsonDoc = jsonDecode(body) as Map<String, dynamic>;
+          final docs = jsonDoc['documents'] as List<dynamic>? ?? [];
+          for (final d in docs) {
+            final unpacked = unpackFirestoreDoc(d as Map<String, dynamic>);
+            shlokas.add(GitaShloka.fromJson(unpacked));
+          }
+          pageToken = jsonDoc['nextPageToken'] as String?;
+        } else {
+          break;
         }
-        shlokas.sort((a, b) {
-          final chCmp = a.chapterNumber.compareTo(b.chapterNumber);
-          if (chCmp != 0) return chCmp;
-          return a.verseNumber.compareTo(b.verseNumber);
-        });
-      }
+      } while (pageToken != null && pageToken.isNotEmpty);
+
+      shlokas.sort((a, b) {
+        final chCmp = a.chapterNumber.compareTo(b.chapterNumber);
+        if (chCmp != 0) return chCmp;
+        return a.verseNumber.compareTo(b.verseNumber);
+      });
 
       if (chapters.isNotEmpty) {
         latestGitaChapters = chapters;

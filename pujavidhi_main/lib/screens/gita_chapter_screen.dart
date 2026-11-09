@@ -141,7 +141,9 @@ class GitaChapterScreen extends StatelessWidget {
                 const SizedBox(height: 20),
 
                 Text(
-                  "प्रमुख श्लोक संग्रह (${verses.length} उपलब्ध)",
+                  verses.length >= chapter.versesCount
+                      ? "संपूर्ण श्लोक संग्रह (${verses.length} श्लोक)"
+                      : "श्लोक संग्रह (${verses.length} / ${chapter.versesCount} उपलब्ध)",
                   style: GoogleFonts.poppins(fontSize: 15, fontWeight: FontWeight.bold),
                 ),
                 const SizedBox(height: 10),

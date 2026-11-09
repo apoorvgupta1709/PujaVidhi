@@ -105,45 +105,6 @@ class AudioPlayerScreen extends StatelessWidget {
                     style: GoogleFonts.poppins(fontSize: 13, color: AppTheme.marigold, fontWeight: FontWeight.w500),
                   ),
 
-                  const SizedBox(height: 18),
-
-                  // Interactive Virtual Temple Sound Effects (Bell & Shankh)
-                  Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
-                    decoration: BoxDecoration(
-                      color: isDark ? AppTheme.templeCardDark : Colors.white,
-                      borderRadius: BorderRadius.circular(16),
-                      border: Border.all(color: AppTheme.divineGold.withValues(alpha: 0.4)),
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        OutlinedButton.icon(
-                          onPressed: () => audioProv.playBell(),
-                          icon: const Icon(Icons.notifications_active, color: AppTheme.marigold),
-                          label: Text(
-                            "Ring Bell",
-                            style: GoogleFonts.poppins(color: AppTheme.marigold, fontWeight: FontWeight.bold),
-                          ),
-                          style: OutlinedButton.styleFrom(
-                            side: const BorderSide(color: AppTheme.marigold),
-                          ),
-                        ),
-                        OutlinedButton.icon(
-                          onPressed: () => audioProv.playShankh(),
-                          icon: const Icon(Icons.volume_up, color: AppTheme.sacredMaroon),
-                          label: Text(
-                            "Blow Shankh",
-                            style: GoogleFonts.poppins(color: AppTheme.sacredMaroon, fontWeight: FontWeight.bold),
-                          ),
-                          style: OutlinedButton.styleFrom(
-                            side: const BorderSide(color: AppTheme.sacredMaroon),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-
                   const SizedBox(height: 20),
 
                   // Synced Dual-Script Lyrics Viewer

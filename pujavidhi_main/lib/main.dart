@@ -6,6 +6,7 @@ import 'core/app_theme.dart';
 import 'core/error_boundary.dart';
 import 'services/storage_service.dart';
 import 'services/admob_service.dart';
+import 'services/firebase_sync_service.dart';
 import 'providers/app_provider.dart';
 import 'providers/panchang_provider.dart';
 import 'providers/vidhi_provider.dart';
@@ -49,6 +50,13 @@ void main() {
       unawaited(AdMobService.initialize());
     } catch (e) {
       debugPrint('AdMob startup notice: $e');
+    }
+
+    // Safely sync latest Aartis, Vidhis, and Remote Config from Firebase Firestore
+    try {
+      unawaited(FirebaseSyncService.syncAll());
+    } catch (e) {
+      debugPrint('Firebase sync startup notice: $e');
     }
   }, (error, stack) {
     debugPrint('PujaVidhi Zone Error: $error\n$stack');

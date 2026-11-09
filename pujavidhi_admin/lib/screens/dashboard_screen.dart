@@ -32,6 +32,11 @@ class _AdminDashboardScreenState extends State<AdminDashboardScreen> {
           ],
         ),
         actions: [
+          IconButton(
+            icon: const Icon(Icons.sync, color: AdminTheme.accentGold),
+            tooltip: "Refresh from Firebase",
+            onPressed: () => adminProv.initFromFirebase(),
+          ),
           Container(
             margin: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
             padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
@@ -42,10 +47,14 @@ class _AdminDashboardScreenState extends State<AdminDashboardScreen> {
             ),
             child: Row(
               children: [
-                const Icon(Icons.cloud_done, size: 16, color: Colors.greenAccent),
+                Icon(
+                  adminProv.isLoading ? Icons.hourglass_top : Icons.cloud_done,
+                  size: 16,
+                  color: adminProv.isLoading ? Colors.orangeAccent : Colors.greenAccent,
+                ),
                 const SizedBox(width: 6),
                 Text(
-                  "Firebase Connected",
+                  adminProv.statusMessage,
                   style: GoogleFonts.poppins(color: Colors.white, fontSize: 12, fontWeight: FontWeight.w600),
                 ),
               ],
@@ -318,6 +327,42 @@ class _AdminDashboardScreenState extends State<AdminDashboardScreen> {
             ),
           ),
 
+          const SizedBox(height: 12),
+
+          // Individual Ad Format Toggles
+          Card(
+            child: Padding(
+              padding: const EdgeInsets.all(16),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text("Ad Formats Granular Control", style: GoogleFonts.poppins(fontWeight: FontWeight.bold, fontSize: 15)),
+                  const SizedBox(height: 8),
+                  SwitchListTile(
+                    title: const Text("Banner Ads (Bottom on Panchang & Aarti)"),
+                    value: mon.bannerEnabled,
+                    activeThumbColor: AdminTheme.accentGold,
+                    onChanged: mon.adsEnabled ? (v) => prov.toggleBanner(v) : null,
+                  ),
+                  const Divider(height: 1),
+                  SwitchListTile(
+                    title: const Text("Interstitial Ads (Japa Mala & Vidhi completion)"),
+                    value: mon.interstitialEnabled,
+                    activeThumbColor: AdminTheme.accentGold,
+                    onChanged: mon.adsEnabled ? (v) => prov.toggleInterstitial(v) : null,
+                  ),
+                  const Divider(height: 1),
+                  SwitchListTile(
+                    title: const Text("Rewarded Ads (Offline Aarti & Watermark removal)"),
+                    value: mon.rewardedEnabled,
+                    activeThumbColor: AdminTheme.accentGold,
+                    onChanged: mon.adsEnabled ? (v) => prov.toggleRewarded(v) : null,
+                  ),
+                ],
+              ),
+            ),
+          ),
+
           const SizedBox(height: 16),
 
           // Interstitial Ad Frequency Slider
@@ -374,6 +419,31 @@ class _AdminDashboardScreenState extends State<AdminDashboardScreen> {
                   ),
                 ],
               ),
+            ),
+          ),
+
+          const SizedBox(height: 20),
+
+          // Push to Firebase Button
+          SizedBox(
+            width: double.infinity,
+            height: 48,
+            child: ElevatedButton.icon(
+              onPressed: () async {
+                final ok = await prov.saveMonetizationToFirebase();
+                if (!mounted) return;
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text(ok
+                        ? "✅ Monetization & AdMob settings saved to Firebase!"
+                        : "❌ Failed to connect to Firebase."),
+                    backgroundColor: ok ? Colors.green : Colors.red,
+                  ),
+                );
+              },
+              icon: const Icon(Icons.cloud_upload_outlined, color: Colors.white),
+              label: Text("Push Monetization Settings to Firebase", style: GoogleFonts.poppins(fontWeight: FontWeight.bold)),
+              style: ElevatedButton.styleFrom(backgroundColor: AdminTheme.primaryMaroon),
             ),
           ),
         ],

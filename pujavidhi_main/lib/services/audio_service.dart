@@ -2,7 +2,6 @@ import 'dart:async';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/foundation.dart';
 import '../models/audio_track_model.dart';
-import '../core/sound_service.dart';
 
 class AudioService {
   AudioPlayer? _player;
@@ -101,14 +100,6 @@ class AudioService {
 
   void toggleLoop() {
     _isLooping = !_isLooping;
-  }
-
-  void playBellOverlay() {
-    SoundService.playTempleBell();
-  }
-
-  void playShankhOverlay() {
-    SoundService.playShankh();
   }
 
   void dispose() {

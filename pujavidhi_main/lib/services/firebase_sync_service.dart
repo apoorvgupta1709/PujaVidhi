@@ -1,0 +1,265 @@
+import 'dart:async';
+import 'dart:convert';
+import 'dart:io';
+import 'package:flutter/foundation.dart';
+import 'package:flutter/services.dart' show rootBundle;
+import 'package:shared_preferences/shared_preferences.dart';
+import '../models/audio_track_model.dart';
+import '../models/vidhi_model.dart';
+
+class FirebaseSyncService {
+  static const String projectId = 'metropulse-transit-2026';
+  static const String baseUrl =
+      'https://firestore.googleapis.com/v1/projects/$projectId/databases/(default)/documents';
+
+  static const String cacheKeyAartis = 'pujavidhi_cached_aartis_v2';
+  static const String cacheKeyVidhis = 'pujavidhi_cached_vidhis_v2';
+  static const String cacheKeyConfig = 'pujavidhi_cached_config_v2';
+
+  // Stream controllers to notify providers when remote updates land
+  static final StreamController<List<AudioTrack>> _aartisController =
+      StreamController<List<AudioTrack>>.broadcast();
+  static final StreamController<List<PujaVidhi>> _vidhisController =
+      StreamController<List<PujaVidhi>>.broadcast();
+  static final StreamController<Map<String, dynamic>> _configController =
+      StreamController<Map<String, dynamic>>.broadcast();
+
+  static Stream<List<AudioTrack>> get aartisStream => _aartisController.stream;
+  static Stream<List<PujaVidhi>> get vidhisStream => _vidhisController.stream;
+  static Stream<Map<String, dynamic>> get configStream => _configController.stream;
+
+  // Cache of latest values
+  static List<AudioTrack> latestAartis = [];
+  static List<PujaVidhi> latestVidhis = [];
+  static Map<String, dynamic> latestConfig = {
+    'admob_enabled': true,
+    'banner_enabled': true,
+    'interstitial_enabled': true,
+    'rewarded_enabled': true,
+    'interstitial_frequency_rounds': 1,
+    'bhakt_prime_price': 99,
+  };
+
+  /// Unpack Firestore typed REST JSON into clean standard Dart primitives
+  static dynamic unpackFirestoreValue(Map<String, dynamic>? val) {
+    if (val == null) return null;
+    if (val.containsKey('stringValue')) return val['stringValue'];
+    if (val.containsKey('booleanValue')) return val['booleanValue'];
+    if (val.containsKey('integerValue')) return int.tryParse(val['integerValue'].toString()) ?? 0;
+    if (val.containsKey('doubleValue')) return double.tryParse(val['doubleValue'].toString()) ?? 0.0;
+    if (val.containsKey('nullValue')) return null;
+    if (val.containsKey('arrayValue')) {
+      final values = val['arrayValue']['values'] as List<dynamic>? ?? [];
+      return values.map((v) => unpackFirestoreValue(v as Map<String, dynamic>)).toList();
+    }
+    if (val.containsKey('mapValue')) {
+      final fields = val['mapValue']['fields'] as Map<String, dynamic>? ?? {};
+      final map = <String, dynamic>{};
+      for (final entry in fields.entries) {
+        map[entry.key] = unpackFirestoreValue(entry.value as Map<String, dynamic>);
+      }
+      return map;
+    }
+    return null;
+  }
+
+  static Map<String, dynamic> unpackFirestoreDoc(Map<String, dynamic> doc) {
+    final fields = doc['fields'] as Map<String, dynamic>? ?? {};
+    final result = <String, dynamic>{};
+    for (final entry in fields.entries) {
+      result[entry.key] = unpackFirestoreValue(entry.value as Map<String, dynamic>);
+    }
+    // Extract document ID from doc name if not already in fields
+    final docName = doc['name']?.toString() ?? '';
+    final docId = docName.split('/').last;
+    if (!result.containsKey('id') || (result['id'] as String).isEmpty) {
+      result['id'] = docId;
+    }
+    return result;
+  }
+
+  /// Master Background Sync: Fetches latest from Firestore, updates cache & notifies providers
+  static Future<void> syncAll() async {
+    try {
+      await Future.wait([
+        syncConfig(),
+        syncAartis(),
+        syncVidhis(),
+      ]);
+    } catch (e) {
+      debugPrint('FirebaseSyncService syncAll error: $e');
+    }
+  }
+
+  /// 1. Sync Monetization & AdMob Config
+  static Future<Map<String, dynamic>> syncConfig() async {
+    // First attempt remote fetch
+    try {
+      final client = HttpClient()..connectionTimeout = const Duration(seconds: 8);
+      final req = await client.getUrl(Uri.parse('$baseUrl/pujavidhi_config/monetization'));
+      final res = await req.close();
+      if (res.statusCode == 200) {
+        final body = await res.transform(utf8.decoder).join();
+        final jsonDoc = jsonDecode(body) as Map<String, dynamic>;
+        final unpacked = unpackFirestoreDoc(jsonDoc);
+        latestConfig = unpacked;
+        _saveToCache(cacheKeyConfig, jsonEncode(unpacked));
+        if (!_configController.isClosed) _configController.add(unpacked);
+        debugPrint('FirebaseSyncService: Synced monetization config from Firestore.');
+        return unpacked;
+      }
+    } catch (e) {
+      debugPrint('FirebaseSyncService: Remote config fetch fallback: $e');
+    }
+
+    // Fallback to local cache
+    final cached = await _loadFromCache(cacheKeyConfig);
+    if (cached != null) {
+      try {
+        final data = jsonDecode(cached) as Map<String, dynamic>;
+        latestConfig = data;
+        return data;
+      } catch (_) {}
+    }
+
+    // Ultimate fallback: bundled JSON
+    try {
+      final bundledStr = await rootBundle.loadString('assets/data/monetization_config.json');
+      final bundledData = jsonDecode(bundledStr) as Map<String, dynamic>;
+      latestConfig = bundledData;
+      return bundledData;
+    } catch (_) {
+      return latestConfig;
+    }
+  }
+
+  /// 2. Sync All Aartis (media_tracks collection)
+  static Future<List<AudioTrack>> syncAartis() async {
+    // Attempt remote fetch from Firestore
+    try {
+      final client = HttpClient()..connectionTimeout = const Duration(seconds: 10);
+      final req = await client.getUrl(Uri.parse('$baseUrl/media_tracks?pageSize=100'));
+      final res = await req.close();
+      if (res.statusCode == 200) {
+        final body = await res.transform(utf8.decoder).join();
+        final root = jsonDecode(body) as Map<String, dynamic>;
+        final docs = root['documents'] as List<dynamic>? ?? [];
+
+        final tracks = <AudioTrack>[];
+        for (final d in docs) {
+          final unpacked = unpackFirestoreDoc(d as Map<String, dynamic>);
+          tracks.add(AudioTrack.fromJson(unpacked));
+        }
+
+        if (tracks.isNotEmpty) {
+          latestAartis = tracks;
+          final jsonList = tracks.map((t) => t.toJson()).toList();
+          _saveToCache(cacheKeyAartis, jsonEncode(jsonList));
+          if (!_aartisController.isClosed) _aartisController.add(tracks);
+          debugPrint('FirebaseSyncService: Synced ${tracks.length} Aartis from Firestore.');
+          return tracks;
+        }
+      }
+    } catch (e) {
+      debugPrint('FirebaseSyncService: Aartis remote fetch fallback: $e');
+    }
+
+    // Fallback to local cache
+    final cached = await _loadFromCache(cacheKeyAartis);
+    if (cached != null) {
+      try {
+        final list = jsonDecode(cached) as List<dynamic>;
+        final tracks = list.map((i) => AudioTrack.fromJson(i as Map<String, dynamic>)).toList();
+        if (tracks.isNotEmpty) {
+          latestAartis = tracks;
+          return tracks;
+        }
+      } catch (_) {}
+    }
+
+    // Ultimate fallback: bundled production asset
+    try {
+      final bundledStr = await rootBundle.loadString('assets/data/aartis_production.json');
+      final list = jsonDecode(bundledStr) as List<dynamic>;
+      final tracks = list.map((i) => AudioTrack.fromJson(i as Map<String, dynamic>)).toList();
+      latestAartis = tracks;
+      return tracks;
+    } catch (e) {
+      debugPrint('FirebaseSyncService: Failed to load bundled aartis: $e');
+      return latestAartis;
+    }
+  }
+
+  /// 3. Sync All Puja Vidhis (festivals_and_vidhis collection)
+  static Future<List<PujaVidhi>> syncVidhis() async {
+    // Attempt remote fetch from Firestore
+    try {
+      final client = HttpClient()..connectionTimeout = const Duration(seconds: 10);
+      final req = await client.getUrl(Uri.parse('$baseUrl/festivals_and_vidhis?pageSize=100'));
+      final res = await req.close();
+      if (res.statusCode == 200) {
+        final body = await res.transform(utf8.decoder).join();
+        final root = jsonDecode(body) as Map<String, dynamic>;
+        final docs = root['documents'] as List<dynamic>? ?? [];
+
+        final vidhis = <PujaVidhi>[];
+        for (final d in docs) {
+          final unpacked = unpackFirestoreDoc(d as Map<String, dynamic>);
+          vidhis.add(PujaVidhi.fromJson(unpacked));
+        }
+
+        if (vidhis.isNotEmpty) {
+          latestVidhis = vidhis;
+          final jsonList = vidhis.map((v) => v.toJson()).toList();
+          _saveToCache(cacheKeyVidhis, jsonEncode(jsonList));
+          if (!_vidhisController.isClosed) _vidhisController.add(vidhis);
+          debugPrint('FirebaseSyncService: Synced ${vidhis.length} Vidhis from Firestore.');
+          return vidhis;
+        }
+      }
+    } catch (e) {
+      debugPrint('FirebaseSyncService: Vidhis remote fetch fallback: $e');
+    }
+
+    // Fallback to local cache
+    final cached = await _loadFromCache(cacheKeyVidhis);
+    if (cached != null) {
+      try {
+        final list = jsonDecode(cached) as List<dynamic>;
+        final vidhis = list.map((i) => PujaVidhi.fromJson(i as Map<String, dynamic>)).toList();
+        if (vidhis.isNotEmpty) {
+          latestVidhis = vidhis;
+          return vidhis;
+        }
+      } catch (_) {}
+    }
+
+    // Ultimate fallback: bundled production asset
+    try {
+      final bundledStr = await rootBundle.loadString('assets/data/vidhis_production.json');
+      final list = jsonDecode(bundledStr) as List<dynamic>;
+      final vidhis = list.map((i) => PujaVidhi.fromJson(i as Map<String, dynamic>)).toList();
+      latestVidhis = vidhis;
+      return vidhis;
+    } catch (e) {
+      debugPrint('FirebaseSyncService: Failed to load bundled vidhis: $e');
+      return latestVidhis;
+    }
+  }
+
+  static Future<void> _saveToCache(String key, String value) async {
+    try {
+      final prefs = await SharedPreferences.getInstance();
+      await prefs.setString(key, value);
+    } catch (_) {}
+  }
+
+  static Future<String?> _loadFromCache(String key) async {
+    try {
+      final prefs = await SharedPreferences.getInstance();
+      return prefs.getString(key);
+    } catch (_) {
+      return null;
+    }
+  }
+}

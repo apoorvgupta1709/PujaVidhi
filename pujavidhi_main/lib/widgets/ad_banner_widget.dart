@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
-import '../core/app_constants.dart';
+import 'package:provider/provider.dart';
+import '../providers/app_provider.dart';
+import '../services/admob_service.dart';
 
 class AdBannerWidget extends StatefulWidget {
   const AdBannerWidget({super.key});
@@ -20,8 +22,10 @@ class _AdBannerWidgetState extends State<AdBannerWidget> {
   }
 
   void _loadBanner() {
+    if (!AdMobService.isBannerEnabled) return;
+
     _bannerAd = BannerAd(
-      adUnitId: AppConstants.testBannerId,
+      adUnitId: AdMobService.bannerAdUnitId,
       size: AdSize.banner,
       request: const AdRequest(),
       listener: BannerAdListener(
@@ -52,6 +56,13 @@ class _AdBannerWidgetState extends State<AdBannerWidget> {
 
   @override
   Widget build(BuildContext context) {
+    final appProv = Provider.of<AppProvider>(context);
+
+    // If Pro user or Admin disabled banners, don't render anything
+    if (appProv.isProUser || !AdMobService.isBannerEnabled) {
+      return const SizedBox.shrink();
+    }
+
     if (_isLoaded && _bannerAd != null) {
       return Container(
         alignment: Alignment.center,

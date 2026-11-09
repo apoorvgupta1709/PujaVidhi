@@ -3,7 +3,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import '../core/app_theme.dart';
 import '../core/app_constants.dart';
-import '../core/sound_service.dart';
 import '../providers/app_provider.dart';
 import 'bhakt_prime_screen.dart';
 
@@ -84,41 +83,6 @@ class SettingsScreen extends StatelessWidget {
                   subtitle: Text(appProv.familyName, style: GoogleFonts.poppins(fontSize: 12, color: AppTheme.marigold)),
                   trailing: const Icon(Icons.edit_outlined, size: 18),
                   onTap: () => _editFamilyNameDialog(context, appProv),
-                ),
-              ],
-            ),
-          ),
-
-          const SizedBox(height: 16),
-
-          // Sacred Audio Tools
-          Text(
-            "Sacred Audio & Chimes",
-            style: GoogleFonts.poppins(fontSize: 13, fontWeight: FontWeight.bold, color: AppTheme.textMuted),
-          ),
-          const SizedBox(height: 8),
-
-          Card(
-            child: Column(
-              children: [
-                ListTile(
-                  leading: const Icon(Icons.notifications_active_outlined, color: AppTheme.marigold),
-                  title: Text("Test Brass Temple Bell", style: GoogleFonts.poppins(fontSize: 14, fontWeight: FontWeight.w500)),
-                  subtitle: Text("Touch to hear the sacred bell chime", style: GoogleFonts.poppins(fontSize: 12)),
-                  trailing: IconButton(
-                    icon: const Icon(Icons.play_circle_outline, color: AppTheme.marigold),
-                    onPressed: () => SoundService.playTempleBell(),
-                  ),
-                ),
-                const Divider(height: 1),
-                ListTile(
-                  leading: const Icon(Icons.volume_up_outlined, color: AppTheme.sacredMaroon),
-                  title: Text("Test Divine Shankh", style: GoogleFonts.poppins(fontSize: 14, fontWeight: FontWeight.w500)),
-                  subtitle: Text("Touch to hear the conch vibration", style: GoogleFonts.poppins(fontSize: 12)),
-                  trailing: IconButton(
-                    icon: const Icon(Icons.play_circle_outline, color: AppTheme.sacredMaroon),
-                    onPressed: () => SoundService.playShankh(),
-                  ),
                 ),
               ],
             ),

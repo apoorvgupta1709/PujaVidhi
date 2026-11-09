@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../services/storage_service.dart';
+import '../services/firebase_sync_service.dart';
 
 class AppProvider with ChangeNotifier {
   bool _isProUser = false;
@@ -14,12 +15,21 @@ class AppProvider with ChangeNotifier {
 
   AppProvider() {
     _loadState();
+
+    // Listen for remote updates from Admin App
+    FirebaseSyncService.configStream.listen((cfg) {
+      if (cfg.containsKey('bhakt_prime_price')) {
+        _activePassPrice = cfg['bhakt_prime_price'] as int? ?? _activePassPrice;
+        notifyListeners();
+      }
+    });
   }
 
   void _loadState() {
     _isProUser = StorageService.getIsPro();
     _familyName = StorageService.getFamilyName();
     _isDarkMode = StorageService.isDarkMode();
+    _activePassPrice = FirebaseSyncService.latestConfig['bhakt_prime_price'] as int? ?? 99;
     notifyListeners();
   }
 

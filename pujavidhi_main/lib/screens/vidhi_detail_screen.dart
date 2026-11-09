@@ -99,9 +99,6 @@ class VidhiDetailScreen extends StatelessWidget {
                     height: 52,
                     child: ElevatedButton.icon(
                       onPressed: () {
-                        SoundService.playTempleBell();
-                        SoundService.playShankh();
-
                         // Interstitial ad trigger after completing a puja chapter
                         AdMobService.showInterstitialIfAllowed(
                           isProUser: appProv.isProUser,

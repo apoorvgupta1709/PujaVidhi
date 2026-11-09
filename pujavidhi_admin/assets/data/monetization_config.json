@@ -1,0 +1,13 @@
+{
+  "admob_enabled": true,
+  "banner_enabled": true,
+  "interstitial_enabled": true,
+  "rewarded_enabled": true,
+  "interstitial_frequency_rounds": 1,
+  "bhakt_prime_price": 99,
+  "festive_discount_enabled": false,
+  "banner_ad_unit_id": "ca-app-pub-3940256099942544/6300978111",
+  "interstitial_ad_unit_id": "ca-app-pub-3940256099942544/1033173712",
+  "rewarded_ad_unit_id": "ca-app-pub-3940256099942544/5224354917",
+  "updatedAt": "2026-11-09T09:34:38.095084Z"
+}

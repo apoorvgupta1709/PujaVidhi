@@ -17,7 +17,8 @@ import '../widgets/auth_modal.dart';
 import 'panchang_screen.dart';
 import 'vidhi_list_screen.dart';
 import 'vidhi_detail_screen.dart';
-import 'audio_player_screen.dart';
+import 'aarti_list_screen.dart';
+import 'aarti_reader_screen.dart';
 import 'japa_mala_screen.dart';
 import 'card_maker_screen.dart';
 import 'bhakt_prime_screen.dart';
@@ -172,13 +173,11 @@ class HomeScreen extends StatelessWidget {
                 ),
                 TextButton(
                   onPressed: () {
-                    if (audioProv.tracks.isNotEmpty) {
-                      Navigator.of(context).push(
-                        MaterialPageRoute(builder: (_) => AudioPlayerScreen(track: audioProv.tracks.first)),
-                      );
-                    }
+                    Navigator.of(context).push(
+                      MaterialPageRoute(builder: (_) => const AartiListScreen()),
+                    );
                   },
-                  child: Text("Listen All", style: GoogleFonts.poppins(color: AppTheme.marigold, fontSize: 12)),
+                  child: Text("View All", style: GoogleFonts.poppins(color: AppTheme.marigold, fontSize: 12, fontWeight: FontWeight.bold)),
                 ),
               ],
             ),
@@ -368,14 +367,13 @@ class HomeScreen extends StatelessWidget {
           isDark: isDark,
         ),
         _buildPortalItem(
-          icon: Icons.music_note_outlined,
+          icon: Icons.menu_book_rounded,
           color: const Color(0xFF0284C7),
           label: loc.tr('aartis'),
           onTap: () {
-            final audio = Provider.of<AudioProvider>(context, listen: false);
-            if (audio.tracks.isNotEmpty) {
-              Navigator.of(context).push(MaterialPageRoute(builder: (_) => AudioPlayerScreen(track: audio.tracks.first)));
-            }
+            Navigator.of(context).push(
+              MaterialPageRoute(builder: (_) => const AartiListScreen()),
+            );
           },
           isDark: isDark,
         ),
@@ -672,13 +670,14 @@ Meaning:
         itemCount: tracks.length,
         itemBuilder: (context, idx) {
           final t = tracks[idx];
+          final displayName = t.hindiTitle.isNotEmpty ? t.hindiTitle : t.title;
+
           return GestureDetector(
             onTap: () {
-              audioProv.playTrack(t);
-              Navigator.of(context).push(MaterialPageRoute(builder: (_) => AudioPlayerScreen(track: t)));
+              Navigator.of(context).push(MaterialPageRoute(builder: (_) => AartiReaderScreen(track: t)));
             },
             child: Container(
-              width: 170,
+              width: 175,
               margin: const EdgeInsets.only(right: 12),
               padding: const EdgeInsets.all(12),
               decoration: BoxDecoration(
@@ -700,26 +699,27 @@ Meaning:
                           borderRadius: BorderRadius.circular(12),
                         ),
                         child: Text(
-                          t.category,
+                          t.deity,
                           style: GoogleFonts.poppins(fontSize: 10, fontWeight: FontWeight.bold, color: AppTheme.sacredMaroon),
                         ),
                       ),
-                      const Icon(Icons.play_circle_fill, color: AppTheme.sacredMaroon, size: 26),
+                      const Icon(Icons.menu_book_rounded, color: AppTheme.sacredMaroon, size: 22),
                     ],
                   ),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        t.title,
-                        style: GoogleFonts.poppins(fontSize: 12.5, fontWeight: FontWeight.bold),
+                        displayName,
+                        style: GoogleFonts.martel(fontSize: 13, fontWeight: FontWeight.bold),
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
                       ),
                       Text(
-                        t.deity,
+                        t.title != displayName ? t.title : "${t.lyrics.length} छंद",
                         style: GoogleFonts.poppins(fontSize: 11, color: AppTheme.textMuted),
                         maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
                       ),
                     ],
                   ),

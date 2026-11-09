@@ -20,7 +20,6 @@ import 'vidhi_detail_screen.dart';
 import 'aarti_list_screen.dart';
 import 'aarti_reader_screen.dart';
 import 'japa_mala_screen.dart';
-import 'card_maker_screen.dart';
 import 'bhakt_prime_screen.dart';
 import 'settings_screen.dart';
 import 'vrat_calendar_screen.dart';
@@ -402,7 +401,11 @@ class HomeScreen extends StatelessWidget {
           icon: Icons.card_giftcard_outlined,
           color: const Color(0xFFBE185D),
           label: loc.tr('greeting_cards'),
-          onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const CardMakerScreen())),
+          onTap: () => Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (_) => const WallpaperGalleryScreen(initialTabIndex: 1),
+            ),
+          ),
           isDark: isDark,
         ),
       ],

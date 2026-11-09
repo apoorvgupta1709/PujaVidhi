@@ -25,6 +25,7 @@ import 'settings_screen.dart';
 import 'vrat_calendar_screen.dart';
 import 'virtual_diya_screen.dart';
 import 'wallpaper_gallery_screen.dart';
+import 'gita_home_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -398,12 +399,12 @@ class HomeScreen extends StatelessWidget {
           isDark: isDark,
         ),
         _buildPortalItem(
-          icon: Icons.card_giftcard_outlined,
-          color: const Color(0xFFBE185D),
-          label: loc.tr('greeting_cards'),
+          icon: Icons.menu_book_rounded,
+          color: const Color(0xFFB91C1C),
+          label: "श्रीमद्भगवद्गीता",
           onTap: () => Navigator.of(context).push(
             MaterialPageRoute(
-              builder: (_) => const WallpaperGalleryScreen(initialTabIndex: 1),
+              builder: (_) => const GitaHomeScreen(),
             ),
           ),
           isDark: isDark,
@@ -589,29 +590,34 @@ class HomeScreen extends StatelessWidget {
         borderRadius: BorderRadius.circular(18),
         side: BorderSide(color: AppTheme.divineGold.withValues(alpha: 0.3)),
       ),
-      child: Padding(
-        padding: const EdgeInsets.all(16),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Row(
-                  children: [
-                    const Icon(Icons.auto_stories, color: AppTheme.marigold, size: 18),
-                    const SizedBox(width: 8),
-                    Text(
-                      "Bhagavad Gita • Verse of the Day",
-                      style: GoogleFonts.poppins(fontWeight: FontWeight.bold, fontSize: 13),
-                    ),
-                  ],
-                ),
-                IconButton(
-                  icon: const Icon(Icons.share, size: 18, color: AppTheme.sacredMaroon),
-                  tooltip: "Share to WhatsApp",
-                  onPressed: () {
-                    final text = """
+      child: InkWell(
+        onTap: () => Navigator.of(context).push(
+          MaterialPageRoute(builder: (_) => const GitaHomeScreen()),
+        ),
+        borderRadius: BorderRadius.circular(18),
+        child: Padding(
+          padding: const EdgeInsets.all(16),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Row(
+                    children: [
+                      const Icon(Icons.auto_stories, color: AppTheme.marigold, size: 18),
+                      const SizedBox(width: 8),
+                      Text(
+                        "Bhagavad Gita • Verse of the Day",
+                        style: GoogleFonts.poppins(fontWeight: FontWeight.bold, fontSize: 13),
+                      ),
+                    ],
+                  ),
+                  IconButton(
+                    icon: const Icon(Icons.share, size: 18, color: AppTheme.sacredMaroon),
+                    tooltip: "Share to WhatsApp",
+                    onPressed: () {
+                      final text = """
 🙏 Shrimad Bhagavad Gita - Chapter 2, Verse 47 🙏
 
 $shloka
@@ -622,36 +628,51 @@ Meaning:
 ✨ Shared with devotion by ${appProv.familyName}
 📱 Read daily Gita shlokas and Panchang on PujaVidhi!
 """;
-                    SharePlus.instance.share(
-                      ShareParams(
-                        text: text,
-                        subject: "Bhagavad Gita Shloka",
-                      ),
-                    );
-                  },
+                      SharePlus.instance.share(
+                        ShareParams(
+                          text: text,
+                          subject: "Bhagavad Gita Shloka",
+                        ),
+                      );
+                    },
+                  ),
+                ],
+              ),
+              const SizedBox(height: 8),
+              Text(
+                shloka,
+                style: GoogleFonts.poppins(
+                  fontSize: 13.5,
+                  fontWeight: FontWeight.bold,
+                  color: AppTheme.sacredMaroon,
+                  height: 1.5,
                 ),
-              ],
-            ),
-            const SizedBox(height: 8),
-            Text(
-              shloka,
-              style: GoogleFonts.poppins(
-                fontSize: 13.5,
-                fontWeight: FontWeight.bold,
-                color: AppTheme.sacredMaroon,
-                height: 1.5,
               ),
-            ),
-            const SizedBox(height: 6),
-            Text(
-              meaning,
-              style: GoogleFonts.poppins(
-                fontSize: 12,
-                color: AppTheme.textMuted,
-                height: 1.4,
+              const SizedBox(height: 6),
+              Text(
+                meaning,
+                style: GoogleFonts.poppins(
+                  fontSize: 12,
+                  color: AppTheme.textMuted,
+                  height: 1.4,
+                ),
               ),
-            ),
-          ],
+              const SizedBox(height: 6),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Text(
+                    "सभी १८ अध्याय पढ़ें →",
+                    style: GoogleFonts.poppins(
+                      fontSize: 11,
+                      fontWeight: FontWeight.bold,
+                      color: AppTheme.marigold,
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );

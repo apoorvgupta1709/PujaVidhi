@@ -20,6 +20,12 @@ service cloud.firestore {
     match /vrat_calendar/{vratId} {
       allow read, write: if true;
     }
+    match /gita_chapters/{chapterId} {
+      allow read, write: if true;
+    }
+    match /gita_shlokas/{shlokaId} {
+      allow read, write: if true;
+    }
     match /users/{userId} {
       allow read, write: if true;
     }

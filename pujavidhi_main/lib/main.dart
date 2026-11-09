@@ -15,6 +15,7 @@ import 'providers/japa_provider.dart';
 import 'providers/ishta_devta_provider.dart';
 import 'providers/auth_provider.dart';
 import 'providers/vrat_provider.dart';
+import 'providers/gita_provider.dart';
 import 'services/localization_service.dart';
 import 'screens/home_screen.dart';
 
@@ -83,6 +84,7 @@ class PujaVidhiApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => IshtaDevtaProvider()),
         ChangeNotifierProvider(create: (_) => AuthProvider()),
         ChangeNotifierProvider(create: (_) => VratProvider()),
+        ChangeNotifierProvider(create: (_) => GitaProvider()),
       ],
       child: Consumer<AppProvider>(
         builder: (context, appProv, _) {

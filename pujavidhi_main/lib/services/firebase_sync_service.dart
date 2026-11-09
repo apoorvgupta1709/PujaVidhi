@@ -7,6 +7,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../models/audio_track_model.dart';
 import '../models/vidhi_model.dart';
 import '../models/vrat_model.dart';
+import '../models/gita_model.dart';
 
 class FirebaseSyncService {
   static const String projectId = 'pujavidhi-app-2026';
@@ -16,6 +17,7 @@ class FirebaseSyncService {
   static const String cacheKeyAartis = 'pujavidhi_cached_aartis_v2';
   static const String cacheKeyVidhis = 'pujavidhi_cached_vidhis_v2';
   static const String cacheKeyVrats = 'pujavidhi_cached_vrats_v2';
+  static const String cacheKeyGita = 'pujavidhi_cached_gita_v2';
   static const String cacheKeyConfig = 'pujavidhi_cached_config_v2';
 
   // Stream controllers to notify providers when remote updates land
@@ -25,18 +27,26 @@ class FirebaseSyncService {
       StreamController<List<PujaVidhi>>.broadcast();
   static final StreamController<List<VratItem>> _vratsController =
       StreamController<List<VratItem>>.broadcast();
+  static final StreamController<List<GitaChapter>> _gitaChaptersController =
+      StreamController<List<GitaChapter>>.broadcast();
+  static final StreamController<List<GitaShloka>> _gitaShlokasController =
+      StreamController<List<GitaShloka>>.broadcast();
   static final StreamController<Map<String, dynamic>> _configController =
       StreamController<Map<String, dynamic>>.broadcast();
 
   static Stream<List<AudioTrack>> get aartisStream => _aartisController.stream;
   static Stream<List<PujaVidhi>> get vidhisStream => _vidhisController.stream;
   static Stream<List<VratItem>> get vratsStream => _vratsController.stream;
+  static Stream<List<GitaChapter>> get gitaChaptersStream => _gitaChaptersController.stream;
+  static Stream<List<GitaShloka>> get gitaShlokasStream => _gitaShlokasController.stream;
   static Stream<Map<String, dynamic>> get configStream => _configController.stream;
 
   // Cache of latest values
   static List<AudioTrack> latestAartis = [];
   static List<PujaVidhi> latestVidhis = [];
   static List<VratItem> latestVrats = [];
+  static List<GitaChapter> latestGitaChapters = [];
+  static List<GitaShloka> latestGitaShlokas = [];
   static Map<String, dynamic> latestConfig = {
     'admob_enabled': true,
     'banner_enabled': true,
@@ -92,6 +102,7 @@ class FirebaseSyncService {
         syncAartis(),
         syncVidhis(),
         syncVrats(),
+        syncGita(),
       ]);
     } catch (e) {
       debugPrint('FirebaseSyncService syncAll error: $e');
@@ -304,6 +315,102 @@ class FirebaseSyncService {
     } catch (e) {
       debugPrint('FirebaseSyncService: Failed to load bundled vrats: $e');
       return latestVrats;
+    }
+  }
+
+  /// 5. Sync Shrimad Bhagavad Gita (gita_chapters and gita_shlokas)
+  static Future<Map<String, dynamic>> syncGita() async {
+    List<GitaChapter> chapters = [];
+    List<GitaShloka> shlokas = [];
+
+    // Attempt remote fetch from Firestore
+    try {
+      final client = HttpClient()..connectionTimeout = const Duration(seconds: 10);
+      final chReq = await client.getUrl(Uri.parse('$baseUrl/gita_chapters?pageSize=50'));
+      final chRes = await chReq.close();
+      if (chRes.statusCode == 200) {
+        final body = await chRes.transform(utf8.decoder).join();
+        final jsonDoc = jsonDecode(body) as Map<String, dynamic>;
+        final docs = jsonDoc['documents'] as List<dynamic>? ?? [];
+        for (final d in docs) {
+          final unpacked = unpackFirestoreDoc(d as Map<String, dynamic>);
+          chapters.add(GitaChapter.fromJson(unpacked));
+        }
+        chapters.sort((a, b) => a.chapterNumber.compareTo(b.chapterNumber));
+      }
+
+      final shReq = await client.getUrl(Uri.parse('$baseUrl/gita_shlokas?pageSize=100'));
+      final shRes = await shReq.close();
+      if (shRes.statusCode == 200) {
+        final body = await shRes.transform(utf8.decoder).join();
+        final jsonDoc = jsonDecode(body) as Map<String, dynamic>;
+        final docs = jsonDoc['documents'] as List<dynamic>? ?? [];
+        for (final d in docs) {
+          final unpacked = unpackFirestoreDoc(d as Map<String, dynamic>);
+          shlokas.add(GitaShloka.fromJson(unpacked));
+        }
+        shlokas.sort((a, b) {
+          final chCmp = a.chapterNumber.compareTo(b.chapterNumber);
+          if (chCmp != 0) return chCmp;
+          return a.verseNumber.compareTo(b.verseNumber);
+        });
+      }
+
+      if (chapters.isNotEmpty) {
+        latestGitaChapters = chapters;
+        if (!_gitaChaptersController.isClosed) _gitaChaptersController.add(chapters);
+      }
+      if (shlokas.isNotEmpty) {
+        latestGitaShlokas = shlokas;
+        if (!_gitaShlokasController.isClosed) _gitaShlokasController.add(shlokas);
+      }
+
+      if (chapters.isNotEmpty || shlokas.isNotEmpty) {
+        final cacheMap = {
+          'chapters': chapters.map((c) => c.toJson()).toList(),
+          'shlokas': shlokas.map((s) => s.toJson()).toList(),
+        };
+        _saveToCache(cacheKeyGita, jsonEncode(cacheMap));
+        debugPrint('FirebaseSyncService: Synced ${chapters.length} Gita chapters & ${shlokas.length} shlokas from Firestore.');
+        return {'chapters': chapters, 'shlokas': shlokas};
+      }
+    } catch (e) {
+      debugPrint('FirebaseSyncService: Remote Gita fetch fallback: $e');
+    }
+
+    // Fallback to local cache
+    final cached = await _loadFromCache(cacheKeyGita);
+    if (cached != null) {
+      try {
+        final data = jsonDecode(cached) as Map<String, dynamic>;
+        final chList = (data['chapters'] as List<dynamic>? ?? [])
+            .map((c) => GitaChapter.fromJson(c as Map<String, dynamic>))
+            .toList();
+        final shList = (data['shlokas'] as List<dynamic>? ?? [])
+            .map((s) => GitaShloka.fromJson(s as Map<String, dynamic>))
+            .toList();
+        if (chList.isNotEmpty) latestGitaChapters = chList;
+        if (shList.isNotEmpty) latestGitaShlokas = shList;
+        return {'chapters': latestGitaChapters, 'shlokas': latestGitaShlokas};
+      } catch (_) {}
+    }
+
+    // Fallback to bundled asset
+    try {
+      final bundledStr = await rootBundle.loadString('assets/data/gita_production.json');
+      final data = jsonDecode(bundledStr) as Map<String, dynamic>;
+      final chList = (data['chapters'] as List<dynamic>? ?? [])
+          .map((c) => GitaChapter.fromJson(c as Map<String, dynamic>))
+          .toList();
+      final shList = (data['shlokas'] as List<dynamic>? ?? [])
+          .map((s) => GitaShloka.fromJson(s as Map<String, dynamic>))
+          .toList();
+      latestGitaChapters = chList;
+      latestGitaShlokas = shList;
+      return {'chapters': latestGitaChapters, 'shlokas': latestGitaShlokas};
+    } catch (e) {
+      debugPrint('FirebaseSyncService: Failed to load bundled Gita: $e');
+      return {'chapters': latestGitaChapters, 'shlokas': latestGitaShlokas};
     }
   }
 

@@ -6,12 +6,34 @@ import '../models/vidhi_model.dart';
 import '../providers/vidhi_provider.dart';
 import '../providers/app_provider.dart';
 import '../services/admob_service.dart';
-import '../core/sound_service.dart';
+import 'package:share_plus/share_plus.dart';
 
 class VidhiDetailScreen extends StatelessWidget {
   final PujaVidhi vidhi;
 
   const VidhiDetailScreen({super.key, required this.vidhi});
+
+  void _shareSamagriToWhatsApp(BuildContext context, PujaVidhi vidhi) {
+    final buffer = StringBuffer();
+    buffer.writeln("🌸 PujaVidhi - ${vidhi.title} Samagri Checklist 🌸");
+    buffer.writeln("Deity: ${vidhi.deity}");
+    buffer.writeln("Estimated Puja Time: ${vidhi.estimatedMinutes} mins\n");
+    buffer.writeln("📋 Required Samagri Items:");
+
+    for (int i = 0; i < vidhi.samagriList.length; i++) {
+      final s = vidhi.samagriList[i];
+      final check = s.isChecked ? "✅" : "⬜";
+      buffer.writeln("$check ${s.name} (${s.quantity}) [${s.category}]");
+    }
+
+    buffer.writeln("\n🙏 Shared with Pandit Ji / Kirana Store via PujaVidhi App");
+    SharePlus.instance.share(
+      ShareParams(
+        text: buffer.toString(),
+        subject: "${vidhi.title} Samagri Checklist",
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -66,11 +88,6 @@ class VidhiDetailScreen extends StatelessWidget {
                                 fontWeight: FontWeight.bold,
                                 color: AppTheme.sacredMaroon,
                               ),
-                            ),
-                            IconButton(
-                              icon: const Icon(Icons.notifications_active_outlined, color: AppTheme.marigold),
-                              tooltip: "Sound Bell",
-                              onPressed: () => SoundService.playTempleBell(),
                             ),
                           ],
                         ),
@@ -144,6 +161,20 @@ class VidhiDetailScreen extends StatelessWidget {
                               borderRadius: BorderRadius.circular(4),
                             ),
                           ],
+                        ),
+                      ),
+                      const SizedBox(width: 12),
+                      ElevatedButton.icon(
+                        onPressed: () => _shareSamagriToWhatsApp(context, vidhi),
+                        icon: const Icon(Icons.share, size: 16, color: Colors.white),
+                        label: Text(
+                          "Share List",
+                          style: GoogleFonts.poppins(fontWeight: FontWeight.bold, fontSize: 12, color: Colors.white),
+                        ),
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: const Color(0xFF15803D),
+                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
                         ),
                       ),
                     ],

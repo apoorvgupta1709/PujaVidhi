@@ -12,6 +12,10 @@ import 'providers/panchang_provider.dart';
 import 'providers/vidhi_provider.dart';
 import 'providers/audio_provider.dart';
 import 'providers/japa_provider.dart';
+import 'providers/ishta_devta_provider.dart';
+import 'providers/auth_provider.dart';
+import 'providers/vrat_provider.dart';
+import 'services/localization_service.dart';
 import 'screens/home_screen.dart';
 
 void main() {
@@ -75,6 +79,10 @@ class PujaVidhiApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => VidhiProvider()),
         ChangeNotifierProvider(create: (_) => AudioProvider()),
         ChangeNotifierProvider(create: (_) => JapaProvider()),
+        ChangeNotifierProvider(create: (_) => LocalizationService()),
+        ChangeNotifierProvider(create: (_) => IshtaDevtaProvider()),
+        ChangeNotifierProvider(create: (_) => AuthProvider()),
+        ChangeNotifierProvider(create: (_) => VratProvider()),
       ],
       child: Consumer<AppProvider>(
         builder: (context, appProv, _) {

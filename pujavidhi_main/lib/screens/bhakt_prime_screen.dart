@@ -3,6 +3,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import '../core/app_theme.dart';
 import '../providers/app_provider.dart';
+import '../providers/auth_provider.dart';
+import '../widgets/auth_modal.dart';
 
 class BhaktPrimeScreen extends StatefulWidget {
   const BhaktPrimeScreen({super.key});
@@ -14,12 +16,23 @@ class BhaktPrimeScreen extends StatefulWidget {
 class _BhaktPrimeScreenState extends State<BhaktPrimeScreen> {
   bool _isProcessing = false;
 
-  void _handleCheckout(AppProvider appProv) async {
+  void _handleCheckout(AppProvider appProv, AuthProvider authProv) async {
+    // Require Login/Registration before buying subscription
+    if (authProv.isGuest) {
+      final loggedIn = await AuthModal.show(
+        context,
+        title: "Sign In Required for Bhakt Prime",
+        subtitle: "Please create a free account or sign in to secure your lifetime pass across devices.",
+      );
+      if (!loggedIn) return;
+    }
+
     setState(() => _isProcessing = true);
     // Simulate Razorpay gateway flow / integration
     await Future.delayed(const Duration(milliseconds: 900));
 
     await appProv.activateBhaktPrimePass();
+    await authProv.markPro(true);
 
     if (mounted) {
       setState(() => _isProcessing = false);
@@ -34,7 +47,7 @@ class _BhaktPrimeScreenState extends State<BhaktPrimeScreen> {
             ],
           ),
           content: Text(
-            "Hari Om! You now have lifetime Ad-Free access, unlimited audio downloads, and watermark-free festival cards.",
+            "Hari Om! You now have lifetime Ad-Free access, unlimited audio downloads, and watermark-free festival cards linked to your cloud account.",
             style: GoogleFonts.poppins(fontSize: 14),
           ),
           actions: [
@@ -70,6 +83,7 @@ class _BhaktPrimeScreenState extends State<BhaktPrimeScreen> {
   @override
   Widget build(BuildContext context) {
     final appProv = Provider.of<AppProvider>(context);
+    final authProv = Provider.of<AuthProvider>(context);
 
     return Scaffold(
       appBar: AppBar(
@@ -202,7 +216,7 @@ class _BhaktPrimeScreenState extends State<BhaktPrimeScreen> {
                 width: double.infinity,
                 height: 56,
                 child: ElevatedButton(
-                  onPressed: _isProcessing ? null : () => _handleCheckout(appProv),
+                  onPressed: _isProcessing ? null : () => _handleCheckout(appProv, authProv),
                   style: ElevatedButton.styleFrom(
                     backgroundColor: AppTheme.sacredMaroon,
                     foregroundColor: AppTheme.divineGold,

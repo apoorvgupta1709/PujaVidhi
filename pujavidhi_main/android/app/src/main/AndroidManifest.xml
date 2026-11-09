@@ -7,7 +7,7 @@
     <application
         android:label="PujaVidhi"
         android:name="${applicationName}"
-        android:icon="@mipmap/launcher_icon">
+        android:icon="@mipmap/ic_launcher">
         <!-- Google Mobile Ads Official Test App ID -->
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"

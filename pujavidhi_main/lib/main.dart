@@ -1,3 +1,5 @@
+import 'dart:async';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'core/app_theme.dart';
@@ -11,21 +13,46 @@ import 'providers/audio_provider.dart';
 import 'providers/japa_provider.dart';
 import 'screens/home_screen.dart';
 
-void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
+void main() {
+  runZonedGuarded(() async {
+    WidgetsFlutterBinding.ensureInitialized();
 
-  // Custom Error Boundary (Checklist Item 8: No red unhandled exception screens)
-  ErrorWidget.builder = (FlutterErrorDetails details) {
-    return CustomErrorBoundary(errorDetails: details);
-  };
+    // Production error logging: intercept all Flutter framework errors
+    FlutterError.onError = (FlutterErrorDetails details) {
+      FlutterError.presentError(details);
+      debugPrint('PujaVidhi Framework Error: ${details.exceptionAsString()}');
+    };
 
-  // Initialize Persistent Local Storage
-  await StorageService.init();
+    // Intercept platform and asynchronous unhandled errors
+    PlatformDispatcher.instance.onError = (error, stack) {
+      debugPrint('PujaVidhi Platform Error: $error\n$stack');
+      return true; // handled, prevent process crash
+    };
 
-  // Initialize Google Mobile Ads Engine
-  await AdMobService.initialize();
+    // Custom Error Boundary (Checklist Item 8: No red unhandled exception screens)
+    ErrorWidget.builder = (FlutterErrorDetails details) {
+      return CustomErrorBoundary(errorDetails: details);
+    };
 
-  runApp(const PujaVidhiApp());
+    // Initialize Persistent Local Storage
+    try {
+      await StorageService.init();
+    } catch (e) {
+      debugPrint('Storage init notice: $e');
+    }
+
+    // Render app UI immediately without blocking
+    runApp(const PujaVidhiApp());
+
+    // Safely initialize AdMob asynchronously without blocking launch
+    try {
+      unawaited(AdMobService.initialize());
+    } catch (e) {
+      debugPrint('AdMob startup notice: $e');
+    }
+  }, (error, stack) {
+    debugPrint('PujaVidhi Zone Error: $error\n$stack');
+  });
 }
 
 class PujaVidhiApp extends StatelessWidget {

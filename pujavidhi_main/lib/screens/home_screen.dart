@@ -459,78 +459,358 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
-  // --- Today's Muhurat Card ---
+  // --- Today's Panchang & Muhurat Card ---
   Widget _buildTodayMuhuratCard(BuildContext context, dynamic panchang, String formattedDate, bool isDark) {
-    return Card(
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(18),
-        side: BorderSide(color: AppTheme.divineGold.withValues(alpha: 0.3)),
+    return Container(
+      decoration: BoxDecoration(
+        color: isDark ? AppTheme.templeCardDark : Colors.white,
+        borderRadius: BorderRadius.circular(20),
+        border: Border.all(color: AppTheme.divineGold.withValues(alpha: 0.3)),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withValues(alpha: isDark ? 0.3 : 0.05),
+            blurRadius: 10,
+            offset: const Offset(0, 4),
+          ),
+        ],
       ),
-      child: Padding(
-        padding: const EdgeInsets.all(16),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      child: Material(
+        color: Colors.transparent,
+        borderRadius: BorderRadius.circular(20),
+        child: InkWell(
+          onTap: () {
+            Navigator.of(context).push(
+              MaterialPageRoute(builder: (_) => const PanchangScreen()),
+            );
+          },
+          borderRadius: BorderRadius.circular(20),
+          child: Padding(
+            padding: const EdgeInsets.all(16),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                // Top Header Row (Responsive with Expanded title)
                 Row(
                   children: [
-                    const Icon(Icons.wb_twilight, color: AppTheme.marigold, size: 20),
-                    const SizedBox(width: 8),
-                    Text("Today's Panchang", style: GoogleFonts.poppins(fontWeight: FontWeight.bold, fontSize: 15)),
+                    Container(
+                      padding: const EdgeInsets.all(8),
+                      decoration: BoxDecoration(
+                        color: AppTheme.divineGold.withValues(alpha: 0.18),
+                        shape: BoxShape.circle,
+                      ),
+                      child: const Icon(Icons.wb_twilight_rounded, color: AppTheme.marigold, size: 20),
+                    ),
+                    const SizedBox(width: 10),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Row(
+                            children: [
+                              Text(
+                                "Today's Panchang",
+                                style: GoogleFonts.poppins(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 14.5,
+                                ),
+                              ),
+                              const SizedBox(width: 6),
+                              Container(
+                                padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
+                                decoration: BoxDecoration(
+                                  color: AppTheme.sacredMaroon.withValues(alpha: 0.1),
+                                  borderRadius: BorderRadius.circular(6),
+                                  border: Border.all(color: AppTheme.divineGold.withValues(alpha: 0.4)),
+                                ),
+                                child: Text(
+                                  "पंचांग",
+                                  style: GoogleFonts.martel(
+                                    fontSize: 10,
+                                    fontWeight: FontWeight.bold,
+                                    color: AppTheme.marigold,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                          Text(
+                            DateFormat('EEE, d MMM yyyy').format(DateTime.now()),
+                            style: GoogleFonts.poppins(fontSize: 11, color: AppTheme.textMuted),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                      decoration: BoxDecoration(
+                        color: AppTheme.sacredMaroon.withValues(alpha: 0.1),
+                        borderRadius: BorderRadius.circular(14),
+                        border: Border.all(color: AppTheme.divineGold.withValues(alpha: 0.4)),
+                      ),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Text(
+                            "Full View",
+                            style: GoogleFonts.poppins(
+                              fontSize: 11,
+                              fontWeight: FontWeight.w600,
+                              color: AppTheme.marigold,
+                            ),
+                          ),
+                          const SizedBox(width: 2),
+                          const Icon(Icons.chevron_right, size: 14, color: AppTheme.marigold),
+                        ],
+                      ),
+                    ),
                   ],
                 ),
-                Text(formattedDate, style: GoogleFonts.poppins(fontSize: 11, color: AppTheme.textMuted)),
+
+                // Optional Special Festival Banner
+                if (panchang.specialFestival != null && (panchang.specialFestival as String).isNotEmpty) ...[
+                  const SizedBox(height: 12),
+                  Container(
+                    width: double.infinity,
+                    padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+                    decoration: BoxDecoration(
+                      color: AppTheme.saffronOrange.withValues(alpha: 0.12),
+                      borderRadius: BorderRadius.circular(10),
+                      border: Border.all(color: AppTheme.saffronOrange.withValues(alpha: 0.35)),
+                    ),
+                    child: Row(
+                      children: [
+                        const Text("🪔", style: TextStyle(fontSize: 14)),
+                        const SizedBox(width: 8),
+                        Expanded(
+                          child: Text(
+                            panchang.specialFestival as String,
+                            style: GoogleFonts.poppins(
+                              fontSize: 11.5,
+                              fontWeight: FontWeight.bold,
+                              color: isDark ? AppTheme.marigold : const Color(0xFFB45309),
+                            ),
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+
+                const SizedBox(height: 14),
+
+                // 2x2 Grid of Essential Panchang Attributes
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    // Tithi Card
+                    Expanded(
+                      child: _buildPanchangTile(
+                        label: "तिथि (Tithi)",
+                        value: panchang.tithi,
+                        subtext: "${panchang.paksha} Paksha",
+                        icon: "🌙",
+                        isDark: isDark,
+                      ),
+                    ),
+                    const SizedBox(width: 10),
+                    // Nakshatra Card
+                    Expanded(
+                      child: _buildPanchangTile(
+                        label: "नक्षत्र (Nakshatra)",
+                        value: panchang.nakshatra,
+                        subtext: "Yoga: ${panchang.yoga}",
+                        icon: "✨",
+                        isDark: isDark,
+                      ),
+                    ),
+                  ],
+                ),
+
+                const SizedBox(height: 10),
+
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    // Abhijit Muhurat (Auspicious)
+                    Expanded(
+                      child: _buildPanchangTile(
+                        label: "अभिजीत (Shubh)",
+                        value: panchang.abhijitMuhurat,
+                        subtext: "Auspicious Timing",
+                        icon: "🟢",
+                        highlightColor: Colors.green,
+                        isDark: isDark,
+                      ),
+                    ),
+                    const SizedBox(width: 10),
+                    // Rahu Kaal (Inauspicious)
+                    Expanded(
+                      child: _buildPanchangTile(
+                        label: "राहु काल (Varjya)",
+                        value: panchang.rahuKaal,
+                        subtext: "Inauspicious Timing",
+                        icon: "🔴",
+                        highlightColor: Colors.redAccent,
+                        isDark: isDark,
+                      ),
+                    ),
+                  ],
+                ),
+
+                const SizedBox(height: 12),
+
+                // Sunrise & Sunset Micro-bar
+                Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                  decoration: BoxDecoration(
+                    color: isDark
+                        ? Colors.black.withValues(alpha: 0.25)
+                        : const Color(0xFFF9FAFB),
+                    borderRadius: BorderRadius.circular(12),
+                    border: Border.all(
+                      color: isDark
+                          ? Colors.white10
+                          : Colors.grey.withValues(alpha: 0.2),
+                    ),
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      _buildSunMoonItem(
+                        icon: Icons.wb_sunny_rounded,
+                        color: Colors.amber,
+                        label: "Sunrise",
+                        time: panchang.sunrise,
+                      ),
+                      Container(
+                        height: 20,
+                        width: 1,
+                        color: isDark ? Colors.white12 : Colors.grey.shade300,
+                      ),
+                      _buildSunMoonItem(
+                        icon: Icons.nightlight_round,
+                        color: Colors.orange,
+                        label: "Sunset",
+                        time: panchang.sunset,
+                      ),
+                      Container(
+                        height: 20,
+                        width: 1,
+                        color: isDark ? Colors.white12 : Colors.grey.shade300,
+                      ),
+                      _buildSunMoonItem(
+                        icon: Icons.brightness_3,
+                        color: Colors.blueGrey,
+                        label: "Moonrise",
+                        time: panchang.moonrise,
+                      ),
+                    ],
+                  ),
+                ),
               ],
             ),
-            const Divider(height: 18),
-            Row(
-              children: [
-                Expanded(
-                  child: _buildPanchangField("Tithi", "${panchang.tithi} (${panchang.paksha})"),
-                ),
-                Expanded(
-                  child: _buildPanchangField("Nakshatra", panchang.nakshatra),
-                ),
-              ],
-            ),
-            const SizedBox(height: 10),
-            Row(
-              children: [
-                Expanded(
-                  child: _buildPanchangField("Abhijit Muhurat", panchang.abhijitMuhurat, isGreen: true),
-                ),
-                Expanded(
-                  child: _buildPanchangField("Rahu Kaal", panchang.rahuKaal, isRed: true),
-                ),
-              ],
-            ),
-          ],
+          ),
         ),
       ),
     );
   }
 
-  Widget _buildPanchangField(String title, String val, {bool isGreen = false, bool isRed = false}) {
-    Color? color;
-    if (isGreen) color = Colors.green;
-    if (isRed) color = Colors.redAccent;
-
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(title, style: GoogleFonts.poppins(fontSize: 11, color: AppTheme.textMuted)),
-        const SizedBox(height: 2),
-        Text(
-          val,
-          style: GoogleFonts.poppins(
-            fontSize: 12.5,
-            fontWeight: FontWeight.bold,
-            color: color,
+  Widget _buildPanchangTile({
+    required String label,
+    required String value,
+    required String subtext,
+    required String icon,
+    Color? highlightColor,
+    required bool isDark,
+  }) {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
+      decoration: BoxDecoration(
+        color: highlightColor != null
+            ? highlightColor.withValues(alpha: 0.08)
+            : (isDark ? Colors.white.withValues(alpha: 0.04) : const Color(0xFFFAFAFA)),
+        borderRadius: BorderRadius.circular(12),
+        border: Border.all(
+          color: highlightColor != null
+              ? highlightColor.withValues(alpha: 0.3)
+              : (isDark ? Colors.white12 : Colors.grey.withValues(alpha: 0.2)),
+        ),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            children: [
+              Text(icon, style: const TextStyle(fontSize: 11)),
+              const SizedBox(width: 5),
+              Expanded(
+                child: Text(
+                  label,
+                  style: GoogleFonts.poppins(
+                    fontSize: 10.5,
+                    color: highlightColor ?? AppTheme.textMuted,
+                    fontWeight: highlightColor != null ? FontWeight.bold : FontWeight.w500,
+                  ),
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                ),
+              ),
+            ],
           ),
-          maxLines: 1,
-          overflow: TextOverflow.ellipsis,
+          const SizedBox(height: 3),
+          FittedBox(
+            fit: BoxFit.scaleDown,
+            alignment: Alignment.centerLeft,
+            child: Text(
+              value,
+              style: GoogleFonts.poppins(
+                fontSize: 12.5,
+                fontWeight: FontWeight.bold,
+                color: highlightColor,
+              ),
+            ),
+          ),
+          const SizedBox(height: 1),
+          Text(
+            subtext,
+            style: GoogleFonts.poppins(
+              fontSize: 9.5,
+              color: AppTheme.textMuted,
+            ),
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildSunMoonItem({
+    required IconData icon,
+    required Color color,
+    required String label,
+    required String time,
+  }) {
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Icon(icon, size: 14, color: color),
+        const SizedBox(width: 4),
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Text(
+              label,
+              style: GoogleFonts.poppins(fontSize: 9, color: AppTheme.textMuted),
+            ),
+            Text(
+              time,
+              style: GoogleFonts.poppins(fontSize: 10.5, fontWeight: FontWeight.bold),
+            ),
+          ],
         ),
       ],
     );

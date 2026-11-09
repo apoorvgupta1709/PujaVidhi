@@ -1,0 +1,60 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    function isOwner(userId) {
+      return isAuthenticated() && request.auth.uid == userId;
+    }
+
+    function isAdmin() {
+      return isAuthenticated() && (
+        request.auth.token.admin == true ||
+        request.auth.uid in ["apoorv_admin_master_uid"]
+      );
+    }
+
+    // Dynamic Remote Config & Monetization Settings
+    match /app_config/{docId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    // Festivals, Regional Rituals & Samagri Checklists
+    match /festivals_and_vidhis/{vidhiId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    // Devotional Audio Tracks, Aartis & Chalisas
+    match /media_tracks/{trackId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    // Daily Morning Suvichar & Shubh Muhurat Broadcasts
+    match /daily_suvichar/{suvicharId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    // User Profile, Japa Mala History & Prime Entitlements
+    match /users/{userId} {
+      allow read, write: if isOwner(userId);
+
+      match /japa_history/{historyId} {
+        allow read, write: if isOwner(userId);
+      }
+    }
+
+    // Bhakt Prime Pass Razorpay Transactions
+    match /transactions/{txnId} {
+      allow create: if isAuthenticated() && request.resource.data.userId == request.auth.uid;
+      allow read: if isAuthenticated() && (resource.data.userId == request.auth.uid || isAdmin());
+      allow update, delete: if isAdmin();
+    }
+  }
+}

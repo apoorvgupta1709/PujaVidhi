@@ -1,0 +1,49 @@
+# PujaVidhi - Sanatan Vedic Rituals, Panchang & Devotion Suite
+
+Experience the sacred traditions of Sanatan Dharma with **PujaVidhi**, your comprehensive digital companion for daily worship, auspicious timings, and spiritual sadhana. Crafted with authentic Vedic precision, PujaVidhi empowers every devotee and household to perform rituals with purity, correct mantras, and spiritual confidence.
+
+---
+
+### 🌟 Key Highlights & Features
+
+#### 1. 📅 Daily Panchang & Shubh Muhurat
+- **Comprehensive Panchang**: Tithi, Nakshatra, Yoga, Karana, Sunrise, Sunset, and Moonrise calculations.
+- **Auspicious Timings**: Abhijit Muhurat, Amrit Kaal, and Brahma Muhurat.
+- **Inauspicious Period Alerts**: Accurate Rahu Kaal, Yamaganda, and Gulika Kaal tracking to avoid inauspicious starts.
+- **Choghadiya Timings**: Real-time Day and Night Choghadiya (Shubh, Labh, Amrit, Char, Chal, Rog, Kaal).
+
+#### 2. 🪔 Complete Step-by-Step Puja Vidhi
+- **Authentic Ritual Guides**: Deepawali Lakshmi Puja, Ganesh Chaturthi, Maha Shivratri Abhishek, Satyanarayan Vrat Katha, Navratri Durga Puja, Chhath Puja, Pongal, Makar Sankranti, and Krishna Janmashtami.
+- **Interactive Samagri Checklists**: Pre-puja preparation checklist with checkmarks for essential items (Roli, Akshat, Gangajal, Dhoop, Diya, Supari, Janeu, etc.).
+- **Vedic Sankalp & Audio Chants**: Guided Sanskrit mantras with English & Hindi transliteration for effortless chanting.
+
+#### 3. 🎵 HD Devotional Aartis & Chalisas
+- **High-Definition Audio**: Sacred recordings of popular aartis (Jai Ganesh Deva, Om Jai Jagdish Hare, Aarti Kunj Bihari Ki, Hanuman Chalisa, Durga Aarti, and Shiv Aarti).
+- **Dual-Script Synchronized Lyrics**: Read mantras in Devanagari Hindi or easy English phonetics.
+- **Virtual Temple Ambiance**: Tap the interactive Brass Bell and Divine Shankh sound overlays while chanting.
+- **Offline Mode**: Save tracks to your device for ad-free offline prayer anywhere.
+
+#### 4. 📿 Interactive 108 Digital Japa Mala Counter
+- **Sacred 108 Bead Mala**: Realistic circular bead ring with haptic vibration feedback for every bead chant.
+- **Sound Alerts**: Audible soft bell chime upon completing full 108-bead rounds.
+- **Chanting Stats & History**: Track your daily sadhana count, streak, and targets.
+
+#### 5. 🎨 Personalized Festival & Suvichar Cards
+- **Custom Family Name**: Personalize auspicious festival greetings and daily quotes (e.g., *"Shubh Deepawali - From: Sharma Family"*).
+- **HD Deity Frames**: Elegant spiritual borders, Diya motifs, and sacred typography.
+- **Instant Social Share**: Export watermark-free cards directly to WhatsApp Status and Instagram Stories.
+
+---
+
+### 💎 Bhakt Prime Pass (Ad-Free Lifetime Access)
+- **100% Ad-Free Sacred Experience**
+- **Unlimited Offline Audio Downloads**
+- **Watermark-Free Festival Greeting Card Creator**
+- **Cloud Backup of Japa Mala Sadhana History**
+
+---
+
+### 🛡️ Privacy & Reliability
+PujaVidhi respects your privacy and operates seamlessly offline. All daily panchang timings and downloaded aartis remain accessible without internet connectivity.
+
+*Version 1.0.0 • Made with ❤️ by Apoorv*

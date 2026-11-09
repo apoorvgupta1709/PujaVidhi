@@ -47,6 +47,11 @@ void main() {
       debugPrint('Storage init notice: $e');
     }
 
+    // Warm up offline Gita and datasets immediately without blocking
+    try {
+      unawaited(FirebaseSyncService.loadOfflineGita());
+    } catch (_) {}
+
     // Render app UI immediately without blocking
     runApp(const PujaVidhiApp());
 

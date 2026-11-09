@@ -368,7 +368,15 @@ class _GitaHomeScreenState extends State<GitaHomeScreen>
                 ),
                 const SizedBox(height: 10),
 
-                ...gitaProv.chapters.map((ch) {
+                if (gitaProv.chapters.isEmpty)
+                  const Center(
+                    child: Padding(
+                      padding: EdgeInsets.symmetric(vertical: 36),
+                      child: CircularProgressIndicator(color: AppTheme.divineGold),
+                    ),
+                  )
+                else
+                  ...gitaProv.chapters.map((ch) {
                   return Card(
                     margin: const EdgeInsets.only(bottom: 12),
                     elevation: 1.5,

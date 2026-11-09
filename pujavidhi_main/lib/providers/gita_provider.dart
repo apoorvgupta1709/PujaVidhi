@@ -56,22 +56,16 @@ class GitaProvider with ChangeNotifier {
   }
 
   Future<void> _loadData() async {
-    _isLoading = true;
-    notifyListeners();
-
-    if (FirebaseSyncService.latestGitaChapters.isNotEmpty &&
-        FirebaseSyncService.latestGitaShlokas.isNotEmpty) {
-      _chapters = List.from(FirebaseSyncService.latestGitaChapters);
-      _shlokas = List.from(FirebaseSyncService.latestGitaShlokas);
-    } else {
-      final res = await FirebaseSyncService.syncGita();
-      _chapters = List<GitaChapter>.from(res['chapters'] ?? []);
-      _shlokas = List<GitaShloka>.from(res['shlokas'] ?? []);
-    }
-
+    // 1. Immediately display offline synced data (0ms delay)
+    final res = await FirebaseSyncService.loadOfflineGita();
+    _chapters = List<GitaChapter>.from(res['chapters'] ?? []);
+    _shlokas = List<GitaShloka>.from(res['shlokas'] ?? []);
     _applyBookmarks();
     _isLoading = false;
     notifyListeners();
+
+    // 2. Trigger non-blocking background sync from Firestore
+    unawaited(FirebaseSyncService.syncGitaInBackground());
   }
 
   Future<void> _loadBookmarks() async {

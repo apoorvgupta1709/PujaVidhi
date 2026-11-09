@@ -1,18 +1,7 @@
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
-    // MetroPulse Collections (preserve compatibility)
-    match /cities/{cityId} {
-      allow read, write: if true;
-      match /lines/{lineId} { allow read, write: if true; }
-      match /stations/{stationId} { allow read, write: if true; }
-      match /fare_matrix/{fareId} { allow read, write: if true; }
-    }
-    match /service_alerts/{alertId} { allow read, write: if true; }
-    match /app_config/{configId} { allow read, write: if true; }
-    match /users/{userId} { allow read, write: if true; }
-
-    // PujaVidhi Collections (Devotional suite)
+    // PujaVidhi Pure Devotional Suite Collections
     match /media_tracks/{trackId} {
       allow read, write: if true;
     }
@@ -26,6 +15,12 @@ service cloud.firestore {
       allow read, write: if true;
     }
     match /panchang_records/{recordId} {
+      allow read, write: if true;
+    }
+    match /vrat_calendar/{vratId} {
+      allow read, write: if true;
+    }
+    match /users/{userId} {
       allow read, write: if true;
     }
   }

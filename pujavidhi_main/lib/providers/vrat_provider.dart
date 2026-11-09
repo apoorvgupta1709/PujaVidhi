@@ -1,9 +1,12 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
 import '../models/vrat_model.dart';
+import '../services/firebase_sync_service.dart';
 
 class VratProvider with ChangeNotifier {
-  final List<VratItem> _vrats = [];
+  List<VratItem> _vrats = [];
   String _selectedFilter = 'All';
+  StreamSubscription<List<VratItem>>? _vratsSub;
 
   List<VratItem> get vrats {
     if (_selectedFilter == 'All') return _vrats;
@@ -13,7 +16,27 @@ class VratProvider with ChangeNotifier {
   String get selectedFilter => _selectedFilter;
 
   VratProvider() {
-    _initVrats();
+    _loadVrats();
+    _vratsSub = FirebaseSyncService.vratsStream.listen((updatedList) {
+      if (updatedList.isNotEmpty) {
+        _vrats = List.from(updatedList);
+        notifyListeners();
+      }
+    });
+  }
+
+  @override
+  void dispose() {
+    _vratsSub?.cancel();
+    super.dispose();
+  }
+
+  void _loadVrats() {
+    if (FirebaseSyncService.latestVrats.isNotEmpty) {
+      _vrats = List.from(FirebaseSyncService.latestVrats);
+    } else {
+      _initVrats();
+    }
   }
 
   void setFilter(String filter) {

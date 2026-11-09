@@ -45,7 +45,7 @@ class DevoteeUser {
 
 class AuthService {
   static const String _keyUser = 'pujavidhi_current_user_v2';
-  static const String projectId = 'metropulse-transit-2026';
+  static const String projectId = 'pujavidhi-app-2026';
   static const String baseUrl =
       'https://firestore.googleapis.com/v1/projects/$projectId/databases/(default)/documents';
 

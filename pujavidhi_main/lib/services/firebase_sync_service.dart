@@ -6,14 +6,16 @@ import 'package:flutter/services.dart' show rootBundle;
 import 'package:shared_preferences/shared_preferences.dart';
 import '../models/audio_track_model.dart';
 import '../models/vidhi_model.dart';
+import '../models/vrat_model.dart';
 
 class FirebaseSyncService {
-  static const String projectId = 'metropulse-transit-2026';
+  static const String projectId = 'pujavidhi-app-2026';
   static const String baseUrl =
       'https://firestore.googleapis.com/v1/projects/$projectId/databases/(default)/documents';
 
   static const String cacheKeyAartis = 'pujavidhi_cached_aartis_v2';
   static const String cacheKeyVidhis = 'pujavidhi_cached_vidhis_v2';
+  static const String cacheKeyVrats = 'pujavidhi_cached_vrats_v2';
   static const String cacheKeyConfig = 'pujavidhi_cached_config_v2';
 
   // Stream controllers to notify providers when remote updates land
@@ -21,16 +23,20 @@ class FirebaseSyncService {
       StreamController<List<AudioTrack>>.broadcast();
   static final StreamController<List<PujaVidhi>> _vidhisController =
       StreamController<List<PujaVidhi>>.broadcast();
+  static final StreamController<List<VratItem>> _vratsController =
+      StreamController<List<VratItem>>.broadcast();
   static final StreamController<Map<String, dynamic>> _configController =
       StreamController<Map<String, dynamic>>.broadcast();
 
   static Stream<List<AudioTrack>> get aartisStream => _aartisController.stream;
   static Stream<List<PujaVidhi>> get vidhisStream => _vidhisController.stream;
+  static Stream<List<VratItem>> get vratsStream => _vratsController.stream;
   static Stream<Map<String, dynamic>> get configStream => _configController.stream;
 
   // Cache of latest values
   static List<AudioTrack> latestAartis = [];
   static List<PujaVidhi> latestVidhis = [];
+  static List<VratItem> latestVrats = [];
   static Map<String, dynamic> latestConfig = {
     'admob_enabled': true,
     'banner_enabled': true,
@@ -85,6 +91,7 @@ class FirebaseSyncService {
         syncConfig(),
         syncAartis(),
         syncVidhis(),
+        syncVrats(),
       ]);
     } catch (e) {
       debugPrint('FirebaseSyncService syncAll error: $e');
@@ -244,6 +251,59 @@ class FirebaseSyncService {
     } catch (e) {
       debugPrint('FirebaseSyncService: Failed to load bundled vidhis: $e');
       return latestVidhis;
+    }
+  }
+
+  /// 4. Sync Vrat & Upvas Calendar (vrat_calendar collection)
+  static Future<List<VratItem>> syncVrats() async {
+    try {
+      final client = HttpClient()..connectionTimeout = const Duration(seconds: 10);
+      final req = await client.getUrl(Uri.parse('$baseUrl/vrat_calendar?pageSize=100'));
+      final res = await req.close();
+      if (res.statusCode == 200) {
+        final body = await res.transform(utf8.decoder).join();
+        final jsonDoc = jsonDecode(body) as Map<String, dynamic>;
+        final docs = jsonDoc['documents'] as List<dynamic>? ?? [];
+        final vrats = <VratItem>[];
+        for (final d in docs) {
+          final unpacked = unpackFirestoreDoc(d as Map<String, dynamic>);
+          vrats.add(VratItem.fromJson(unpacked));
+        }
+        if (vrats.isNotEmpty) {
+          latestVrats = vrats;
+          _saveToCache(cacheKeyVrats, jsonEncode(vrats.map((v) => v.toJson()).toList()));
+          if (!_vratsController.isClosed) _vratsController.add(vrats);
+          debugPrint('FirebaseSyncService: Synced ${vrats.length} vrats from Firestore.');
+          return vrats;
+        }
+      }
+    } catch (e) {
+      debugPrint('FirebaseSyncService: Remote vrats fetch fallback: $e');
+    }
+
+    // Fallback to local cache
+    final cached = await _loadFromCache(cacheKeyVrats);
+    if (cached != null) {
+      try {
+        final list = jsonDecode(cached) as List<dynamic>;
+        final vrats = list.map((i) => VratItem.fromJson(i as Map<String, dynamic>)).toList();
+        if (vrats.isNotEmpty) {
+          latestVrats = vrats;
+          return vrats;
+        }
+      } catch (_) {}
+    }
+
+    // Fallback to bundled JSON
+    try {
+      final bundledStr = await rootBundle.loadString('assets/data/vrats_production.json');
+      final list = jsonDecode(bundledStr) as List<dynamic>;
+      final vrats = list.map((i) => VratItem.fromJson(i as Map<String, dynamic>)).toList();
+      latestVrats = vrats;
+      return vrats;
+    } catch (e) {
+      debugPrint('FirebaseSyncService: Failed to load bundled vrats: $e');
+      return latestVrats;
     }
   }
 

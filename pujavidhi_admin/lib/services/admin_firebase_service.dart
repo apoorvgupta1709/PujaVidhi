@@ -4,7 +4,7 @@ import 'package:flutter/foundation.dart';
 import '../models/admin_models.dart';
 
 class AdminFirebaseService {
-  static const String projectId = 'metropulse-transit-2026';
+  static const String projectId = 'pujavidhi-app-2026';
   static const String baseUrl =
       'https://firestore.googleapis.com/v1/projects/$projectId/databases/(default)/documents';
 

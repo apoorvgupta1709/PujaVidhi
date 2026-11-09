@@ -46,61 +46,56 @@
         "english": "Jai Ganesh Jai Ganesh Jai Ganesh Deva | Mata Jaaki Parvati Pita Mahadeva ||"
       }
     ],
-    "updatedAt": "2026-11-09T11:07:03.980466Z"
+    "updatedAt": "2026-11-09T11:44:48.564255+00:00"
   },
   {
     "id": "aarti_shiv",
     "title": "Om Jai Shiv Omkara",
-    "hindiTitle": "ॐ जय शिव ओंकारा",
+    "hindiTitle": "ओम जय शिव ओंकारा",
     "deity": "Lord Shiva",
     "category": "Aarti",
     "durationSec": 240,
     "localAssetPath": "audio/temple_bell.wav",
     "remoteStreamUrl": "https://actions.google.com/sounds/v1/spiritual/temple_bell.ogg",
-    "significance": "The eternal Maha Aarti of Lord Shiva celebrating the cosmic Trinity of Brahma, Vishnu, and Maheshwar.",
+    "significance": "Universal evening prayer dedicated to Mahadev, praising the cosmic creator, preserver and destroyer.",
     "lyrics": [
       {
         "timestampSec": 0,
-        "devanagari": "ॐ जय शिव ओंकारा, प्रभु हर शिव ओंकारा। ब्रह्मा, विष्णु, सदाशिव, अर्द्धाङ्गी धारा॥ ॐ जय शिव ओंकारा॥",
-        "english": "Om Jai Shiv Omkara, Prabhu Har Shiv Omkara | Brahma Vishnu Sadashiv Ardhangi Dhaara || Om Jai Shiv Omkara ||"
+        "devanagari": "ॐ जय शिव ओंकारा, स्वामी हर ॐ शिव ओंकारा। ब्रह्मा, विष्णु, सदाशिव, अर्द्धाङ्गी धारा॥ ॐ जय शिव ओंकारा॥",
+        "english": "Om Jai Shiv Omkara, Swami Har Om Shiv Omkara | Brahma, Vishnu, Sadashiv, Ardhangi Dhaara || Om Jai Shiv Omkara ||"
       },
       {
         "timestampSec": 30,
         "devanagari": "एकानन चतुरानन पञ्चानन राजे। हंसासन गरुड़ासन वृषवाहन साजे॥ ॐ जय शिव ओंकारा॥",
-        "english": "Ekanan Chaturanana Panchanana Raje | Hansasan Garudasan Vrishavahan Saaje || Om Jai Shiv Omkara ||"
+        "english": "Ekanan Chaturanana Panchanana Raaje | Hansasan Garudasan Vrishavahan Saaje || Om Jai Shiv Omkara ||"
       },
       {
         "timestampSec": 60,
-        "devanagari": "दो भुज चार चतुर्भुज दसमुख अति सोहे। त्रिगुण रूप निरखते त्रिभुवन जन मोहे॥ ॐ जय शिव ओंकारा॥",
-        "english": "Do Bhuj Chaar Chaturbhuj Dasmukh Ati Sohe | Trigun Roop Nirakhte Tribhuvan Jan Mohe || Om Jai Shiv Omkara ||"
+        "devanagari": "दो भुज चार चतुर्भुज दसभुज अति सोहे। त्रिगुण रूप निरखते त्रिभुवन जन मोहे॥ ॐ जय शिव ओंकारा॥",
+        "english": "Do Bhuj Chaar Chaturbhuj Dasabhuj Ati Sohe | Trigun Roop Nirakhate Tribhuvan Jan Mohe || Om Jai Shiv Omkara ||"
       },
       {
         "timestampSec": 90,
-        "devanagari": "अक्षमाला वनमाला मुण्डमाला धारी। त्रिपुरारी कंसारी कर माला धारी॥ ॐ जय शिव ओंकारा॥",
-        "english": "Akshamala Vanamala Mundamala Dhaari | Tripurari Kansari Kar Mala Dhaari || Om Jai Shiv Omkara ||"
+        "devanagari": "अक्षमाला वनमाला मुण्डमाला धारी। त्रिपुरारी कंसारी करमाला धारी॥ ॐ जय शिव ओंकारा॥",
+        "english": "Akshamala Vanamala Mundamala Dhaari | Tripurari Kansari Karamala Dhaari || Om Jai Shiv Omkara ||"
       },
       {
         "timestampSec": 120,
         "devanagari": "श्वेताम्बर पीताम्बर बाघम्बर अङ्गे। सनकादिक गरुड़ादिक भूतादिक सङ्गे॥ ॐ जय शिव ओंकारा॥",
-        "english": "Shwetambar Peetambar Baghambar Ange | Sanakaadik Garudaadik Bhootadik Sange || Om Jai Shiv Omkara ||"
+        "english": "Shwetambar Pitambar Baghambar Ange | Sanakadik Garudadik Bhootadik Sange || Om Jai Shiv Omkara ||"
       },
       {
         "timestampSec": 150,
-        "devanagari": "कर के मध्य कमण्डलु चक्र त्रिशूल धरता। जगकर्ता जगभर्ता जगसंहारकर्ता॥ ॐ जय शिव ओंकारा॥",
-        "english": "Kar Ke Madhya Kamandalu Chakra Trishool Dharta | Jagkarta Jagbharta Jagsanharkarta || Om Jai Shiv Omkara ||"
+        "devanagari": "कर के मध्य कमण्डलु चक्र त्रिशूलधारी। सुखकारी दुखहारी जगपालनकारी॥ ॐ जय शिव ओंकारा॥",
+        "english": "Kar Ke Madhye Kamandalu Chakra Trishuldhari | Sukhkari Dukhhari Jagpalankari || Om Jai Shiv Omkara ||"
       },
       {
         "timestampSec": 180,
         "devanagari": "ब्रह्मा विष्णु सदाशिव जानत अविवेका। प्रणवाक्षर में शोभित ये तीनों एका॥ ॐ जय शिव ओंकारा॥",
         "english": "Brahma Vishnu Sadashiv Jaanat Aviveka | Pranavakshar Mein Shobhit Ye Teeno Eka || Om Jai Shiv Omkara ||"
-      },
-      {
-        "timestampSec": 210,
-        "devanagari": "त्रिगुण शिवजी की आरती जो कोई नर गावे। कहत शिवानन्द स्वामी मनवांछित फल पावे॥ ॐ जय शिव ओंकारा॥",
-        "english": "Trigun Shivji Ki Aarti Jo Koi Nar Gaave | Kahat Shivanand Swami Manvaanchhit Phal Paave || Om Jai Shiv Omkara ||"
       }
     ],
-    "updatedAt": "2026-11-09T11:07:04.964111Z"
+    "updatedAt": "2026-11-09T11:44:50.455763+00:00"
   },
   {
     "id": "aarti_hanuman",
@@ -108,156 +103,195 @@
     "hindiTitle": "आरती कीजै हनुमान लला की",
     "deity": "Lord Hanuman",
     "category": "Aarti",
-    "durationSec": 235,
+    "durationSec": 215,
     "localAssetPath": "audio/temple_bell.wav",
     "remoteStreamUrl": "https://actions.google.com/sounds/v1/spiritual/temple_bell.ogg",
-    "significance": "Aarti composed by Saint Tulsidas to invoke Bajrangbali's divine protection from fears and negative energies.",
+    "significance": "Composed by Sant Tulsidas, dispelling fear, sorrow, and all negative afflictions with Mahabali Bajrangbali's grace.",
     "lyrics": [
       {
         "timestampSec": 0,
         "devanagari": "आरती कीजै हनुमान लला की। दुष्ट दलन रघुनाथ कला की॥",
-        "english": "Aarti Kijai Hanuman Lala Ki | Dusht Dalan Raghunath Kala Ki ||"
+        "english": "Aarti Keejai Hanuman Lala Ki | Dusht Dalan Raghunath Kala Ki ||"
       },
       {
         "timestampSec": 25,
         "devanagari": "जाके बल से गिरिवर कांपे। रोग दोष जाके निकट न झांपे॥",
-        "english": "Jaake Bal Se Girivar Kaampe | Rog Dosh Jaake Nikat Na Jhaampe ||"
+        "english": "Jaake Bal Se Girivar Kaanpe | Rog Dosh Jaake Nikat Na Jhaanpe ||"
       },
       {
         "timestampSec": 50,
-        "devanagari": "अंजनि पुत्र महा बलदाई। सन्तन के प्रभु सदा सहाई॥",
-        "english": "Anjani Putra Maha Baldaai | Santan Ke Prabhu Sada Sahaai ||"
+        "devanagari": "अंजनि पुत्र महाबलदाई। संतन के प्रभु सदा सहाई॥",
+        "english": "Anjani Putra Mahabaldayi | Santan Ke Prabhu Sada Sahayi ||"
       },
       {
         "timestampSec": 75,
-        "devanagari": "दे बीरा रघुनाथ पठाए। लंका जारि सीय सुधि लाए॥",
-        "english": "De Beera Raghunath Pathaaye | Lanka Jaari Seeya Sudhi Laaye ||"
+        "devanagari": "दे बीड़ा रघुनाथ पठाए। लंका जारि सीय सुधि लाए॥",
+        "english": "De Beeda Raghunath Pathaye | Lanka Jaari Siya Sudhi Laaye ||"
       },
       {
         "timestampSec": 105,
         "devanagari": "लंका सो कोट समुद्र सी खाई। जात पवनसुत बार न लाई॥",
-        "english": "Lanka So Kot Samudra Si Khaai | Jaat Pawansut Baar Na Laai ||"
+        "english": "Lanka So Kot Samudra Si Khaayi | Jaat Pavansut Baar Na Laayi ||"
       },
       {
         "timestampSec": 135,
-        "devanagari": "लक्ष्मण मूर्छित पड़े सकारे। आणि संजीवन प्रान उबारे॥",
-        "english": "Laxman Moorchhit Pade Sakaare | Aani Sanjeevan Praan Ubaare ||"
+        "devanagari": "लक्ष्मण मूर्छित पड़े सकारे। आनि संजीवन प्रान उबारे॥",
+        "english": "Lakshman Murchhit Pade Sakaare | Aani Sanjeevan Praan Ubaare ||"
       },
       {
         "timestampSec": 165,
-        "devanagari": "पैठि पताल तोरि जम-कारे। अहिरावण की भुजा उखारे॥",
-        "english": "Paithi Pataal Tori Jam-Kaare | Ahiravan Ki Bhuja Ukhaare ||"
-      },
-      {
-        "timestampSec": 195,
-        "devanagari": "सुर नर मुनि आरती उतारें। जय जय जय कपिराज उचारें॥",
-        "english": "Sur Nar Muni Aarti Utaarein | Jai Jai Jai Kapiraj Uchaarein ||"
-      },
-      {
-        "timestampSec": 215,
-        "devanagari": "कंचन थार कपूर लौ छाई। आरति करत संजना माई॥ जो हनुमान जी की आरती गावै। बसि बैकुण्ठ परम पद पावै॥",
-        "english": "Kanchan Thaar Kapoor Lau Chhaai | Aarati Karat Sanjana Maai || Jo Hanuman Ji Ki Aarti Gaavai | Basi Baikunth Param Pad Paavai ||"
+        "devanagari": "आरती कीजै हनुमान लला की। दुष्ट दलन रघुनाथ कला की॥",
+        "english": "Aarti Keejai Hanuman Lala Ki | Dusht Dalan Raghunath Kala Ki ||"
       }
     ],
-    "updatedAt": "2026-11-09T11:07:06.878367Z"
+    "updatedAt": "2026-11-09T11:44:52.247236+00:00"
+  },
+  {
+    "id": "chalisa_hanuman",
+    "title": "Shri Hanuman Chalisa",
+    "hindiTitle": "श्री हनुमान चालीसा",
+    "deity": "Lord Hanuman",
+    "category": "Chalisa",
+    "durationSec": 480,
+    "localAssetPath": "audio/temple_bell.wav",
+    "remoteStreamUrl": "https://actions.google.com/sounds/v1/spiritual/temple_bell.ogg",
+    "significance": "40 sacred verses by Goswami Tulsidas. Recited by millions daily for protection, courage, and eradication of crises.",
+    "lyrics": [
+      {
+        "timestampSec": 0,
+        "devanagari": "श्रीगुरु चरन सरोज रज निज मनु मुकुरु सुधारि। बरनऊं रघुबर बिमल जसु जो दायकु फल चारि॥",
+        "english": "Shri Guru Charan Saroj Raj Nija Manu Mukuru Sudhari | Baranau Raghuvar Bimal Jasu Jo Dayaku Phal Chari ||"
+      },
+      {
+        "timestampSec": 30,
+        "devanagari": "बुद्धिहीन तनु जानिके सुमिरौं पवन-कुमार। बल बुधि बिद्या देहु मोहिं हरहु कलेस बिकार॥",
+        "english": "Buddhiheen Tanu Jaanike Sumirau Pavan-Kumar | Bal Budhi Vidya Dehu Mohi Harahu Kalesh Bikaar ||"
+      },
+      {
+        "timestampSec": 60,
+        "devanagari": "जय हनुमान ज्ञान गुन सागर। जय कपीस तिहुं लोक उजागर॥ रामदूत अतुलित बल धामा। अंजनि-पुत्र पवनसुत नामा॥",
+        "english": "Jai Hanuman Gyan Gun Sagar | Jai Kapis Tihun Lok Ujagar || Ramdoot Atulit Bal Dhama | Anjani-Putra Pavansut Nama ||"
+      },
+      {
+        "timestampSec": 100,
+        "devanagari": "महाबीर बिक्रम बजरंगी। कुमति निवार सुमति के संगी॥ कंचन बरन बिराज सुबेसा। कानन कुंडल कुंचित केसा॥",
+        "english": "Mahabir Bikram Bajrangi | Kumati Nivar Sumati Ke Sangi || Kanchan Baran Biraj Subesa | Kanan Kundal Kunchit Kesa ||"
+      },
+      {
+        "timestampSec": 140,
+        "devanagari": "हाथ बज्र औ ध्वजा बिराजै। कांधे मूंज जनेऊ साजै॥ संकर सुवन केसरीनंदन। तेज प्रताप महा जग बंदन॥",
+        "english": "Hath Bajra Au Dhwaja Birajai | Kaandhe Moonj Janeu Saajai || Sankar Suvan Kesarinandan | Tej Pratap Maha Jag Bandan ||"
+      },
+      {
+        "timestampSec": 180,
+        "devanagari": "बिद्यावान गुनी अति चातुर। राम काज करिबे को आतुर॥ प्रभु चरित्र सुनिबे को रसिया। राम लखन सीता मन बसिया॥",
+        "english": "Vidyavan Guni Ati Chatur | Ram Kaaj Karibe Ko Aatur || Prabhu Charitra Sunibe Ko Rasiya | Ram Lakhan Sita Man Basiya ||"
+      },
+      {
+        "timestampSec": 220,
+        "devanagari": "भूत पिसाच निकट नहिं आवै। महाबीर जब नाम सुनावै॥ नासै रोग हरै सब पीरा। जपत निरंतर हनुमत बीरा॥",
+        "english": "Bhoot Pishach Nikat Nahin Aavai | Mahabir Jab Naam Sunavai || Naasai Rog Harai Sab Peera | Japat Nirantar Hanumat Beera ||"
+      },
+      {
+        "timestampSec": 260,
+        "devanagari": "संकट तें हनुमान छुड़ावै। मन क्रम बचन ध्यान जो लावै॥ सब पर राम तपस्वी राजा। तिन के काज सकल तुम साजा॥",
+        "english": "Sankat Te Hanuman Chhudavai | Man Kram Bachan Dhyan Jo Lavai || Sab Par Ram Tapasvi Raja | Tin Ke Kaaj Sakal Tum Saaja ||"
+      },
+      {
+        "timestampSec": 300,
+        "devanagari": "जो यह पढ़ै हनुमान चालीसा। होय सिद्धि साखी गौरीसा॥ तुलसीदास सदा हरि चेरा। कीजै नाथ हृदय मंह डेरा॥",
+        "english": "Jo Yah Padhai Hanuman Chalisa | Hoy Siddhi Sakhi Gaurisa || Tulsidas Sada Hari Chera | Keejai Nath Hriday Mah Dera ||"
+      },
+      {
+        "timestampSec": 340,
+        "devanagari": "पवनतनय संकट हरन मंगल मूरति रूप। राम लखन सीता सहित हृदय बसहु सुर भूप॥",
+        "english": "Pavantanaye Sankat Haran Mangal Murati Roop | Ram Lakhan Sita Sahit Hriday Basahu Sur Bhoop ||"
+      }
+    ],
+    "updatedAt": "2026-11-09T11:44:54.025861+00:00"
   },
   {
     "id": "aarti_lakshmi",
     "title": "Om Jai Lakshmi Mata",
-    "hindiTitle": "ॐ जय लक्ष्मी माता",
-    "deity": "Goddess Lakshmi",
+    "hindiTitle": "ओम जय लक्ष्मी माता",
+    "deity": "Mata Lakshmi",
     "category": "Aarti",
-    "durationSec": 225,
+    "durationSec": 230,
     "localAssetPath": "audio/temple_bell.wav",
     "remoteStreamUrl": "https://actions.google.com/sounds/v1/spiritual/temple_bell.ogg",
-    "significance": "Sung on Fridays and Diwali Mahapuja to welcome wealth, spiritual prosperity, and fortune into homes.",
+    "significance": "Invoking Goddess Lakshmi during Friday evening and Diwali for eternal abundance, righteousness, and household prosperity.",
     "lyrics": [
       {
         "timestampSec": 0,
         "devanagari": "ॐ जय लक्ष्मी माता, मैया जय लक्ष्मी माता। तुमको निसदिन सेवत, हर विष्णु विधाता॥ ॐ जय लक्ष्मी माता॥",
-        "english": "Om Jai Lakshmi Mata, Maiya Jai Lakshmi Mata | Tumko Nisdin Sevat, Har Vishnu Vidhata || Om Jai Lakshmi Mata ||"
+        "english": "Om Jai Lakshmi Mata, Maiya Jai Lakshmi Mata | Tumko Nisadin Sevat, Har Vishnu Vidhata || Om Jai Lakshmi Mata ||"
       },
       {
         "timestampSec": 30,
         "devanagari": "उमा, रमा, ब्रह्माणी, तुम ही जग-माता। सूर्य-चन्द्रमा ध्यावत, नारद ऋषि गाता॥ ॐ जय लक्ष्मी माता॥",
-        "english": "Uma Rama Brahmani, Tum Hi Jag-Mata | Surya-Chandrama Dhyavat, Narad Rishi Gaata || Om Jai Lakshmi Mata ||"
+        "english": "Uma, Rama, Brahmani, Tum Hi Jag-Mata | Surya-Chandrama Dhyavat, Narad Rishi Gaata || Om Jai Lakshmi Mata ||"
       },
       {
         "timestampSec": 60,
-        "devanagari": "दुर्गा रूप निरंजनि, सुख सम्पति दाता। जो कोई तुमको ध्यावत, ऋद्धि-सिद्धि धन पाता॥ ॐ जय लक्ष्मी माता॥",
-        "english": "Durga Roop Niranjani, Sukh Sampati Data | Jo Koi Tumko Dhyavat, Riddhi-Siddhi Dhan Paata || Om Jai Lakshmi Mata ||"
+        "devanagari": "दुर्गा रूप निरंजनि, सुख-सम्पत्ति दाता। जो कोई तुमको ध्यावत, ऋद्धि-सिद्धि धन पाता॥ ॐ जय लक्ष्मी माता॥",
+        "english": "Durga Roop Niranjani, Sukh-Sampatti Daata | Jo Koi Tumko Dhyavat, Riddhi-Siddhi Dhan Paata || Om Jai Lakshmi Mata ||"
       },
       {
         "timestampSec": 90,
-        "devanagari": "तुम पाताल-निवासिनि, तुम ही शुभदाता। कर्म-प्रभाव-प्रकाशिनि, भव-निधि की त्राता॥ ॐ जय लक्ष्मी माता॥",
-        "english": "Tum Pataal-Nivasini, Tum Hi Shubhdata | Karm-Prabhav-Prakashini, Bhav-Nidhi Ki Traata || Om Jai Lakshmi Mata ||"
+        "devanagari": "जिस घर में तुम रहतीं, सब सद्गुण आता। सब संभव हो जाता, मन नहिं घबराता॥ ॐ जय लक्ष्मी माता॥",
+        "english": "Jis Ghar Mein Tum Rehteen, Sab Sadgun Aata | Sab Sambhav Ho Jaata, Man Nahin Ghabraata || Om Jai Lakshmi Mata ||"
       },
       {
         "timestampSec": 120,
-        "devanagari": "जिस घर में तुम रहती, सब सद्गुण आता। सब संभव हो जाता, मन नहिं घबराता॥ ॐ जय लक्ष्मी माता॥",
-        "english": "Jis Ghar Mein Tum Rehti, Sab Sadgun Aata | Sab Sambhav Ho Jaata, Man Nahin Ghabraata || Om Jai Lakshmi Mata ||"
+        "devanagari": "तुम बिन यज्ञ न होते, वस्त्र न कोई पाता। खान-पान का वैभव, सब तुमसे आता॥ ॐ जय लक्ष्मी माता॥",
+        "english": "Tum Bin Yagya Na Hote, Vastra Na Koi Paata | Khan-Paan Ka Vaibhav, Sab Tumse Aata || Om Jai Lakshmi Mata ||"
       },
       {
         "timestampSec": 150,
-        "devanagari": "तुम बिन यज्ञ न होते, वस्त्र न कोई पाता। खान-पान का वैभव, सब तुमसे आता॥ ॐ जय लक्ष्मी माता॥",
-        "english": "Tum Bin Yagya Na Hote, Vastra Na Koi Paata | Khaan-Paan Ka Vaibhav, Sab Tumse Aata || Om Jai Lakshmi Mata ||"
-      },
-      {
-        "timestampSec": 180,
         "devanagari": "शुभ-गुण मंदिर सुंदर, क्षीरोदधि-जाता। रत्न चतुर्दश तुम बिन, कोई नहिं पाता॥ ॐ जय लक्ष्मी माता॥",
-        "english": "Shubh-Gun Mandir Sundar, Ksheerodadhi-Jaata | Ratna Chaturdash Tum Bin, Koi Nahin Paata || Om Jai Lakshmi Mata ||"
-      },
-      {
-        "timestampSec": 205,
-        "devanagari": "महालक्ष्मीजी की आरती, जो कोई नर गावे। उर आनन्द समावे, पाप उतर जावे॥ ॐ जय लक्ष्मी माता॥",
-        "english": "Mahalakshmiji Ki Aarti, Jo Koi Nar Gaave | Ur Aanand Samaave, Paap Utar Jaave || Om Jai Lakshmi Mata ||"
+        "english": "Shubh-Gun Mandir Sundar, Kshirodadhi-Jaata | Ratna Chaturdash Tum Bin, Koi Nahin Paata || Om Jai Lakshmi Mata ||"
       }
     ],
-    "updatedAt": "2026-11-09T11:07:08.957710Z"
+    "updatedAt": "2026-11-09T11:44:55.915506+00:00"
   },
   {
     "id": "aarti_ram",
     "title": "Shri Ramachandra Kripalu Bhajuman",
-    "hindiTitle": "श्री रामचन्द्र कृपालु भजु मन",
-    "deity": "Lord Rama",
-    "category": "Stuti & Aarti",
+    "hindiTitle": "श्री रामचंद्र कृपालु भजु मन",
+    "deity": "Bhagwan Shri Ram",
+    "category": "Aarti",
     "durationSec": 220,
     "localAssetPath": "audio/temple_bell.wav",
     "remoteStreamUrl": "https://actions.google.com/sounds/v1/spiritual/temple_bell.ogg",
-    "significance": "Divine Sanskritised Stuti composed by Goswami Tulsidas glorifying Maryada Purushottam Bhagwan Shri Ram.",
+    "significance": "Divine Stuti composed by Sant Tulsidas celebrating the grace, boundless compassion and beauty of Maryada Purushottam Shri Ram.",
     "lyrics": [
       {
         "timestampSec": 0,
-        "devanagari": "श्रीरामचन्द्र कृपालु भजु मन हरण भवभय दारुणं। नवकंज लोचन, कंज मुख, कर कंज, पद कंजारुणम्॥",
-        "english": "Shri Ramachandra Kripalu Bhaju Man Haran Bhavbhaya Daarunam | Navkanj Lochan, Kanj Mukh, Kar Kanj, Pad Kanjaarunam ||"
+        "devanagari": "श्रीरामचन्द्र कृपालु भजु मन हरण भवभय दारुणम्। नवकञ्ज लोचन, कञ्ज मुख, कर कञ्ज, पद कञ्जारुणम्॥",
+        "english": "Shri Ramachandra Kripalu Bhaju Man Haran Bhavabhaye Daarunam | Navakanja Lochan, Kanja Mukha, Kar Kanja, Pada Kanjaarunam ||"
       },
       {
-        "timestampSec": 35,
-        "devanagari": "कन्दर्प अगणित अमित छवि, नवनील नीरद सुन्दरं। पट पीत मानहु तड़ित रुचि शुचि नौमि जनक सुतावरम्॥",
-        "english": "Kandarpa Aganita Amita Chhavi, Navneel Neerad Sundaram | Pat Peet Maanahu Tadit Ruchi Shuchi Naumi Janak Sutaavaram ||"
+        "timestampSec": 30,
+        "devanagari": "कन्दर्प अगणित अमित छवि, नवनील नीरद सुन्दरम्। पट पीत मानहु तड़ित रुचि शुचि नौमि जनक सुतावरम्॥",
+        "english": "Kandarpa Aganita Amita Chhavi, Navaneel Neerad Sundaram | Pata Peeta Maanahu Tadita Ruchi Shuchi Naumi Janaka Sutaavaram ||"
       },
       {
-        "timestampSec": 70,
-        "devanagari": "भजु दीनबन्धु दिनेश दानव दैत्य वंश निकन्दनं। रघुनन्द आनन्दकन्द कोशलचन्द दशरथ नन्दनम्॥",
-        "english": "Bhaju Deenbandhu Dinesh Daanav Daitya Vansh Nikandanam | Raghunand Aanandkand Koshalchand Dashrath Nandanam ||"
+        "timestampSec": 60,
+        "devanagari": "भजु दीनबन्धु दिनेश दानव दैत्यवंश निकन्दनम्। रघुनन्द आनन्दकन्द कोशलचन्द दशरथ नन्दनम्॥",
+        "english": "Bhaju Deenabandhu Dinesh Daanava Daityavamsha Nikandanam | Raghunanda Aanandakanda Koshalachanda Dasharatha Nandanam ||"
       },
       {
-        "timestampSec": 105,
-        "devanagari": "सिर मुकुट कुण्डल तिलक चारु उदारु अङ्ग विभूषणं। आजानुभुज शर चाप धर, संग्राम-जित-खरदूषणम्॥",
-        "english": "Sir Mukut Kundal Tilak Chaaru Udaaru Anga Vibhooshanam | Aajaanubhuj Shar Chaap Dhar, Sangraam-Jit-Khardooshanam ||"
+        "timestampSec": 90,
+        "devanagari": "सिर मुकुट कुण्डल तिलक चारु उदारु अङ्ग विभूषणम्। आजानुभुज शर चाप धर, सङ्ग्राम-जित-खरदूषणम्॥",
+        "english": "Sira Mukuta Kundala Tilaka Chaaru Udaaru Anga Vibhooshanam | Aajaanubhuja Shara Chaapa Dhara, Sangraama-Jita-Kharadooshanam ||"
       },
       {
-        "timestampSec": 140,
-        "devanagari": "इति वदति तुलसीदास शंकर शेष मुनि मन रञ्जनं। मम हृदय कञ्ज निवास कुरु, कामादि खल दल गञ्जनम्॥",
-        "english": "Iti Vadati Tulsidas Shankar Shesh Muni Man Ranjanam | Mama Hridaya Kanj Nivaas Kuru, Kaamaadi Khal Dal Ganjanam ||"
-      },
-      {
-        "timestampSec": 180,
-        "devanagari": "मनु जाहिं राचेउ मिलिहि सो बरु सहज सुन्दर सांवरो। करुना निधान सुजान सीलु सनेहु जानत रावरो॥",
-        "english": "Manu Jaahin Raacheu Milihi So Baru Sahaj Sundar Saanvaro | Karuna Nidhaan Sujaan Seelu Sanehu Jaanat Raavaro ||"
+        "timestampSec": 120,
+        "devanagari": "इति वदति तुलसीदास शंकर शेष मुनि-मन-रञ्जनम्। मम हृदय कञ्ज निवास कुरु, कामादि खल-दल-गञ्जनम्॥",
+        "english": "Iti Vadati Tulsidas Shankara Shesha Muni-Mana-Ranjanam | Mama Hridaya Kanja Nivaasa Kuru, Kaamaadi Khala-Dala-Ganjanam ||"
       }
     ],
-    "updatedAt": "2026-11-09T11:07:10.748464Z"
+    "updatedAt": "2026-11-09T11:44:57.727738+00:00"
   },
   {
     "id": "aarti_krishna",
@@ -265,389 +299,134 @@
     "hindiTitle": "आरती कुंजबिहारी की",
     "deity": "Lord Krishna",
     "category": "Aarti",
-    "durationSec": 230,
+    "durationSec": 240,
     "localAssetPath": "audio/temple_bell.wav",
     "remoteStreamUrl": "https://actions.google.com/sounds/v1/spiritual/temple_bell.ogg",
-    "significance": "Beloved traditional Braj Dham Aarti invoking the enchanting leelas of Lord Krishna and Radha Rani.",
+    "significance": "Celebrates the enchanting Vrindavan pastimes of Lord Krishna, bringing immense inner sweetness and bliss.",
     "lyrics": [
       {
         "timestampSec": 0,
-        "devanagari": "आरती कुंजबिहारी की, श्री गिरिधर कृष्णमुरारी की॥ गले में बैजंती माला, बजावै मुरली मधुर बाला।",
-        "english": "Aarti Kunj Bihari Ki, Shri Giridhar Krishna Murari Ki || Gale Mein Baijanti Mala, Bajaavai Murli Madhur Baala |"
+        "devanagari": "आरती कुञ्जबिहारी की, श्री गिरिधर कृष्णमुरारी की॥ गले में बैजन्ती माला, बजावै मुरली मधुर बाला॥",
+        "english": "Aarti Kunjabihari Ki, Shri Giridhar Krishnamurari Ki || Gale Mein Baijanti Mala, Bajavai Murli Madhur Bala ||"
       },
       {
         "timestampSec": 35,
-        "devanagari": "श्रवण में कुण्डल झलकाता, मुख चन्द्र समान सुहाता। नूपुर की छुन-छुन बाजे, राधा संग रस रचावे॥ आरती कुंजबिहारी की...",
-        "english": "Shravan Mein Kundal Jhalkata, Mukh Chandra Samaan Suhaata | Nupur Ki Chhun-Chhun Baaje, Radha Sang Ras Rachaave ||"
+        "devanagari": "श्रवण में कुण्डल झलकाता, मुकुट पर चन्द्रिका भाता। करन में नूपुर रुनझुन बाजे, देख छवि त्रिभुवन मन मोहे॥",
+        "english": "Shravan Mein Kundal Jhalakaata, Mukut Par Chandrika Bhaata | Karan Mein Noopur Runjhun Baaje, Dekh Chhavi Tribhuvan Man Mohe ||"
       },
       {
-        "timestampSec": 75,
-        "devanagari": "कनक मय मुकुट बिराजे, पीताम्बर काछी सोहे। गोपियों के मन को मोहे, मोहन रूप अनूप धरे॥ आरती कुंजबिहारी की...",
-        "english": "Kanak May Mukut Biraaje, Peetambar Kaachhi Sohe | Gopiyon Ke Man Ko Mohe, Mohan Roop Anoop Dhare ||"
+        "timestampSec": 70,
+        "devanagari": "कनकमय मोरमुकुट सोहे, ब्रजवधू देख-देख मोहे। कदम की डारी पै ठाड़े, मुरली अधर धरन प्यारे॥",
+        "english": "Kanakamay Mormukut Sohe, Brajavadhu Dekh-Dekh Mohe | Kadam Ki Daari Pai Thaade, Murli Adhar Dharan Pyaare ||"
       },
       {
-        "timestampSec": 115,
-        "devanagari": "जहाँ ते प्रगटी गंगा, कलुष कलि-हारिणी श्री गंगा। स्मरन ते होत पुनीता, कलि-मल-दहन पुनीता॥ आरती कुंजबिहारी की...",
-        "english": "Jahaan Te Pragatee Ganga, Kalush Kali-Haarini Shri Ganga | Smaran Te Hot Puneeta, Kali-Mal-Dahan Puneeta ||"
-      },
-      {
-        "timestampSec": 155,
-        "devanagari": "श्री राधारमण बिहारी, गिरिवरधारी गिरधारी। चरण कमल पर जाऊं बलिहारी, आरती कुंजबिहारी की॥",
-        "english": "Shri Radharaman Bihari, Girivardhari Girdhari | Charan Kamal Par Jaaun Balihaari, Aarti Kunj Bihari Ki ||"
-      },
-      {
-        "timestampSec": 195,
-        "devanagari": "आरती कुंजबिहारी की, श्री गिरिधर कृष्णमुरारी की॥",
-        "english": "Aarti Kunj Bihari Ki, Shri Giridhar Krishna Murari Ki ||"
+        "timestampSec": 105,
+        "devanagari": "जहाँ से प्रगट भई गंगा, कलुष कलिहारिणि श्रीगंगा। चरण छवि श्रीबनवारी की, आरती कुञ्जबिहारी की॥",
+        "english": "Jahan Se Pragat Bhai Ganga, Kalush Kalihaarini Shri Ganga | Charan Chhavi Shri Banwari Ki, Aarti Kunjabihari Ki ||"
       }
     ],
-    "updatedAt": "2026-11-09T11:07:12.556163Z"
+    "updatedAt": "2026-11-09T11:44:59.464130+00:00"
   },
   {
     "id": "aarti_durga",
     "title": "Jai Ambe Gauri",
     "hindiTitle": "जय अम्बे गौरी",
-    "deity": "Goddess Durga",
+    "deity": "Maa Durga",
     "category": "Aarti",
-    "durationSec": 240,
+    "durationSec": 225,
     "localAssetPath": "audio/temple_bell.wav",
     "remoteStreamUrl": "https://actions.google.com/sounds/v1/spiritual/temple_bell.ogg",
-    "significance": "Navratri and Durga Puja Aarti honoring Jagadamba, the protectress of the cosmos.",
+    "significance": "Grand Aarti sung during Navratri and Sandhya prayers to invoke Jagadamba for courage and protection from evil.",
     "lyrics": [
       {
         "timestampSec": 0,
-        "devanagari": "जय अम्बे गौरी, मैया जय श्यामा गौरी। तुमको निसदिन ध्यावत, हरि ब्रह्मा शिवरी॥ जय अम्बे गौरी॥",
-        "english": "Jai Ambe Gauri, Maiya Jai Shyama Gauri | Tumko Nisdin Dhyavat, Hari Brahma Shivree || Jai Ambe Gauri ||"
+        "devanagari": "जय अम्बे गौरी, मैया जय श्यामा गौरी। तुमको निसदिन ध्यावत, हरि ब्रह्मा शिवरी॥ ॐ जय अम्बे गौरी॥",
+        "english": "Jai Ambe Gauri, Maiya Jai Shyama Gauri | Tumko Nisadin Dhyavat, Hari Brahma Shivri || Om Jai Ambe Gauri ||"
       },
       {
         "timestampSec": 30,
-        "devanagari": "मांग सिन्दूर विराजत, टीको मृगमद को। उज्ज्वल से दोउ नैना, चन्द्रवदन नीको॥ जय अम्बे गौरी॥",
-        "english": "Maang Sindoor Viraajat, Teeko Mrigmad Ko | Ujjwal Se Dou Naina, Chandravadan Neeko || Jai Ambe Gauri ||"
+        "devanagari": "मांग सिन्दूर विराजत, टीको मृगमद को। उज्ज्वल से दोउ नैना, चन्द्रवदन नीको॥ ॐ जय अम्बे गौरी॥",
+        "english": "Maang Sindoor Viraajat, Teeko Mrigamad Ko | Ujjwal Se Dou Naina, Chandravadan Neeko || Om Jai Ambe Gauri ||"
       },
       {
         "timestampSec": 60,
-        "devanagari": "कनक समान कलेवर, रक्ताम्बर राजे। रक्तपुष्प गल माला, कण्ठन पर साजे॥ जय अम्बे गौरी॥",
-        "english": "Kanak Samaan Kalevar, Raktambar Raaje | Raktpushp Gal Maala, Kanthan Par Saaje || Jai Ambe Gauri ||"
+        "devanagari": "कनक समान कलेवर, रक्ताम्बर राजे। रक्तपुष्प गल माला, कण्ठन पर साजे॥ ॐ जय अम्बे गौरी॥",
+        "english": "Kanak Samaan Kalevar, Raktambar Raaje | Raktapushp Gal Mala, Kanthan Par Saaje || Om Jai Ambe Gauri ||"
       },
       {
         "timestampSec": 90,
-        "devanagari": "केहरि वाहन राजत, खड्ग खप्पर धारी। सुर-नर-मुनि-जन सेवत, तिनके दुख हारी॥ जय अम्बे गौरी॥",
-        "english": "Kehari Vaahan Raajat, Khadag Khappar Dhaari | Sur-Nar-Muni-Jan Sevat, Tinke Dukh Haari || Jai Ambe Gauri ||"
-      },
-      {
-        "timestampSec": 120,
-        "devanagari": "कानन कुण्डल शोभित, नासाग्रे मोती। कोटिक चन्द्र दिवाकर, सम राजत ज्योती॥ जय अम्बे गौरी॥",
-        "english": "Kaanan Kundal Shobhit, Naasaagre Moti | Kotik Chandra Divaakar, Sam Raajat Jyoti || Jai Ambe Gauri ||"
-      },
-      {
-        "timestampSec": 150,
-        "devanagari": "शुम्भ-निशुम्भ बिदारे, महिषासुर घाती। धूम्र विलोचन नैना, निशदिन मदमाती॥ जय अम्बे गौरी॥",
-        "english": "Shumbh-Nishumbh Bidaare, Mahishasur Ghaati | Dhoomra Vilochan Naina, Nishdin Madmaati || Jai Ambe Gauri ||"
-      },
-      {
-        "timestampSec": 180,
-        "devanagari": "चौंसठ योगिनि गावत, नृत्य करत भैरों। बाजत ताल मृदङ्गा, और बाजत डमरू॥ जय अम्बे गौरी॥",
-        "english": "Chaunsath Yogini Gaavat, Nritya Karat Bhairon | Baajat Taal Mridanga, Aur Baajat Damroo || Jai Ambe Gauri ||"
-      },
-      {
-        "timestampSec": 210,
-        "devanagari": "श्री अम्बेजी की आरती, जो कोई नर गावे। कहत शिवानन्द स्वामी, सुख-सम्पत्ति पावे॥ जय अम्बे गौरी॥",
-        "english": "Shri Ambeji Ki Aarti, Jo Koi Nar Gaave | Kahat Shivanand Swami, Sukh-Sampatti Paave || Jai Ambe Gauri ||"
+        "devanagari": "केहरि वाहन राजत, खड्ग खप्पर धारी। सुर-नर-मुनिजन सेवत, तिनके दुखहारी॥ ॐ जय अम्बे गौरी॥",
+        "english": "Kehari Vaahan Raajat, Khadag Khappar Dhaari | Sur-Nar-Munijan Sevat, Tinke Dukhhari || Om Jai Ambe Gauri ||"
       }
     ],
-    "updatedAt": "2026-11-09T11:07:14.361847Z"
+    "updatedAt": "2026-11-09T11:45:01.236467+00:00"
+  },
+  {
+    "id": "stotram_shiv_tandav",
+    "title": "Shiv Tandav Stotram",
+    "hindiTitle": "शिव ताण्डव स्तोत्रम्",
+    "deity": "Lord Shiva",
+    "category": "Stotra",
+    "durationSec": 360,
+    "localAssetPath": "audio/temple_bell.wav",
+    "remoteStreamUrl": "https://actions.google.com/sounds/v1/spiritual/temple_bell.ogg",
+    "significance": "Masterpiece hymn composed by Ravana praising Shiva's cosmic dance of rhythm, ecstasy and power.",
+    "lyrics": [
+      {
+        "timestampSec": 0,
+        "devanagari": "जटाटवीगलज्जलप्रवाहपावितस्थले गलेऽवलम्ब्य लम्बितां भुजङ्गतुङ्गमालिकाम्। डमड्डमड्डमड्डमन्निनादवड्डमर्वयं चकार चण्डताण्डवं तनोतु नः शिवः शिवम्॥",
+        "english": "Jatatavee Galajjala Pravaha Pavitasthale Gale Avalambya Lambitaam Bhujanga Tunga Malikam | Damad Damad Damad Daman Ninadavaddamarvayam Chakara Chanda Tandavam Tanotu Nah Shivah Shivam ||"
+      },
+      {
+        "timestampSec": 45,
+        "devanagari": "जटाकटाहसम्भ्रमभ्रमन्निलिम्पनिर्झरी- विलोलवीचिवल्लरीविराजमानमूर्धनि। धगद्धगद्धगज्ज्वलल्ललाटपट्टपावके किशोरचन्द्रशेखरे रतिः प्रतिक्षणं मम॥",
+        "english": "Jata Kataha Sambhrama Bhramannilimpa Nirjhari Vilola Veechi Vallari Viraja Mana Moordhani | Dhagadh Dhagadh Dhagaj Jvalal Lalata Patta Pavake Kishora Chandra Shekhare Ratih Prati Kshanam Mama ||"
+      },
+      {
+        "timestampSec": 90,
+        "devanagari": "धराधरेन्द्रनन्दिनीविलासबन्धुबन्धुर- स्फुरद्दिगन्तसन्ततिप्रमोदमानमानसे। कृपाकटाक्षधोरणीनिरुद्धदुर्धरापदि क्वचिद्दिगम्बरे मनो विनोदमेतु वस्तुनि॥",
+        "english": "Dharadharendra Nandini Vilasa Bandhu Bandhura Sphurad Diganta Santati Pramoda Mana Manase | Kripa Kataksha Dhorani Niruddha Durdharapadi Kwachid Digambare Mano Vinodametu Vastuni ||"
+      }
+    ],
+    "updatedAt": "2026-11-09T11:45:02.975793+00:00"
   },
   {
     "id": "aarti_jagdish",
     "title": "Om Jai Jagdish Hare",
-    "hindiTitle": "ॐ जय जगदीश हरे",
+    "hindiTitle": "ओम जय जगदीश हरे",
     "deity": "Lord Vishnu",
     "category": "Aarti",
-    "durationSec": 240,
+    "durationSec": 250,
     "localAssetPath": "audio/temple_bell.wav",
     "remoteStreamUrl": "https://actions.google.com/sounds/v1/spiritual/temple_bell.ogg",
-    "significance": "Universal Sanatan evening Aarti sung across millions of households for total devotion and surrender.",
+    "significance": "Universal Sanatan prayer composed by Pandit Shardha Ram Phillauri in 1870, sung in every temple and household across India.",
     "lyrics": [
       {
         "timestampSec": 0,
-        "devanagari": "ॐ जय जगदीश हरे, स्वामी जय जगदीश हरे। भक्त जनों के संकट, दास जनों के संकट, क्षण में दूर करे॥ ॐ जय जगदीश हरे॥",
-        "english": "Om Jai Jagdish Hare, Swami Jai Jagdish Hare | Bhakt Jano Ke Sankat, Daas Jano Ke Sankat, Kshan Mein Door Kare || Om Jai Jagdish Hare ||"
+        "devanagari": "ॐ जय जगदीश हरे, स्वामी जय जगदीश हरे। भक्त जनों के संकट, क्षण में दूर करे॥ ॐ जय जगदीश हरे॥",
+        "english": "Om Jai Jagdish Hare, Swami Jai Jagdish Hare | Bhakta Janon Ke Sankat, Kshan Mein Door Kare || Om Jai Jagdish Hare ||"
       },
       {
         "timestampSec": 35,
-        "devanagari": "जो ध्यावे फल पावे, दुख बिनसे मन का। सुख सम्पति घर आवे, कष्ट मिटे तन का॥ ॐ जय जगदीश हरे॥",
-        "english": "Jo Dhyave Phal Paave, Dukh Binase Man Ka | Sukh Sampati Ghar Aave, Kasht Mite Tan Ka || Om Jai Jagdish Hare ||"
+        "devanagari": "जो ध्यावे फल पावे, दुःख बिनसे मन का। सुख सम्पत्ति घर आवे, कष्ट मिटे तन का॥ ॐ जय जगदीश हरे॥",
+        "english": "Jo Dhyave Phal Paave, Dukh Binse Man Ka | Sukh Sampatti Ghar Aave, Kasht Mite Tan Ka || Om Jai Jagdish Hare ||"
       },
       {
         "timestampSec": 70,
-        "devanagari": "मात-पिता तुम मेरे, शरण गहूँ किसकी। तुम बिन और न दूजा, आस करूँ जिसकी॥ ॐ जय जगदीश हरे॥",
-        "english": "Maat-Pita Tum Mere, Sharan Gahoon Kiski | Tum Bin Aur Na Dooja, Aas Karoon Jiski || Om Jai Jagdish Hare ||"
+        "devanagari": "मात-पिता तुम मेरे, शरण गहूं मैं किसकी। तुम बिन और न दूजा, आस करूं जिसकी॥ ॐ जय जगदीश हरे॥",
+        "english": "Maat-Pita Tum Mere, Sharan Gahoon Main Kiski | Tum Bin Aur Na Dooja, Aas Karoon Jiski || Om Jai Jagdish Hare ||"
       },
       {
         "timestampSec": 105,
         "devanagari": "तुम पूरण परमात्मा, तुम अन्तर्यामी। पारब्रह्म परमेश्वर, तुम सब के स्वामी॥ ॐ जय जगदीश हरे॥",
-        "english": "Tum Pooran Parmaatma, Tum Antaryaami | Paarbrahm Parameshwar, Tum Sab Ke Swami || Om Jai Jagdish Hare ||"
+        "english": "Tum Pooran Paramatma, Tum Antaryami | Parabrahma Parameshwar, Tum Sab Ke Swami || Om Jai Jagdish Hare ||"
       },
       {
         "timestampSec": 140,
         "devanagari": "तुम करुणा के सागर, तुम पालनकर्ता। मैं मूरख खल कामी, कृपा करो भर्ता॥ ॐ जय जगदीश हरे॥",
-        "english": "Tum Karuna Ke Saagar, Tum Paalankarta | Main Moorakh Khal Kaami, Kripa Karo Bharta || Om Jai Jagdish Hare ||"
-      },
-      {
-        "timestampSec": 175,
-        "devanagari": "तुम हो एक अगोचर, सब के प्राणपति। किस विधि मिलूँ दयामय, तुमको मैं कुमति॥ ॐ जय जगदीश हरे॥",
-        "english": "Tum Ho Ek Agochar, Sab Ke Praanpati | Kis Vidhi Miloon Dayamay, Tumko Main Kumati || Om Jai Jagdish Hare ||"
-      },
-      {
-        "timestampSec": 210,
-        "devanagari": "दीन-बन्धु दुख-हर्ता, तुम ठाकुर मेरे। अपने हाथ उठाओ, द्वार पड़ा तेरे॥ तन-मन-धन सब है तेरा, तेरा तुझको अर्पण, क्या लागे मेरा॥ ॐ जय जगदीश हरे॥",
-        "english": "Deen-Bandhu Dukh-Harta, Tum Thakur Mere | Apne Haath Uthaao, Dwaar Pada Tere || Tan-Man-Dhan Sab Hai Tera, Tera Tujhko Arpan, Kya Laage Mera || Om Jai Jagdish Hare ||"
+        "english": "Tum Karuna Ke Sagar, Tum Palankarta | Main Moorakh Khal Kaami, Kripa Karo Bharta || Om Jai Jagdish Hare ||"
       }
     ],
-    "updatedAt": "2026-11-09T11:07:16.163403Z"
-  },
-  {
-    "id": "aarti_saraswati",
-    "title": "Jai Saraswati Mata",
-    "hindiTitle": "जय सरस्वती माता",
-    "deity": "Goddess Saraswati",
-    "category": "Aarti",
-    "durationSec": 210,
-    "localAssetPath": "audio/temple_bell.wav",
-    "remoteStreamUrl": "https://actions.google.com/sounds/v1/spiritual/temple_bell.ogg",
-    "significance": "Invoking the Goddess of Vidya, music, wisdom, speech, and enlightened arts on Vasant Panchami and daily studies.",
-    "lyrics": [
-      {
-        "timestampSec": 0,
-        "devanagari": "जय सरस्वती माता, मैया जय सरस्वती माता। सद्गुण वैभव शालिनी, त्रिभुवन विख्याता॥ जय सरस्वती माता॥",
-        "english": "Jai Saraswati Mata, Maiya Jai Saraswati Mata | Sadgun Vaibhav Shaalini, Tribhuvan Vikhyaata || Jai Saraswati Mata ||"
-      },
-      {
-        "timestampSec": 30,
-        "devanagari": "चन्द्रवदनि पद्मासिनि, द्युति मंगलकारी। सोहे शुभ हंस सवारी, अतुल तेजधारी॥ जय सरस्वती माता॥",
-        "english": "Chandravadani Padmaasini, Dyuti Mangalkaari | Sohe Shubh Hans Savaari, Atul Tejdhaari || Jai Saraswati Mata ||"
-      },
-      {
-        "timestampSec": 65,
-        "devanagari": "बाएं कर में वीणा, दाएं कर माला। शीश मुकुट मणि सोहे, गल मोतियन माला॥ जय सरस्वती माता॥",
-        "english": "Baayein Kar Mein Veena, Daayein Kar Maala | Sheesh Mukut Mani Sohe, Gal Motiyan Maala || Jai Saraswati Mata ||"
-      },
-      {
-        "timestampSec": 100,
-        "devanagari": "देवदनुज सुभामिनी, विद्या दान दियो। अमर कीन्ह जो पूजे, ज्ञान प्रकाश कियो॥ जय सरस्वती माता॥",
-        "english": "Devdanuj Subhaamini, Vidya Daan Diyo | Amar Keenha Jo Pooje, Gyaan Prakaash Kiyo || Jai Saraswati Mata ||"
-      },
-      {
-        "timestampSec": 135,
-        "devanagari": "ज्ञान चक्षु दे माता, जग निस्तार करो। अज्ञान तिमिर सब हरके, मंगल रूप धरो॥ जय सरस्वती माता॥",
-        "english": "Gyaan Chakshu De Mata, Jag Nistaar Karo | Agyaan Timir Sab Harke, Mangal Roop Dharo || Jai Saraswati Mata ||"
-      },
-      {
-        "timestampSec": 170,
-        "devanagari": "सरस्वतीजी की आरती, जो कोई जन गावे। हितकारी सुखकारी, ज्ञान परम पावे॥ जय सरस्वती माता॥",
-        "english": "Saraswatiji Ki Aarti, Jo Koi Jan Gaave | Hitkaari Sukhkaari, Gyaan Param Paave || Jai Saraswati Mata ||"
-      }
-    ],
-    "updatedAt": "2026-11-09T11:07:17.940769Z"
-  },
-  {
-    "id": "aarti_shani",
-    "title": "Jai Jai Shri Shanidev Bhaktan Hitkari",
-    "hindiTitle": "जय जय श्री शनिदेव",
-    "deity": "Lord Shani",
-    "category": "Aarti",
-    "durationSec": 215,
-    "localAssetPath": "audio/temple_bell.wav",
-    "remoteStreamUrl": "https://actions.google.com/sounds/v1/spiritual/temple_bell.ogg",
-    "significance": "Sung on Saturdays to pacify Shani Sade Sati, remove obstacles, and cultivate karmic righteousness.",
-    "lyrics": [
-      {
-        "timestampSec": 0,
-        "devanagari": "जय जय श्री शनिदेव भक्तन हितकारी। सूर्य पुत्र प्रभु छाया महतारी॥ जय जय श्री शनिदेव...",
-        "english": "Jai Jai Shri Shanidev Bhaktan Hitkari | Surya Putra Prabhu Chhaya Mahtaari || Jai Jai Shri Shanidev..."
-      },
-      {
-        "timestampSec": 35,
-        "devanagari": "चार भुजा तनु श्याम विराजै। माथे रतन मुकुट छवि छाजै॥ जय जय श्री शनिदेव...",
-        "english": "Chaar Bhuja Tanu Shyam Viraajai | Maathe Ratan Mukut Chhavi Chhaajai || Jai Jai Shri Shanidev..."
-      },
-      {
-        "timestampSec": 70,
-        "devanagari": "खांग खड्ग त्रिशूल धनुष कर। चमर ढुरत शिर छत्र सुहाकर॥ जय जय श्री शनिदेव...",
-        "english": "Khaang Khadag Trishool Dhanush Kar | Chamar Dhurat Shir Chhatra Suhaakar || Jai Jai Shri Shanidev..."
-      },
-      {
-        "timestampSec": 105,
-        "devanagari": "गिद्ध वाहन प्रभु सदा विराजे। पापी दलन साधु सुख साजे॥ जय जय श्री शनिदेव...",
-        "english": "Giddha Vaahan Prabhu Sada Viraaje | Paapi Dalan Saadhu Sukh Saaje || Jai Jai Shri Shanidev..."
-      },
-      {
-        "timestampSec": 140,
-        "devanagari": "नित जो ध्यान धरे मन लाई। संकट कटे सकल सुख पाई॥ जय जय श्री शनिदेव...",
-        "english": "Nit Jo Dhyaan Dhare Man Laai | Sankat Kate Sakal Sukh Paai || Jai Jai Shri Shanidev..."
-      },
-      {
-        "timestampSec": 175,
-        "devanagari": "आरती जो शनिदेव की गावे। कर्म शुद्ध करि परम पद पावे॥ जय जय श्री शनिदेव...",
-        "english": "Aarti Jo Shanidev Ki Gaave | Karm Shuddh Kari Param Pad Paave || Jai Jai Shri Shanidev..."
-      }
-    ],
-    "updatedAt": "2026-11-09T11:07:19.765886Z"
-  },
-  {
-    "id": "aarti_surya",
-    "title": "Jai Kashyap-Nandan",
-    "hindiTitle": "जय कश्यप-नन्दन (सूर्य आरती)",
-    "deity": "Lord Surya",
-    "category": "Aarti",
-    "durationSec": 200,
-    "localAssetPath": "audio/temple_bell.wav",
-    "remoteStreamUrl": "https://actions.google.com/sounds/v1/spiritual/temple_bell.ogg",
-    "significance": "Sung at sunrise and during Chhath Puja to worship the visible divinity Surya Bhagwan for health and vitality.",
-    "lyrics": [
-      {
-        "timestampSec": 0,
-        "devanagari": "जय कश्यप-नन्दन, ॐ जय अदिति-नन्दन। त्रिभुवन तिमिर निकन्दन, भक्त-हृदय-चन्दन॥ ॐ जय सूर्य भगवान॥",
-        "english": "Jai Kashyap-Nandan, Om Jai Aditi-Nandan | Tribhuvan Timir Nikandan, Bhakt-Hridaya-Chandan || Om Jai Surya Bhagwan ||"
-      },
-      {
-        "timestampSec": 35,
-        "devanagari": "सप्त-अश्वरथ साजे, अरुण सारथी संग। किरण-जाल बिखरावे, जागे जग नव उमंग॥ ॐ जय सूर्य भगवान॥",
-        "english": "Sapt-Ashwarath Saaje, Arun Saarathi Sang | Kiran-Jaal Bikhraave, Jaage Jag Nav Umang || Om Jai Surya Bhagwan ||"
-      },
-      {
-        "timestampSec": 70,
-        "devanagari": "उदित होत तम नाशे, जीवन ज्योति जगे। रोग शोक सब भागे, जन-मन मंगल लगे॥ ॐ जय सूर्य भगवान॥",
-        "english": "Udit Hot Tam Naashe, Jeevan Jyoti Jage | Rog Shok Sab Bhaage, Jan-Man Mangal Lage || Om Jai Surya Bhagwan ||"
-      },
-      {
-        "timestampSec": 105,
-        "devanagari": "अर्घ्य समर्पण कीन्हे, पावे दीर्घायु काया। धन धान्य सुख पावे, मिटे मोह अरु माया॥ ॐ जय सूर्य भगवान॥",
-        "english": "Arghya Samarpan Keenhe, Paave Deerghaayu Kaaya | Dhan Dhaanya Sukh Paave, Mite Moh Aru Maaya || Om Jai Surya Bhagwan ||"
-      },
-      {
-        "timestampSec": 145,
-        "devanagari": "द्वादश रूप धरे प्रभु, जग का पालनहार। जो नर आरती गावे, उतरे भव से पार॥ ॐ जय सूर्य भगवान॥",
-        "english": "Dwaadash Roop Dhare Prabhu, Jag Ka Paalanhaar | Jo Nar Aarti Gaave, Utre Bhav Se Paar || Om Jai Surya Bhagwan ||"
-      }
-    ],
-    "updatedAt": "2026-11-09T11:07:21.531649Z"
-  },
-  {
-    "id": "aarti_gayatri",
-    "title": "Jayati Jay Gayatri Mata",
-    "hindiTitle": "जयति जय गायत्री माता",
-    "deity": "Goddess Gayatri",
-    "category": "Aarti",
-    "durationSec": 205,
-    "localAssetPath": "audio/temple_bell.wav",
-    "remoteStreamUrl": "https://actions.google.com/sounds/v1/spiritual/temple_bell.ogg",
-    "significance": "Mother of the Vedas; chanting awakens the intellect (Dhiyo Yo Nah Prachodayat) and purifies consciousness.",
-    "lyrics": [
-      {
-        "timestampSec": 0,
-        "devanagari": "जयति जय गायत्री माता, जयति जय गायत्री माता। सत्-चित्-आनन्द-स्वरूपिणी, जगजीवन-दाता॥ जयति जय गायत्री माता॥",
-        "english": "Jayati Jay Gayatri Mata, Jayati Jay Gayatri Mata | Sat-Chit-Aanand-Swaroopini, Jagjeevan-Daata || Jayati Jay Gayatri Mata ||"
-      },
-      {
-        "timestampSec": 35,
-        "devanagari": "आदि-शक्ति तुम अलख निरंजन, जग-पालन-कर्त्री। वेद-शास्त्र-उपनिषद् की जननी, ज्ञान-विज्ञान-प्रदायिनी॥ जयति जय गायत्री माता॥",
-        "english": "Aadi-Shakti Tum Alakh Niranjan, Jag-Paalan-Kartri | Ved-Shaastra-Upanishad Ki Janani, Gyaan-Vigyaan-Pradaayini || Jayati Jay Gayatri Mata ||"
-      },
-      {
-        "timestampSec": 75,
-        "devanagari": "हंस वाहिनी श्वेत वसना, पुस्तक वीणा धारी। बुद्धि विवेक प्रकाशिनि, तम-अज्ञान विहारी॥ जयति जय गायत्री माता॥",
-        "english": "Hans Vaahini Shwet Vasana, Pustak Veena Dhaari | Buddhi Vivek Prakashini, Tam-Agyaan Vihaari || Jayati Jay Gayatri Mata ||"
-      },
-      {
-        "timestampSec": 115,
-        "devanagari": "जो जन ध्यावे पावे विद्या, सुख शान्ति अपार। पाप ताप सब मिट जावे, मिले मोक्ष का द्वार॥ जयति जय गायत्री माता॥",
-        "english": "Jo Jan Dhyave Paave Vidya, Sukh Shaanti Apaar | Paap Taap Sab Mit Jaave, Mile Moksh Ka Dwaar || Jayati Jay Gayatri Mata ||"
-      },
-      {
-        "timestampSec": 155,
-        "devanagari": "गायत्रीजी की आरती, जो नित नियम से गावे। ब्रह्मज्ञान का दीपक, हृदय में प्रकटावे॥ जयति जय गायत्री माता॥",
-        "english": "Gayatreeji Ki Aarti, Jo Nit Niyam Se Gaave | Brahmagyaan Ka Deepak, Hridaya Mein Prakataave || Jayati Jay Gayatri Mata ||"
-      }
-    ],
-    "updatedAt": "2026-11-09T11:07:23.366609Z"
-  },
-  {
-    "id": "aarti_khatu_shyam",
-    "title": "Om Jai Shri Shyam Hare",
-    "hindiTitle": "ॐ जय श्री श्याम हरे",
-    "deity": "Lord Khatu Shyam Ji",
-    "category": "Aarti",
-    "durationSec": 210,
-    "localAssetPath": "audio/temple_bell.wav",
-    "remoteStreamUrl": "https://actions.google.com/sounds/v1/spiritual/temple_bell.ogg",
-    "significance": "Aarti of Baba Shyam (Barbarika / Haare Ka Sahara) worshipped at Khatu Dham for unfailing grace.",
-    "lyrics": [
-      {
-        "timestampSec": 0,
-        "devanagari": "ॐ जय श्री श्याम हरे, बाबा जय श्री श्याम हरे। खाटू धाम विराजे, अनुपम रूप धरे॥ ॐ जय श्री श्याम हरे॥",
-        "english": "Om Jai Shri Shyam Hare, Baba Jai Shri Shyam Hare | Khaatu Dhaam Viraaje, Anupam Roop Dhare || Om Jai Shri Shyam Hare ||"
-      },
-      {
-        "timestampSec": 35,
-        "devanagari": "रतन जड़ित सिंहासन, चँवर ढुरैं प्यारे। गल मोतियन की माला, शीश मुकुट साजे॥ ॐ जय श्री श्याम हरे॥",
-        "english": "Ratan Jadit Singhaasan, Chanvar Dhurein Pyaare | Gal Motiyan Ki Maala, Sheesh Mukut Saaje || Om Jai Shri Shyam Hare ||"
-      },
-      {
-        "timestampSec": 70,
-        "devanagari": "केसर तिलक सुहावे, मोरछड़ी हाथे। हारे के सहारे बाबा, दया करो माथे॥ ॐ जय श्री श्याम हरे॥",
-        "english": "Kesar Tilak Suhaave, Morchhadhi Haathe | Haare Ke Sahaare Baba, Daya Karo Maathe || Om Jai Shri Shyam Hare ||"
-      },
-      {
-        "timestampSec": 105,
-        "devanagari": "शीश दान जो दीन्हो, कृष्ण वचन पायो। लखदातार कहावे, जग में नाम छायो॥ ॐ जय श्री श्याम हरे॥",
-        "english": "Sheesh Daan Jo Deenho, Krishna Vachan Paayo | Lakhdaataar Kahaave, Jag Mein Naam Chhaayo || Om Jai Shri Shyam Hare ||"
-      },
-      {
-        "timestampSec": 145,
-        "devanagari": "आरती श्याम पिया की, जो कोई गावे। दुःख दारिद्र मिटे सब, मनवांछित फल पावे॥ ॐ जय श्री श्याम हरे॥",
-        "english": "Aarti Shyam Piya Ki, Jo Koi Gaave | Dukh Daaridra Mite Sab, Manvaanchhit Phal Paave || Om Jai Shri Shyam Hare ||"
-      }
-    ],
-    "updatedAt": "2026-11-09T11:07:25.123695Z"
-  },
-  {
-    "id": "aarti_ganga",
-    "title": "Om Jai Gange Mata",
-    "hindiTitle": "ॐ जय गंगे माता",
-    "deity": "Maa Ganga",
-    "category": "Aarti",
-    "durationSec": 220,
-    "localAssetPath": "audio/temple_bell.wav",
-    "remoteStreamUrl": "https://actions.google.com/sounds/v1/spiritual/temple_bell.ogg",
-    "significance": "Sung at Haridwar, Varanasi, and Rishikesh ghats honoring the sacred Ganga for spiritual purification.",
-    "lyrics": [
-      {
-        "timestampSec": 0,
-        "devanagari": "ॐ जय गंगे माता, मैया जय गंगे माता। जो नर तुमको ध्याता, मनवांछित फल पाता॥ ॐ जय गंगे माता॥",
-        "english": "Om Jai Gange Mata, Maiya Jai Gange Mata | Jo Nar Tumko Dhyata, Manvaanchhit Phal Paata || Om Jai Gange Mata ||"
-      },
-      {
-        "timestampSec": 35,
-        "devanagari": "चन्द्र-सी ज्योति तुम्हारी, जल निर्मल आता। शरण पड़े की लज्जा, राखो हे माता॥ ॐ जय गंगे माता॥",
-        "english": "Chandra-Si Jyoti Tumhaari, Jal Nirmal Aata | Sharan Pade Ki Lajja, Raakho He Mata || Om Jai Gange Mata ||"
-      },
-      {
-        "timestampSec": 70,
-        "devanagari": "भागीरथ ने तप कीन्हो, सुरलोक से लाया। शिव के शीश जटा में, तूने आसन पाया॥ ॐ जय गंगे माता॥",
-        "english": "Bhaagirath Ne Tap Keenho, Surlok Se Laaya | Shiv Ke Sheesh Jata Mein, Toone Aasan Paaya || Om Jai Gange Mata ||"
-      },
-      {
-        "timestampSec": 105,
-        "devanagari": "सप्त सिन्धु दरशावे, पावन निर्मल धार। जन-जन का पाप मिटावे, कर दे भव से पार॥ ॐ जय गंगे माता॥",
-        "english": "Sapt Sindhu Darshaave, Paavan Nirmal Dhaar | Jan-Jan Ka Paap Mitaave, Kar De Bhav Se Paar || Om Jai Gange Mata ||"
-      },
-      {
-        "timestampSec": 145,
-        "devanagari": "गंगा मैया की आरती, जो नर-नारी गावे। अमर धाम को पावे, जन्म-मरण मिट जावे॥ ॐ जय गंगे माता॥",
-        "english": "Ganga Maiya Ki Aarti, Jo Nar-Naari Gaave | Amar Dhaam Ko Paave, Janm-Maran Mit Jaave || Om Jai Gange Mata ||"
-      }
-    ],
-    "updatedAt": "2026-11-09T11:07:25.544367Z"
+    "updatedAt": "2026-11-09T11:45:04.743823+00:00"
   }
 ]

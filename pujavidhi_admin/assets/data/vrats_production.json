@@ -16,7 +16,26 @@
       "Chant Vishnu Sahasranama or Om Namo Bhagavate Vasudevaya.",
       "Break fast during Dwadashi Parana Muhurat next morning."
     ],
-    "updatedAt": "2026-11-09T11:07:40.786809Z"
+    "updatedAt": "2026-11-09T11:45:11.960116+00:00"
+  },
+  {
+    "id": "ekadashi_mokshada",
+    "name": "Mokshada Ekadashi (Gita Jayanti)",
+    "hindiName": "मोक्षदा एकादशी एवं गीता जयंती",
+    "date": "2026-12-09T00:00:00Z",
+    "type": "Ekadashi",
+    "deity": "Lord Krishna & Vishnu",
+    "paranaTiming": "Next day: 07:02 AM to 09:14 AM",
+    "significance": "Celebrated on Margashirsha Shukla Ekadashi, the day Lord Krishna delivered Shrimad Bhagavad Gita to Arjuna.",
+    "kathaTitle": "कथा: मोक्षदा एकादशी का पितृ-तारक महात्म्य",
+    "kathaContent": "प्राचीन चम्पक नगर के धर्मात्मा राजा वैखानस ने स्वप्न में अपने पिता को यमलोक की यातनाएं भोगते देखा। दुःखी होकर राजा पर्वत मुनि के आश्रम पहुंचे। मुनि ने बताया कि पूर्वजन्म के पाप कर्मों के कारण पिता को यह दुर्गति मिली है। पर्वत मुनि के आदेशानुसार राजा ने सपरिवार मोक्षदा एकादशी का विधिपूर्वक उपवास किया और उसका पुण्य अपने पिता को समर्पित किया। पुण्य प्रभाव से राजा के पिता तत्काल यमलोक की यातनाओं से मुक्त होकर दिव्य विमान से स्वर्गलोक पधारे।",
+    "rules": [
+      "Recite entire Bhagavad Gita or Chapter 12 and 15.",
+      "Offer Tulsi, yellow flowers and panchamrit to Krishna.",
+      "Do charity to poor and cows.",
+      "Complete fast from grains."
+    ],
+    "updatedAt": "2026-11-09T11:45:13.711128+00:00"
   },
   {
     "id": "pradosh_som",
@@ -35,7 +54,7 @@
       "Light ghee lamps in Shiva temple.",
       "Recite Shiva Chalisa or Mahamrityunjaya Mantra."
     ],
-    "updatedAt": "2026-11-09T11:07:42.769004Z"
+    "updatedAt": "2026-11-09T11:45:15.433416+00:00"
   },
   {
     "id": "sankashti_chaturthi",
@@ -54,15 +73,15 @@
       "Offer Arghya to the Moon with raw milk, water, and chandan.",
       "Break fast with satvik prasad."
     ],
-    "updatedAt": "2026-11-09T11:07:44.566511Z"
+    "updatedAt": "2026-11-09T11:45:17.181485+00:00"
   },
   {
     "id": "purnima_satyanarayan",
     "name": "Margashirsha Purnima Vrat",
-    "hindiName": "पूर्णिमा व्रत एवं सत्यनारायण कथा",
-    "date": "2026-11-21T00:00:00Z",
+    "hindiName": "मार्गशीर्ष पूर्णिमा व्रत (दत्तात्रेय जयंती)",
+    "date": "2026-12-14T00:00:00Z",
     "type": "Purnima",
-    "deity": "Bhagwan Satyanarayan & Maa Lakshmi",
+    "deity": "Bhagwan Satyanarayan & Bhagwan Dattatreya",
     "paranaTiming": "Full Day Fast, Prasad after Sandhya Katha",
     "significance": "Purnima brings divine abundance, family happiness, and fulfillment of deep wishes with Satyanarayan Katha.",
     "kathaTitle": "कथा: श्री सत्यनारायण महात्म्य",
@@ -72,31 +91,13 @@
       "Offer Panchamrit and roasted wheat flour (Panjiri) prasad.",
       "Light 5 or 11 diyas at home entrance and Tulsi plant."
     ],
-    "updatedAt": "2026-11-09T11:07:46.313834Z"
-  },
-  {
-    "id": "amavasya_pitru",
-    "name": "Margashirsha Amavasya (Pitru Tarpana)",
-    "hindiName": "मार्गशीर्ष अमावस्या (पितृ तर्पण)",
-    "date": "2026-12-05T00:00:00Z",
-    "type": "Amavasya",
-    "deity": "Lord Vishnu & Pitru Devas",
-    "paranaTiming": "After Midday Tarpana: 01:15 PM",
-    "significance": "Bestowing peace, ancestral blessings, and freedom from Pitru Dosh through charity and sacred baths.",
-    "kathaTitle": "महात्म्य: अमावस्या पितृ तर्पण",
-    "kathaContent": "गरुड़ पुराण के अनुसार अमावस्या तिथि पर पितृगण अपने वंशजों के घर के द्वार पर आते हैं और जल व अन्न की आशा रखते हैं। इस दिन पीपल के वृक्ष में जल चढ़ाने, काले तिल दान करने और ब्राह्मण या निर्धनों को भोजन कराने से सात पीढ़ियों के पितृ तृप्त होकर सुख-समृद्धि का आशीर्वाद देते हैं।",
-    "rules": [
-      "Offer water with black sesame seeds (Kala Til) facing South.",
-      "Water the Peepal tree and light a mustard oil diya at sunset.",
-      "Feed cows, dogs, and crows with satvik food."
-    ],
-    "updatedAt": "2026-11-09T11:07:48.059470Z"
+    "updatedAt": "2026-11-09T11:45:17.632698+00:00"
   },
   {
     "id": "somwar_shiv_vrat",
     "name": "Somwar Shiva Vrat",
     "hindiName": "सोमवार शिव व्रत",
-    "date": "2026-11-11T00:00:00Z",
+    "date": "2026-11-16T00:00:00Z",
     "type": "Somwar",
     "deity": "Lord Shiva",
     "paranaTiming": "Evening aarti after sunset",
@@ -108,6 +109,6 @@
       "Bathe Shiva Lingam with water and offer 3-leaf Belpatra.",
       "Recite Somwar Vrat Katha in evening."
     ],
-    "updatedAt": "2026-11-09T11:07:49.825146Z"
+    "updatedAt": "2026-11-09T11:45:19.371476+00:00"
   }
 ]

@@ -1,628 +1,269 @@
 [
   {
-    "id": "chhath_puja",
-    "title": "Chhath Mahaparva Vidhi",
-    "hindiTitle": "छठ महापर्व विधि",
-    "deity": "Bhagwan Surya & Chhathi Maiya",
-    "festivalTag": "Chhath",
-    "regionalTag": "Bihar & Eastern UP",
-    "estimatedMinutes": 45,
-    "significance": "Ancient Vedic Mahaparva dedicated to Sun God Surya and Shashthi Devi for vitality, purity, and family well-being.",
-    "sankalpText": "ॐ विष्णुर्विष्णुर्विष्णुः अद्यैतस्य ब्रह्मणोऽह्नि द्वितीयपरार्धे श्रीश्वेतवाराहकल्पे वैवस्वतमन्वन्तरे मम सर्वपापक्षयपूर्वकं आरोग्याय श्रीसूर्यनारायण प्रीतये छठपूजनमहं करिष्ये।",
-    "samagriList": [
+    "id": "diwali_lakshmi_puja",
+    "title": "Deepavali Maha Lakshmi-Ganesh Puja",
+    "hindiTitle": "दीपावली महालक्ष्मी एवं गणेश पूजन",
+    "durationMinutes": 45,
+    "difficulty": "Traditional Vedic",
+    "significance": "Conducted on Kartik Amavasya during Pradosh Kaal / Nishita Kaal to welcome Goddess Lakshmi, Lord Ganesha and Kuber for eternal light and prosperity.",
+    "samagri": [
       {
-        "name": "Soop (Bamboo winnow)",
-        "quantity": "2 units",
-        "category": "Essential",
-        "isChecked": false
+        "item": "Clay Murti of Lakshmi & Ganesh",
+        "quantity": "1 Pair",
+        "category": "Murtis",
+        "isAvailable": true
       },
       {
-        "name": "Daura (Bamboo basket)",
-        "quantity": "1 unit",
-        "category": "Essential",
-        "isChecked": false
-      },
-      {
-        "name": "Thekua (Wheat & jaggery prasadam)",
-        "quantity": "1 bowl",
+        "item": "Pure Desi Cow Ghee",
+        "quantity": "250 gm",
         "category": "Offering",
-        "isChecked": false
+        "isAvailable": true
       },
       {
-        "name": "Sugarcane with leaves (Ganna)",
-        "quantity": "5 stalks",
-        "category": "Offering",
-        "isChecked": false
+        "item": "Earthen Diyas (Mitti ke Diye)",
+        "quantity": "21 or 51",
+        "category": "Pooja Utensils",
+        "isAvailable": true
       },
       {
-        "name": "Radish, Ginger & Turmeric plants",
-        "quantity": "Fresh bunch",
-        "category": "Essential",
-        "isChecked": false
+        "item": "Cotton Wicks (Batti)",
+        "quantity": "1 Packet",
+        "category": "Pooja Utensils",
+        "isAvailable": true
       },
       {
-        "name": "Raw Milk & Gangajal in copper lota",
-        "quantity": "500 ml",
+        "item": "Roli / Kumkum & Akshat (Clean Rice)",
+        "quantity": "50 gm each",
+        "category": "Sacred Powders",
+        "isAvailable": true
+      },
+      {
+        "item": "Ganga Jal (Holy Water)",
+        "quantity": "1 Bottle",
         "category": "Pavitra Jal",
-        "isChecked": false
+        "isAvailable": true
       },
       {
-        "name": "Clay Diyas & Camphor",
-        "quantity": "21 diyas",
-        "category": "Dhoop-Deep",
-        "isChecked": false
+        "item": "Panchamrit (Milk, Curd, Ghee, Honey, Sugar)",
+        "quantity": "1 Small Bowl",
+        "category": "Abhishekam",
+        "isAvailable": true
       },
       {
-        "name": "Roli, Sindoor & Akshat",
-        "quantity": "1 packet each",
-        "category": "Offering",
-        "isChecked": false
-      }
-    ],
-    "steps": [
-      {
-        "stepNumber": 1,
-        "title": "Nahay Khay (Purification)",
-        "description": "Take ritual bath in flowing river, clean cooking area, prepare Satvik bottle gourd sabzi and rice.",
-        "mantra": "ॐ अपवित्रः पवित्रो वा सर्वावस्थां गतोऽपि वा। यः स्मरेत्पुण्डरीकाक्षं स बाह्याभ्यन्तरः शुचिः॥"
+        "item": "Fresh Flowers & Lotus (Kamal Gatta)",
+        "quantity": "1 Bunch + 2 Lotuses",
+        "category": "Flora",
+        "isAvailable": true
       },
       {
-        "stepNumber": 2,
-        "title": "Kharna (Sweet Offering)",
-        "description": "Observe day-long nirjala fast. At dusk, offer Rasiya (jaggery kheer) and Roti to Surya & Chhathi Maiya, then accept prasad.",
-        "mantra": "ॐ सूर्याय नमः। ॐ षष्ठी देव्यै नमः।"
-      },
-      {
-        "stepNumber": 3,
-        "title": "Sandhya Arghya (Setting Sun)",
-        "description": "Assemble Daura with Thekua and seasonal fruits at ghat. Stand in waist-deep water to offer milk and water to setting Surya.",
-        "mantra": "एहि सूर्य सहस्त्रांशो तेजोराशे जगत्पते। अनुकम्पय मां भक्त्या गृहाणार्घ्यं दिवाकर॥"
-      },
-      {
-        "stepNumber": 4,
-        "title": "Usha Arghya (Rising Sun & Paran)",
-        "description": "Return to ghat before dawn. Offer morning Arghya to the rising Sun, seek blessings, and break 36-hour fast with ginger and water.",
-        "mantra": "ॐ नमो भगवते श्रीसूर्याय नमः। आदित्याय विद्महे प्रभाकराय धीमहि तन्नः सूर्यः प्रचोदयात्॥"
-      }
-    ],
-    "updatedAt": "2026-11-09T11:07:27.310620Z"
-  },
-  {
-    "id": "pongal_puja",
-    "title": "Thai Pongal Harvest Vidhi",
-    "hindiTitle": "थाई पोंगल विधि",
-    "deity": "Surya Bhagwan & Nature",
-    "festivalTag": "Pongal",
-    "regionalTag": "Tamil Nadu & South India",
-    "estimatedMinutes": 35,
-    "significance": "Celebrates the sun entering Makara rasi (harvest abundance) with overflow of sweet milk and rice in traditional brass pots.",
-    "sankalpText": "ॐ तत्सत् अद्य शुभे शोभने मुहूर्ते सूर्य नारायण प्रीत्यर्थं थाई पोंगल नैवेद्य समर्पणं करिष्ये।",
-    "samagriList": [
-      {
-        "name": "New Clay/Brass Pot (Pongal Paanai)",
-        "quantity": "1 unit",
-        "category": "Essential",
-        "isChecked": false
-      },
-      {
-        "name": "Newly Harvested Raw Rice",
-        "quantity": "1 kg",
-        "category": "Offering",
-        "isChecked": false
-      },
-      {
-        "name": "Jaggery (Vellam) & Pure Ghee",
-        "quantity": "500g each",
-        "category": "Prasadam",
-        "isChecked": false
-      },
-      {
-        "name": "Fresh Turmeric Plant with leaves (Manjal)",
-        "quantity": "2 bunches",
-        "category": "Sacred Plant",
-        "isChecked": false
-      },
-      {
-        "name": "Sugarcane Stalks (Karumbu)",
-        "quantity": "2 stalks",
-        "category": "Offering",
-        "isChecked": false
-      },
-      {
-        "name": "Cashews & Cardamom (Elachi)",
-        "quantity": "50g each",
-        "category": "Prasadam",
-        "isChecked": false
-      },
-      {
-        "name": "Banana Leaves (Vazhai Ilai)",
-        "quantity": "4 large",
-        "category": "Essential",
-        "isChecked": false
-      }
-    ],
-    "steps": [
-      {
-        "stepNumber": 1,
-        "title": "Kolam Design & Pot Preparation",
-        "description": "Draw auspicious sunrise Kolam with rice flour in open courtyard. Tie fresh turmeric plant around the neck of the pot.",
-        "mantra": "ॐ भूर्भुवः स्वः तत्सवितुर्वरेण्यं भर्गो देवस्य धीमहि धियो यो नः प्रचोदयात्॥"
-      },
-      {
-        "stepNumber": 2,
-        "title": "Milk Boiling (Pongalo Pongal)",
-        "description": "Pour fresh milk and water into pot facing East. As milk boils and overflows, family chants 'Pongalo Pongal' celebrating prosperity.",
-        "mantra": "ॐ श्रीं ह्रीं क्लीं सूर्यदेवाय नमः।"
-      },
-      {
-        "stepNumber": 3,
-        "title": "Sakkarai Pongal Cooking",
-        "description": "Add roasted moong dal, freshly harvested rice, melted jaggery, cardamom, and ghee-roasted cashews into the pot.",
-        "mantra": "अन्नपतेऽन्नस्य नो देह्यनमीवस्य शुष्मिणः। प्रप्रदातारं तारिष ऊर्जं नो धेहि द्विपदे चतुष्पदे॥"
-      },
-      {
-        "stepNumber": 4,
-        "title": "Surya Samarpanam",
-        "description": "Serve Pongal on banana leaf with sugarcane, betel leaves, and coconuts facing the sun god with camphor aarti.",
-        "mantra": "ॐ सूर्याय नमः, ॐ मित्राय नमः, ॐ खगाय नमः, ॐ पूष्णे नमः।"
-      }
-    ],
-    "updatedAt": "2026-11-09T11:07:29.203489Z"
-  },
-  {
-    "id": "durga_puja",
-    "title": "Durga Puja & Sandhi Puja Vidhi",
-    "hindiTitle": "दुर्गा पूजा एवं संधि पूजा",
-    "deity": "Maa Durga (Mahishasuramardini)",
-    "festivalTag": "Durga Puja",
-    "regionalTag": "Bengal & Pan-India",
-    "estimatedMinutes": 60,
-    "significance": "Invoking Adi Shakti's triumph over Mahishasura during the exact junction of Ashtami and Navami tithi with 108 lotuses and 108 diyas.",
-    "sankalpText": "ॐ अद्य आश्विनमासे शुक्लपक्षे महाष्टम्यामवभृथस्नाने श्रीजगद्धात्री दुर्गाप्रीत्यर्थं सन्धिपूजां करिष्ये।",
-    "samagriList": [
-      {
-        "name": "Blue/Red Lotus Flowers (Padma)",
-        "quantity": "108 flowers",
-        "category": "Essential Offering",
-        "isChecked": false
-      },
-      {
-        "name": "Clay Pradeep (Diyas) with Mustard Oil/Ghee",
-        "quantity": "108 units",
-        "category": "Deepam",
-        "isChecked": false
-      },
-      {
-        "name": "Sari & Chunri with Zari border",
-        "quantity": "1 set",
+        "item": "Janeu (Sacred Thread) & Moli (Kalawa)",
+        "quantity": "2 sets",
         "category": "Vastra",
-        "isChecked": false
+        "isAvailable": true
       },
       {
-        "name": "Dhuno, Dhoop & Frankincense",
-        "quantity": "1 bowl",
-        "category": "Aarti",
-        "isChecked": false
+        "item": "Kheel & Batashe (Puffed Rice Prasad)",
+        "quantity": "250 gm",
+        "category": "Prasad",
+        "isAvailable": true
       },
       {
-        "name": "Belpatra garland (108 leaves)",
-        "quantity": "1 mala",
+        "item": "Silver Coin or Currency Note",
+        "quantity": "1 Coin",
         "category": "Offering",
-        "isChecked": false
-      },
-      {
-        "name": "Khichuri, Labra & Payesh Bhog",
-        "quantity": "Freshly cooked",
-        "category": "Maha Bhog",
-        "isChecked": false
+        "isAvailable": true
       }
     ],
     "steps": [
       {
         "stepNumber": 1,
-        "title": "Chandi Path & Dhyanam",
-        "description": "Chant the Devi Suktam from Rigveda and recite Durga Saptashati chapters meditating on her ten-armed form.",
-        "mantra": "सर्वमङ्गलमाङ्गल्ये शिवे सर्वार्थसाधिके। शरण्ये त्र्यम्बके गौरि नारायणि नमोऽस्तु ते॥"
+        "title": "Pavitrikaran (आत्मशुद्धि)",
+        "mantra": "ॐ अपवित्रः पवित्रो वा सर्वावस्थां गतोऽपि वा। यः स्मरेत्पुण्डरीकाक्षं स बाह्याभ्यन्तरः शुचिः॥",
+        "instructions": "Sprinkle Ganga Jal over yourself, the puja altar, and all samagri with kusha grass or flower."
       },
       {
         "stepNumber": 2,
-        "title": "Lighting of 108 Pradeeps",
-        "description": "Light 108 earthen lamps representing the dispelling of demonic darkness during Sandhi Kaal.",
-        "mantra": "ॐ जयन्ती मङ्गला काली भद्रकाली कपालिनी। दुर्गा क्षमा शिवा धात्री स्वाहा स्वधा नमोऽस्तु ते॥"
+        "title": "Achaman (आचमन)",
+        "mantra": "ॐ केशवाय नमः। ॐ नारायणाय नमः। ॐ माधवाय नमः। ॐ हृषीकेशाय नमः।",
+        "instructions": "Take a spoonful of pure water in right palm, sip three times uttering holy names of Vishnu, then wash hands."
       },
       {
         "stepNumber": 3,
-        "title": "108 Lotus Offering",
-        "description": "Offer 108 lotus blooms to the lotus feet of Mother Durga while chanting the 108 names of Durga.",
-        "mantra": "ॐ महादेव्यै च विद्महे दुर्गFetchायै धीमहि तन्नो देवी प्रचोदयात्॥"
+        "title": "Deepa Prajwalan & Sankalp (संकल्प)",
+        "mantra": "मम सकलदुरितोपशमनपूर्वक धनधान्य-समृद्धि-प्राप्त्यर्थं श्री महालक्ष्मी-गणेश प्रीत्यर्थं पूजनं करिष्ये।",
+        "instructions": "Light the master Ghee Akhand Diya. Take Akshat, water, flower and coin in hand and state family name and gotra."
       },
       {
         "stepNumber": 4,
-        "title": "Dhunuchi Dance & Maha Aarti",
-        "description": "Perform vibrant traditional Dhunuchi aarti to the rhythmic beats of Dhak drums.",
-        "mantra": "कर्पूरगौरं करुणावतारं संसारसारं भुजगेन्द्रहारम्। सदा वसन्तं हृदयारविन्दे भवं भवानीसहितं नमामि॥"
+        "title": "Ganesh Sthapana & Shodashopachara",
+        "mantra": "ॐ गणानां त्वा गणपतिं हवामहे प्रियाणां त्वा प्रियपतिं हवामहे निधीनां त्वा निधिपतिं हवामहे वसो मम।",
+        "instructions": "Bathe Ganesha with Panchamrit then Ganga Jal, apply chandan, offer Janeu, Durva grass, and Modak."
+      },
+      {
+        "stepNumber": 5,
+        "title": "Maha Lakshmi Avahana & Pujan",
+        "mantra": "ॐ श्रीं ह्रीं क्लीं त्रिभुवन महालक्ष्म्यै अस्मांक दारिद्र्य नाशय प्रसीद प्रसीद हीं क्लीं श्रीं ॐ।",
+        "instructions": "Offer lotus flower, red vastra, Shringar samagri, Kheel Batashe, and light 11 Ghee diyas around the altar."
+      },
+      {
+        "stepNumber": 6,
+        "title": "Aarti & Kshama Prarthana",
+        "mantra": "ॐ जय लक्ष्मी माता... आवाहनं न जानामि न जानामि विसर्जनम्। पूजां चैव न जानामि क्षमस्व परमेश्वरि॥",
+        "instructions": "Sing Maha Lakshmi & Ganesh Aarti standing. Seek forgiveness for any ritual shortcomings with folded hands."
       }
     ],
-    "updatedAt": "2026-11-09T11:07:31.013007Z"
+    "updatedAt": "2026-11-09T11:45:06.532780+00:00"
   },
   {
     "id": "maha_shivratri",
     "title": "Maha Shivratri 4-Prahar Rudrabhishek",
-    "hindiTitle": "महाशिवरात्रि चार प्रहर पूजा",
-    "deity": "Lord Shiva (Mahadev)",
-    "festivalTag": "Shivratri",
-    "regionalTag": "Pan-India",
-    "estimatedMinutes": 50,
-    "significance": "Observing the cosmic wedding night of Shiva & Parvati through 4-Prahar Abhishekam with milk, curd, honey, and sugarcane juice.",
-    "sankalpText": "ॐ नमः शिवाय अद्य महाशिवरात्रौ चतुःप्रहर शिवपूजनम् अकालमृत्युहरणं सर्वपापक्षयपूर्वकं करिष्ये।",
-    "samagriList": [
+    "hindiTitle": "महाशिवरात्रि चार प्रहर रुद्राभिषेक",
+    "durationMinutes": 60,
+    "difficulty": "Vedic Ritual",
+    "significance": "Observed on Phalguna Krishna Chaturdashi. Night-long four prahar worship of Lord Shiva granting salvation and destruction of all accumulated sins.",
+    "samagri": [
       {
-        "name": "Bilva Patra (Bel leaves, intact 3-leaflets)",
-        "quantity": "108 leaves",
-        "category": "Essential",
-        "isChecked": false
+        "item": "Pure Cow Milk, Curd, Ghee, Honey & Sugar",
+        "quantity": "Panchamrit set",
+        "category": "Abhishekam",
+        "isAvailable": true
       },
       {
-        "name": "Panchamrit (Milk, Curd, Ghee, Honey, Sugar)",
+        "item": "Belpatra (Bilva leaves, unbroken)",
+        "quantity": "21 or 108 leaves",
+        "category": "Flora",
+        "isAvailable": true
+      },
+      {
+        "item": "Dhatura flower and fruit",
+        "quantity": "2 pieces",
+        "category": "Flora",
+        "isAvailable": true
+      },
+      {
+        "item": "White Sandalwood (Shwet Chandan)",
+        "quantity": "25 gm",
+        "category": "Sacred Powders",
+        "isAvailable": true
+      },
+      {
+        "item": "Bhasma / Vibhuti",
+        "quantity": "1 Packet",
+        "category": "Sacred Powders",
+        "isAvailable": true
+      },
+      {
+        "item": "Ganga Jal & Gulab Jal",
         "quantity": "500 ml",
-        "category": "Abhishek",
-        "isChecked": false
-      },
-      {
-        "name": "Bhang, Dhatura & Akanda flowers",
-        "quantity": "1 set",
-        "category": "Offering",
-        "isChecked": false
-      },
-      {
-        "name": "Chandan & Vibhuti (Bhasma)",
-        "quantity": "1 box",
-        "category": "Tilak",
-        "isChecked": false
-      },
-      {
-        "name": "Sugarcane Juice (Ikshu Rasa)",
-        "quantity": "250 ml",
-        "category": "Abhishek",
-        "isChecked": false
-      },
-      {
-        "name": "Gangajal in Copper Shringi",
-        "quantity": "1 litre",
         "category": "Pavitra Jal",
-        "isChecked": false
-      }
-    ],
-    "steps": [
-      {
-        "stepNumber": 1,
-        "title": "First Prahar (Dugdha Abhishek)",
-        "description": "Bathe the Shiva Lingam with pure cow milk and chant the Mahamrityunjaya Mantra.",
-        "mantra": "त्र्यम्बकं यजामहे सुगन्धिं पुष्टिवर्धनम्। उर्वारुकमिव बन्धनान्मृत्योर्मुक्षीय मामृतात्॥"
+        "isAvailable": true
       },
       {
-        "stepNumber": 2,
-        "title": "Second Prahar (Dadhi Abhishek)",
-        "description": "Offer thick curd and chant the Shiva Panchakshara Stotram for peace of mind.",
-        "mantra": "नागेन्द्रहाराय त्रिलोचनाय भस्माङ्गरागाय महेश्वराय। नित्याय शुद्धाय दिगम्बराय तस्मै नकाराय नमः शिवाय॥"
-      },
-      {
-        "stepNumber": 3,
-        "title": "Third Prahar (Ghrita & Madhu)",
-        "description": "Abhishek with melted cow ghee and sweet forest honey for health and vitality.",
-        "mantra": "ॐ तत्पुरुषाय विद्महे महादेवाय धीमहि तन्नो रुद्रः प्रचोदयात्॥"
-      },
-      {
-        "stepNumber": 4,
-        "title": "Fourth Prahar & Bilvashtakam",
-        "description": "Decorate with bhasma, dhatura, and offer 108 Belpatra with Bilvashtakam recitation.",
-        "mantra": "त्रिदलं त्रिगुणाकारं त्रिनेत्रं च त्रियायुधम्। त्रिजन्मपापसंहारं एकबिल्वं शिवार्पणम्॥"
-      }
-    ],
-    "updatedAt": "2026-11-09T11:07:31.506581Z"
-  },
-  {
-    "id": "diwali_lakshmi_puja",
-    "title": "Deepavali Maha Lakshmi-Ganesh Puja",
-    "hindiTitle": "दीपावली महालक्ष्मी-गणेश पूजन",
-    "deity": "Maa Lakshmi & Lord Ganesha",
-    "festivalTag": "Diwali",
-    "regionalTag": "Pan-India",
-    "estimatedMinutes": 45,
-    "significance": "Pradosh and Nishita Kaal Diwali invocation of Goddess Mahalakshmi and Lord Ganesha for wealth, auspiciousness, and accounts opening.",
-    "sankalpText": "ॐ अस्यां दीपावल्यां प्रदोषकाले महालक्ष्मी-गणपति-कुबेर-सरस्वती प्रीतये पूजनमहं करिष्ये।",
-    "samagriList": [
-      {
-        "name": "Lakshmi-Ganesh Clay Idols (New)",
-        "quantity": "1 pair",
-        "category": "Murtis",
-        "isChecked": false
-      },
-      {
-        "name": "Silver Coins (Shubh Labh)",
-        "quantity": "2 coins",
-        "category": "Auspicious",
-        "isChecked": false
-      },
-      {
-        "name": "Kheel & Batasha",
-        "quantity": "500g",
-        "category": "Traditional Bhog",
-        "isChecked": false
-      },
-      {
-        "name": "Clay Diyas & Pure Ghee/Mustard Oil",
-        "quantity": "21 diyas",
-        "category": "Deepam",
-        "isChecked": false
-      },
-      {
-        "name": "Kamalgatta (Lotus seeds) & Roli",
-        "quantity": "1 pack",
-        "category": "Offering",
-        "isChecked": false
-      },
-      {
-        "name": "Chopda / Bahi-Khata (New Books)",
-        "quantity": "1 notebook",
-        "category": "Business",
-        "isChecked": false
-      }
-    ],
-    "steps": [
-      {
-        "stepNumber": 1,
-        "title": "Kalash Sthapana & Shubh Labh",
-        "description": "Fill copper kalash with Gangajal, place mango leaves, betel nut, and coconut topped with red cloth. Draw Swastik with Roli.",
-        "mantra": "कलशस्य मुखे विष्णुः कण्ठे रुद्रः समाश्रितः। मूले त्वस्य स्थितो ब्रह्मा मध्ये मातृगणाः स्मृताः॥"
-      },
-      {
-        "stepNumber": 2,
-        "title": "Ganesh & Navagraha Pujan",
-        "description": "Invoke Lord Ganesha first with durva grass, yellow flowers, and modak for obstacle-free year.",
-        "mantra": "गजाननं भूतगणादिसेवितं कपित्थजम्बूफलचारुभक्षणम्। उमासुतं शोकविनाशकारकं नमामि विघ्नेश्वरपादपङ्कजम्॥"
-      },
-      {
-        "stepNumber": 3,
-        "title": "Maha Lakshmi Shodashopachara",
-        "description": "Offer 16 devotional offerings including lotus flower, attar, kheel-batasha, and silver coin to Mata Lakshmi.",
-        "mantra": "ॐ श्रीं ह्रीं क्लीं त्रिभुवन महालक्ष्म्यै अस्मांक दारिद्र्य नाशय प्रचुर धन देहि क्लीं ह्रीं श्रीं ॐ॥"
-      },
-      {
-        "stepNumber": 4,
-        "title": "Deep Malika (Lighting of Lamps)",
-        "description": "Light the main 4-wick ghee diya (Yamadeep) followed by 21 home diyas chanting Lakshmi Aarti.",
-        "mantra": "शुभं करोति कल्याणमारोग्यं धनसंपदा। शत्रुबुद्धिविनाशाय दीपज्योतिर्नमोऽस्तु ते॥"
-      }
-    ],
-    "updatedAt": "2026-11-09T11:07:33.294528Z"
-  },
-  {
-    "id": "janmashtami_puja",
-    "title": "Janmashtami Krishna Janmotsav Vidhi",
-    "hindiTitle": "कृष्ण जन्माष्टमी जन्मोत्सव विधि",
-    "deity": "Laddu Gopal / Shri Krishna",
-    "festivalTag": "Janmashtami",
-    "regionalTag": "Pan-India & Braj",
-    "estimatedMinutes": 40,
-    "significance": "Midnight Nishita Kaal celebration of Bhagwan Shri Krishna's avatar with Panchamrit snan, swing (Jhula), and Makhan-Mishri bhog.",
-    "sankalpText": "ॐ अद्य भाद्रपदमासे कृष्णपक्षे अष्टम्यां तिथौ रोहिणी नक्षत्रे निशीथकाले श्रीकृष्ण जन्माष्टमी जन्मोत्सव पूजनं करिष्ये।",
-    "samagriList": [
-      {
-        "name": "Laddu Gopal Brass Murti & Jhula",
+        "item": "Janeyu & White Cloth",
         "quantity": "1 set",
-        "category": "Murtis",
-        "isChecked": false
-      },
-      {
-        "name": "Peacock Feather (Mor Pankh)",
-        "quantity": "1 feather",
-        "category": "Shringar",
-        "isChecked": false
-      },
-      {
-        "name": "Makhan & Mishri in clay handi",
-        "quantity": "1 bowl",
-        "category": "Maha Bhog",
-        "isChecked": false
-      },
-      {
-        "name": "Dhaniya Panjiri & Charanamrit",
-        "quantity": "1 bowl each",
-        "category": "Prasadam",
-        "isChecked": false
-      },
-      {
-        "name": "Cucumber (Khira) with stem",
-        "quantity": "1 unit",
-        "category": "Janma Ritual",
-        "isChecked": false
-      },
-      {
-        "name": "Tulsi Dal & Yellow Flowers",
-        "quantity": "Fresh leaves",
-        "category": "Offering",
-        "isChecked": false
+        "category": "Vastra",
+        "isAvailable": true
       }
     ],
     "steps": [
       {
         "stepNumber": 1,
-        "title": "Avatar Pratiksha & Bhajan",
-        "description": "Fast till midnight singing Krishna bhajans and chanting Hare Krishna Mahamantra.",
-        "mantra": "हरे कृष्ण हरे कृष्ण कृष्ण कृष्ण हरे हरे। हरे राम हरे राम राम राम हरे हरे॥"
+        "title": "Dhyanam & Avahanam",
+        "mantra": "ध्यायेन्नित्यं महेशं रजतगिरिनिभं चारुचन्द्रावतंसं रत्नाकल्पोज्ज्वलाङ्गं परशुमृगवराभीतिहस्तं प्रसन्नम्।",
+        "instructions": "Meditate upon Bhagwan Bholenath seated atop Mount Kailash with crescent moon adorning His locks."
       },
       {
         "stepNumber": 2,
-        "title": "Midnight Birth (Nal Chhedan)",
-        "description": "Cut cucumber stem at exact 12:00 AM representing the divine emergence of Lord Krishna from Mother Devaki.",
-        "mantra": "नन्द घर आनन्द भयो जय कन्हैया लाल की। हाथी घोड़ा पालकी जय कन्हैया लाल की॥"
+        "title": "Panchamrit Abhishek",
+        "mantra": "ॐ त्र्यम्बकं यजामहे सुगन्धिं पुष्टिवर्धनम्। उर्वारुकमिव बन्धनान्मृत्योर्मुक्षीय मामृतात्॥",
+        "instructions": "Pour milk, curd, ghee, honey, and sugarcane juice over the Shiva Lingam continuously while chanting Mahamrityunjaya."
       },
       {
         "stepNumber": 3,
-        "title": "Panchamrit Abhishek & Shringar",
-        "description": "Bathe Laddu Gopal in conch shell with milk, curd, honey, and gangajal. Dress in yellow pitambar with Mor Pankh.",
-        "mantra": "कस्तूरीतिलकं ललाटपटले वक्षःस्थले कौस्तुभं नासाग्रे वरमौक्तिकं करतले वेणुं करे कङ्कणम्॥"
+        "title": "Belpatra Samarpana",
+        "mantra": "त्रिदलं त्रिगुणाकारं त्रिनेत्रं च त्रियायुधम्। त्रिजन्मपापसंहारं बिल्वपत्रं शिवार्पणम्॥",
+        "instructions": "Offer sacred 3-leaf Belpatra with smooth side facing Lingam, chanting Bilvashtakam."
       },
       {
         "stepNumber": 4,
-        "title": "Jhulan & Bhog Arpan",
-        "description": "Place Gopal in decorated swing, gently rock while offering fresh butter, mishri, and tulsi leaves.",
-        "mantra": "त्वदीयं वस्तु गोविन्द तुभ्यमेव समर्पये। गृहाण सुमुखो भूत्वा प्रसीद परमेश्वर॥"
+        "title": "Bhasma & Shringar",
+        "mantra": "ॐ नमः शिवाय।",
+        "instructions": "Apply sacred Tripundra bhasma, offer Dhatura, Janeu, white flowers and perform Karpura Aarti."
       }
     ],
-    "updatedAt": "2026-11-09T11:07:35.316905Z"
-  },
-  {
-    "id": "ganesh_chaturthi",
-    "title": "Ganesh Chaturthi Sthapana & Visarjan",
-    "hindiTitle": "गणेश चतुर्थी स्थापना एवं विसर्जन",
-    "deity": "Lord Ganesha",
-    "festivalTag": "Ganesh Utsav",
-    "regionalTag": "Maharashtra & Pan-India",
-    "estimatedMinutes": 50,
-    "significance": "10-day celebration welcoming Bappa into homes on Bhadrapada Shukla Chaturthi with 21 modaks and durva grass.",
-    "sankalpText": "ॐ अद्य भाद्रपद शुक्लपक्षे चतुर्थ्यां तिथौ श्रीसिद्धिबुद्धिसहित श्रीमहागणपति प्रीत्यर्थं प्राणप्रतिष्ठापनं पूजनं च करिष्ये।",
-    "samagriList": [
-      {
-        "name": "Eco-friendly Clay Ganesha Murti",
-        "quantity": "1 murti",
-        "category": "Murti",
-        "isChecked": false
-      },
-      {
-        "name": "Steamed Ukadiche Modak",
-        "quantity": "21 pieces",
-        "category": "Maha Bhog",
-        "isChecked": false
-      },
-      {
-        "name": "Durva Grass (21 knots)",
-        "quantity": "21 pairs",
-        "category": "Sacred Grass",
-        "isChecked": false
-      },
-      {
-        "name": "Red Hibiscus (Jaswand) Flowers",
-        "quantity": "11 flowers",
-        "category": "Offering",
-        "isChecked": false
-      },
-      {
-        "name": "Sandalwood Paste & Janeu",
-        "quantity": "1 set",
-        "category": "Shringar",
-        "isChecked": false
-      },
-      {
-        "name": "Coconut, Betel leaves & Supari",
-        "quantity": "5 sets",
-        "category": "Tambool",
-        "isChecked": false
-      }
-    ],
-    "steps": [
-      {
-        "stepNumber": 1,
-        "title": "Prana Pratishtha (Consecration)",
-        "description": "Seat Ganesha on a wooden chaurang covered with red silk. Anoint eyes with ghee and chant life-infusing Vedic mantras.",
-        "mantra": "ॐ अस्य प्राणप्रतिष्ठापन मन्त्रस्य ब्रह्मा विष्णु महेश्वरा ऋषयः ऋग्यजुःसामाथर्वाणि छन्दांसि प्राणो देवता॥"
-      },
-      {
-        "stepNumber": 2,
-        "title": "Durva & Jaswand Samarpan",
-        "description": "Offer 21 blades of sacred durva grass reciting Ganesha's 21 holy names along with red hibiscus.",
-        "mantra": "ॐ गणाधिपाय नमः, ॐ उमापुत्राय नमः, ॐ विघ्ननाशनाय नमः, ॐ विनायकाय नमः, ॐ ईशपुत्राय नमः॥"
-      },
-      {
-        "stepNumber": 3,
-        "title": "Naivedya Arpan (21 Modaks)",
-        "description": "Offer 21 steaming hot jaggery and coconut modaks topped with pure cow ghee.",
-        "mantra": "ॐ भूर्भुवः स्वः ॐ अमृतोपस्तरणमसि स्वाहा। सत्यं त्वर्तेन परिषञ्चामि।"
-      },
-      {
-        "stepNumber": 4,
-        "title": "Uttarpuja & Visarjan",
-        "description": "Perform farewell aarti, shift idol slightly forward, and immerse in water chanting 'Ganpati Bappa Morya Pudhchya Varshi Lavkar Ya'.",
-        "mantra": "यान्तु देवगणाः सर्वे पूजामादाय मामकीम्। इष्टकामसमृद्ध्यर्थं पुनरागमनाय च॥"
-      }
-    ],
-    "updatedAt": "2026-11-09T11:07:37.090001Z"
+    "updatedAt": "2026-11-09T11:45:08.387061+00:00"
   },
   {
     "id": "satyanarayan_vrat",
     "title": "Shri Satyanarayan Vrat Katha & Vidhi",
-    "hindiTitle": "सत्यनारायण व्रत कथा एवं विधि",
-    "deity": "Lord Vishnu (Satyanarayan)",
-    "festivalTag": "Purnima",
-    "regionalTag": "Pan-India",
-    "estimatedMinutes": 60,
-    "significance": "Performed on Purnima, Thursdays, or milestone events to invoke truth, family harmony, and fulfillment of deep wishes.",
-    "sankalpText": "ॐ अद्य पौर्णमास्यां तिथौ ममाखिल मनोरथ सिद्ध्यर्थं सत्यनारायण पूजनं कथाश्रवणं च करिष्ये।",
-    "samagriList": [
+    "hindiTitle": "श्री सत्यनारायण व्रत कथा एवं विधि",
+    "durationMinutes": 50,
+    "difficulty": "Household Family Puja",
+    "significance": "Observed on Purnima, Thursdays, or major family milestones to bring truth, harmony, wealth, and fulfillment of deep wishes.",
+    "samagri": [
       {
-        "name": "Banana Tree Stems for Mandap Pillars",
-        "quantity": "4 stems",
-        "category": "Mandap",
-        "isChecked": false
+        "item": "Roasted Wheat Flour Prasad (Panjiri)",
+        "quantity": "500 gm",
+        "category": "Prasad",
+        "isAvailable": true
       },
       {
-        "name": "Panchamrit & Tulsi Leaves",
-        "quantity": "1 vessel",
-        "category": "Abhishek",
-        "isChecked": false
+        "item": "Ripe Bananas & Seasonal Fruits",
+        "quantity": "5 varieties",
+        "category": "Prasad",
+        "isAvailable": true
       },
       {
-        "name": "Sawa Sawa Prasadam (Wheat flour roasted with ghee and sugar)",
-        "quantity": "1.25 kg",
-        "category": "Maha Prasadam",
-        "isChecked": false
+        "item": "Tulsi Dal (Basil leaves)",
+        "quantity": "21 leaves",
+        "category": "Flora",
+        "isAvailable": true
       },
       {
-        "name": "Ripe Bananas cut with sugar",
-        "quantity": "1 dozen",
-        "category": "Prasadam",
-        "isChecked": false
+        "item": "Yellow Cloth for Altar",
+        "quantity": "1.25 meters",
+        "category": "Vastra",
+        "isAvailable": true
       },
       {
-        "name": "Yellow Silk Cloth & Supari",
-        "quantity": "1 meter",
-        "category": "Mandap",
-        "isChecked": false
+        "item": "Banana Tree Stems (Mandap)",
+        "quantity": "4 pieces",
+        "category": "Decoration",
+        "isAvailable": true
       },
       {
-        "name": "Shri Satyanarayan Katha Book (5 Chapters)",
-        "quantity": "1 book",
-        "category": "Scripture",
-        "isChecked": false
+        "item": "Supari (Betel nuts)",
+        "quantity": "9 pieces (Navagraha)",
+        "category": "Pooja Utensils",
+        "isAvailable": true
       }
     ],
     "steps": [
       {
         "stepNumber": 1,
-        "title": "Mandap Sthapana & Kalash",
-        "description": "Construct four-pillared mandap with banana stems. Establish Kalash and draw Navagraha mandala with colored powders.",
-        "mantra": "ॐ नारायणाय विद्महे वासुदेवाय धीमहि तन्नो विष्णुः प्रचोदयात्॥"
+        "title": "Kalash Sthapana & Navagraha Pujan",
+        "mantra": "ॐ कलशस्य मुखे विष्णुः कण्ठे रुद्रः समाश्रितः। मूले तत्र स्थितो ब्रह्मा मध्ये मातृगणाः स्मृताः॥",
+        "instructions": "Establish water-filled copper Kalash with mango leaves and coconut wrapped in red cloth."
       },
       {
         "stepNumber": 2,
-        "title": "Panchamrit Snan & Shaligram Pujan",
-        "description": "Bathe the sacred Shaligram or Vishnu idol with Panchamrit and Ganga water, applying yellow sandalwood.",
-        "mantra": "शान्ताकारं भुजगशयनं पद्मनाभं सुरेशं विश्वाधारं गगनसदृशं मेघवर्णं शुभाङ्गम्॥"
+        "title": "Satyanarayan Avahana",
+        "mantra": "ॐ नमो भगवते वासुदेवाय नमः।",
+        "instructions": "Place Shaligram or Vishnu Murti on yellow cloth and offer Panchamrit, Chandan, and Tulsi leaves."
       },
       {
         "stepNumber": 3,
-        "title": "Shri Satyanarayan Katha (5 Chapters)",
-        "description": "Gather family to listen to all five sacred chapters illustrating the miraculous power of truth and faith.",
-        "mantra": "सत्यमेवेश्वरो लोके सत्ये धर्मः सदाश्रितः। सत्यमूलानि सर्वाणि सत्यान्नास्ति परं पदम्॥"
+        "title": "5 Adhyaya Vrat Katha Shravan",
+        "mantra": "सत्यमेवेश्वरो लोके सत्यं पद्माश्रिता सदा।",
+        "instructions": "Recite or listen to the five divine chapters with family seated in silence."
       },
       {
         "stepNumber": 4,
-        "title": "Maha Aarti & Prasadam Distribution",
-        "description": "Perform Vishnu Aarti with camphor, distribute wheat panjiri, bananas, and panchamrit to all participants.",
-        "mantra": "ॐ जय जगदीश हरे, स्वामी जय जगदीश हरे। भक्त जनों के संकट, दास जनों के संकट, क्षण में दूर करे॥"
+        "title": "Panjiri Prasad Vitaran & Aarti",
+        "mantra": "जय जगदीशा हरे...",
+        "instructions": "Offer Panjiri, Charanamrit and distribute prasad to all family members."
       }
     ],
-    "updatedAt": "2026-11-09T11:07:38.857583Z"
+    "updatedAt": "2026-11-09T11:45:10.176724+00:00"
   }
 ]

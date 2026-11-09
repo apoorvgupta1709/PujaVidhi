@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import '../core/app_theme.dart';
 import '../providers/auth_provider.dart';
 import '../providers/app_provider.dart';
+import '../services/localization_service.dart';
 import 'login_screen.dart';
 
 class RegisterScreen extends StatefulWidget {
@@ -68,7 +69,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
       if (!mounted) return;
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text("भक्त पंजीकरण सफल! Welcome, ${_nameCtrl.text.trim()}."),
+          content: Text("Welcome, ${_nameCtrl.text.trim()}! Devotee registration successful."),
           backgroundColor: Colors.green[800],
         ),
       );
@@ -80,14 +81,48 @@ class _RegisterScreenState extends State<RegisterScreen> {
     }
   }
 
+  Future<void> _handleGoogleSignUp() async {
+    setState(() {
+      _isSubmitting = true;
+      _errorMessage = null;
+    });
+
+    final authProv = Provider.of<AuthProvider>(context, listen: false);
+    final appProv = Provider.of<AppProvider>(context, listen: false);
+
+    final success = await authProv.signInWithGoogle();
+
+    if (!mounted) return;
+    setState(() => _isSubmitting = false);
+
+    if (success) {
+      if (_familyCtrl.text.trim().isNotEmpty) {
+        await appProv.setFamilyName(_familyCtrl.text.trim());
+      }
+      if (!mounted) return;
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text("Welcome, ${authProv.displayName}! Registered with Google successfully."),
+          backgroundColor: Colors.green[800],
+        ),
+      );
+      Navigator.of(context).pop();
+    } else {
+      setState(() {
+        _errorMessage = authProv.errorMessage ?? "Google registration failed.";
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
+    final loc = Provider.of<LocalizationService>(context);
     final isDark = Theme.of(context).brightness == Brightness.dark;
 
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "नया भक्त पंजीकरण (Create Account)",
+          loc.tr('register_title'),
           style: GoogleFonts.poppins(fontSize: 16, fontWeight: FontWeight.bold),
         ),
       ),
@@ -129,7 +164,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            "सनातनी भक्त परिवार",
+                            loc.languageCode == 'en' ? "Sanatan Devotee Suite" : "सनातनी भक्त परिवार",
                             style: GoogleFonts.martel(
                               color: AppTheme.divineGold,
                               fontSize: 16,
@@ -138,7 +173,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           ),
                           const SizedBox(height: 2),
                           Text(
-                            "Create your account to sync bookmarks, daily japa records, and personalized cards.",
+                            loc.languageCode == 'en'
+                                ? "Create your cloud account to sync bookmarks, daily japa records, and personalized cards."
+                                : "अपनी जप साधना, बुकमार्क और व्यक्तिगत शुभकामना कार्ड्स सिंक करने हेतु खाता बनाएं।",
                             style: GoogleFonts.poppins(color: Colors.white70, fontSize: 11),
                           ),
                         ],
@@ -148,7 +185,65 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 ),
               ),
 
-              const SizedBox(height: 24),
+              const SizedBox(height: 20),
+
+              // 1. One-Tap Google Sign-Up Button
+              SizedBox(
+                width: double.infinity,
+                height: 50,
+                child: OutlinedButton(
+                  onPressed: _isSubmitting ? null : _handleGoogleSignUp,
+                  style: OutlinedButton.styleFrom(
+                    backgroundColor: isDark ? Colors.white.withValues(alpha: 0.05) : Colors.white,
+                    side: BorderSide(color: isDark ? Colors.white24 : Colors.grey.shade300, width: 1.2),
+                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Image.network(
+                        'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/768px-Google_%22G%22_logo.svg.png',
+                        width: 20,
+                        height: 20,
+                        errorBuilder: (context, error, stackTrace) => const Icon(Icons.g_mobiledata, color: Colors.blue, size: 24),
+                      ),
+                      const SizedBox(width: 12),
+                      Text(
+                        loc.languageCode == 'en' ? "Sign Up with Google" : "Google के साथ पंजीकरण करें",
+                        style: GoogleFonts.poppins(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w600,
+                          color: isDark ? Colors.white : Colors.black87,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+
+              const SizedBox(height: 18),
+
+              // Or Divider
+              Row(
+                children: [
+                  const Expanded(child: Divider()),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 14),
+                    child: Text(
+                      loc.languageCode == 'en' ? "OR FILL DETAILS" : "अथवा विवरण भरें",
+                      style: GoogleFonts.poppins(
+                        color: AppTheme.textMuted,
+                        fontSize: 11,
+                        fontWeight: FontWeight.bold,
+                        letterSpacing: 0.8,
+                      ),
+                    ),
+                  ),
+                  const Expanded(child: Divider()),
+                ],
+              ),
+
+              const SizedBox(height: 18),
 
               if (_errorMessage != null)
                 Container(
@@ -178,7 +273,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 controller: _nameCtrl,
                 textCapitalization: TextCapitalization.words,
                 decoration: InputDecoration(
-                  labelText: "भक्त का नाम (Devotee Full Name)",
+                  labelText: loc.tr('full_name'),
                   hintText: "e.g. Ramesh Kumar Sharma",
                   prefixIcon: const Icon(Icons.person_outline, color: AppTheme.marigold),
                   border: OutlineInputBorder(borderRadius: BorderRadius.circular(14)),
@@ -198,10 +293,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 controller: _familyCtrl,
                 textCapitalization: TextCapitalization.words,
                 decoration: InputDecoration(
-                  labelText: "परिवार का नाम (Family Name for Greeting Cards)",
+                  labelText: loc.tr('family_name'),
                   hintText: "e.g. Sharma Parivar, Gupta Parivar",
                   prefixIcon: const Icon(Icons.family_restroom, color: AppTheme.marigold),
-                  helperText: "Appears on your 4K festival cards and daily suvichar shares",
+                  helperText: loc.languageCode == 'en'
+                      ? "Appears on your 4K festival cards and daily suvichar shares"
+                      : "यह आपके 4K त्योहार कार्ड और सुविचार पर सप्रेम भेंट के रूप में दिखेगा",
                   helperStyle: GoogleFonts.poppins(fontSize: 10.5, color: AppTheme.textMuted),
                   border: OutlineInputBorder(borderRadius: BorderRadius.circular(14)),
                   filled: true,
@@ -216,7 +313,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 controller: _emailCtrl,
                 keyboardType: TextInputType.emailAddress,
                 decoration: InputDecoration(
-                  labelText: "ईमेल पता (Email Address)",
+                  labelText: loc.tr('email'),
                   hintText: "devotee@example.com",
                   prefixIcon: const Icon(Icons.email_outlined, color: AppTheme.marigold),
                   border: OutlineInputBorder(borderRadius: BorderRadius.circular(14)),
@@ -237,7 +334,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 controller: _passwordCtrl,
                 obscureText: _obscurePassword,
                 decoration: InputDecoration(
-                  labelText: "पासवर्ड (Password)",
+                  labelText: loc.tr('password'),
                   prefixIcon: const Icon(Icons.lock_outline, color: AppTheme.marigold),
                   suffixIcon: IconButton(
                     icon: Icon(_obscurePassword ? Icons.visibility_off : Icons.visibility, color: Colors.grey),
@@ -261,7 +358,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 controller: _confirmPasswordCtrl,
                 obscureText: _obscureConfirmPassword,
                 decoration: InputDecoration(
-                  labelText: "पासवर्ड की पुष्टि (Confirm Password)",
+                  labelText: loc.tr('confirm_password'),
                   prefixIcon: const Icon(Icons.lock_reset, color: AppTheme.marigold),
                   suffixIcon: IconButton(
                     icon: Icon(_obscureConfirmPassword ? Icons.visibility_off : Icons.visibility, color: Colors.grey),
@@ -303,7 +400,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             const Icon(Icons.person_add_rounded, size: 20),
                             const SizedBox(width: 8),
                             Text(
-                              "खाता बनाएं (Register Account)",
+                              loc.tr('create_account'),
                               style: GoogleFonts.poppins(fontSize: 15, fontWeight: FontWeight.bold),
                             ),
                           ],
@@ -318,7 +415,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    "पहले से खाता है? ",
+                    loc.languageCode == 'en' ? "Already have an account? " : "पहले से खाता है? ",
                     style: GoogleFonts.poppins(fontSize: 13, color: AppTheme.textMuted),
                   ),
                   InkWell(
@@ -328,7 +425,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       );
                     },
                     child: Text(
-                      "यहाँ लॉगिन करें (Sign In)",
+                      loc.languageCode == 'en' ? "Sign In" : "यहाँ लॉगिन करें",
                       style: GoogleFonts.poppins(
                         fontSize: 13,
                         fontWeight: FontWeight.bold,

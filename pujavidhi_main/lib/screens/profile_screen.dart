@@ -7,14 +7,15 @@ import '../providers/app_provider.dart';
 import '../providers/japa_provider.dart';
 import '../providers/gita_provider.dart';
 import '../providers/ishta_devta_provider.dart';
-import 'bhakt_prime_screen.dart';
+import '../services/localization_service.dart';
 import 'login_screen.dart';
 import 'register_screen.dart';
+import 'bhakt_prime_screen.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
 
-  void _showEditFamilyNameDialog(BuildContext context, AppProvider appProv) {
+  void _showEditFamilyNameDialog(BuildContext context, AppProvider appProv, LocalizationService loc) {
     final ctrl = TextEditingController(text: appProv.familyName);
     showDialog(
       context: context,
@@ -25,7 +26,7 @@ class ProfileScreen extends StatelessWidget {
             const Icon(Icons.family_restroom, color: AppTheme.divineGold),
             const SizedBox(width: 8),
             Text(
-              "परिवार का नाम बदलें",
+              loc.languageCode == 'en' ? "Family Name Signature" : "परिवार का नाम",
               style: GoogleFonts.poppins(fontSize: 16, fontWeight: FontWeight.bold),
             ),
           ],
@@ -35,16 +36,17 @@ class ProfileScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              "यह नाम आपके 4K ग्रीटिंग कार्ड्स और दैनिक सुविचार में प्रदर्शित होगा:",
-              style: GoogleFonts.poppins(fontSize: 12.5, color: AppTheme.textMuted),
+              loc.languageCode == 'en'
+                  ? "This signature appears at the bottom of 4K festival cards and daily suvichar shares (e.g., 'Sharma Parivar')."
+                  : "यह नाम आपके ग्रीटिंग कार्ड और सुविचार पर सप्रेम भेंट के रूप में दिखेगा।",
+              style: GoogleFonts.poppins(fontSize: 12, color: AppTheme.textMuted),
             ),
             const SizedBox(height: 14),
             TextField(
               controller: ctrl,
               textCapitalization: TextCapitalization.words,
               decoration: InputDecoration(
-                labelText: "Family Name",
-                hintText: "e.g. Sharma Parivar, Gupta Family",
+                labelText: loc.tr('family_name'),
                 border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
               ),
             ),
@@ -53,7 +55,7 @@ class ProfileScreen extends StatelessWidget {
         actions: [
           TextButton(
             onPressed: () => Navigator.of(ctx).pop(),
-            child: const Text("Cancel"),
+            child: Text(loc.tr('cancel')),
           ),
           ElevatedButton(
             style: ElevatedButton.styleFrom(
@@ -69,14 +71,14 @@ class ProfileScreen extends StatelessWidget {
                 Navigator.of(ctx).pop();
               }
             },
-            child: const Text("Save"),
+            child: Text(loc.tr('save')),
           ),
         ],
       ),
     );
   }
 
-  void _showChangeDeityDialog(BuildContext context, IshtaDevtaProvider ishtaProv) {
+  void _showChangeDeityDialog(BuildContext context, IshtaDevtaProvider ishtaProv, LocalizationService loc) {
     showModalBottomSheet(
       context: context,
       shape: const RoundedRectangleBorder(
@@ -90,12 +92,14 @@ class ProfileScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                "अपने इष्ट देव का चयन करें (Choose Ishta Devta)",
+                loc.tr('choose_ishta_devta'),
                 style: GoogleFonts.poppins(fontSize: 16, fontWeight: FontWeight.bold),
               ),
               const SizedBox(height: 6),
               Text(
-                "आपके मुख्य पृष्ठ और प्रार्थनाओं को इनके अनुरूप संरेखित किया जाएगा।",
+                loc.languageCode == 'en'
+                    ? "Your home dashboard and daily darshan will be aligned with this deity."
+                    : "आपके मुख्य पृष्ठ और प्रार्थनाओं को इनके अनुरूप संरेखित किया जाएगा।",
                 style: GoogleFonts.poppins(fontSize: 12, color: AppTheme.textMuted),
               ),
               const SizedBox(height: 16),
@@ -111,7 +115,7 @@ class ProfileScreen extends StatelessWidget {
                         Text(deity.iconSymbol, style: const TextStyle(fontSize: 16)),
                         const SizedBox(width: 6),
                         Text(
-                          deity.name,
+                          loc.languageCode == 'en' ? deity.name : deity.hindiName,
                           style: GoogleFonts.poppins(
                             fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
                             fontSize: 13,
@@ -138,23 +142,31 @@ class ProfileScreen extends StatelessWidget {
     );
   }
 
-  void _showSignOutConfirm(BuildContext context, AuthProvider authProv) {
+  void _showSignOutConfirm(BuildContext context, AuthProvider authProv, LocalizationService loc) {
     showDialog(
       context: context,
       builder: (ctx) => AlertDialog(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-        title: Text(
-          "लॉग आउट करें? (Sign Out)",
-          style: GoogleFonts.poppins(fontSize: 16, fontWeight: FontWeight.bold),
+        title: Row(
+          children: [
+            const Icon(Icons.logout, color: Colors.redAccent),
+            const SizedBox(width: 8),
+            Text(
+              loc.tr('sign_out'),
+              style: GoogleFonts.poppins(fontSize: 16, fontWeight: FontWeight.bold),
+            ),
+          ],
         ),
         content: Text(
-          "क्या आप वाकई अपने खाते से लॉग आउट करना चाहते हैं? आप पुनः कभी भी लॉगिन कर सकते हैं।",
+          loc.languageCode == 'en'
+              ? "Are you sure you want to sign out from your Devotee Account? Your device will return to guest mode."
+              : "क्या आप अपने भक्त खाते से लॉग आउट करना चाहते हैं? आपका ऐप अतिथि मोड में वापस आ जाएगा।",
           style: GoogleFonts.poppins(fontSize: 13, color: AppTheme.textMuted),
         ),
         actions: [
           TextButton(
             onPressed: () => Navigator.of(ctx).pop(),
-            child: const Text("Cancel"),
+            child: Text(loc.tr('cancel')),
           ),
           ElevatedButton(
             style: ElevatedButton.styleFrom(
@@ -167,11 +179,15 @@ class ProfileScreen extends StatelessWidget {
               await authProv.signOut();
               if (context.mounted) {
                 ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(content: Text("लॉग आउट सफल। You are now in Guest Mode.")),
+                  SnackBar(
+                    content: Text(loc.languageCode == 'en'
+                        ? "Signed out. You are now in Guest Mode."
+                        : "लॉग आउट सफल। आप अब अतिथि मोड में हैं।"),
+                  ),
                 );
               }
             },
-            child: const Text("Sign Out"),
+            child: Text(loc.tr('sign_out')),
           ),
         ],
       ),
@@ -185,6 +201,7 @@ class ProfileScreen extends StatelessWidget {
     final japaProv = Provider.of<JapaProvider>(context);
     final gitaProv = Provider.of<GitaProvider>(context);
     final ishtaProv = Provider.of<IshtaDevtaProvider>(context);
+    final loc = Provider.of<LocalizationService>(context);
     final isDark = Theme.of(context).brightness == Brightness.dark;
 
     final isAuthenticated = authProv.isAuthenticated;
@@ -194,7 +211,7 @@ class ProfileScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "भक्त प्रोफ़ाइल (Devotee Profile)",
+          loc.tr('profile_title'),
           style: GoogleFonts.poppins(fontSize: 17, fontWeight: FontWeight.bold),
         ),
       ),
@@ -230,13 +247,13 @@ class ProfileScreen extends StatelessWidget {
                 children: [
                   Row(
                     children: [
-                      // Avatar
+                      // Avatar: User Google photo or letter
                       Container(
                         width: 70,
                         height: 70,
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
-                          gradient: RadialGradient(
+                          gradient: const RadialGradient(
                             colors: [
                               AppTheme.divineGold,
                               AppTheme.sacredMaroon,
@@ -247,17 +264,36 @@ class ProfileScreen extends StatelessWidget {
                             BoxShadow(color: Colors.black38, blurRadius: 8),
                           ],
                         ),
-                        child: Center(
-                          child: Text(
-                            isAuthenticated
-                                ? (user.displayName.isNotEmpty ? user.displayName[0].toUpperCase() : "भ")
-                                : "🕉️",
-                            style: GoogleFonts.poppins(
-                              color: Colors.white,
-                              fontSize: 30,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
+                        child: ClipOval(
+                          child: (user.photoUrl != null && user.photoUrl!.isNotEmpty)
+                              ? Image.network(
+                                  user.photoUrl!,
+                                  width: 70,
+                                  height: 70,
+                                  fit: BoxFit.cover,
+                                  errorBuilder: (context, error, stackTrace) => Center(
+                                    child: Text(
+                                      user.displayName.isNotEmpty ? user.displayName[0].toUpperCase() : "🕉️",
+                                      style: GoogleFonts.poppins(
+                                        color: Colors.white,
+                                        fontSize: 28,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                  ),
+                                )
+                              : Center(
+                                  child: Text(
+                                    isAuthenticated
+                                        ? (user.displayName.isNotEmpty ? user.displayName[0].toUpperCase() : "D")
+                                        : "🕉️",
+                                    style: GoogleFonts.poppins(
+                                      color: Colors.white,
+                                      fontSize: 30,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                ),
                         ),
                       ),
 
@@ -289,7 +325,9 @@ class ProfileScreen extends StatelessWidget {
                             ),
                             const SizedBox(height: 3),
                             Text(
-                              isAuthenticated ? user.email : "Guest Devotee (Offline Mode)",
+                              isAuthenticated
+                                  ? user.email
+                                  : (loc.languageCode == 'en' ? "Guest Devotee (Offline Mode)" : "अतिथि भक्त (ऑफ़लाइन मोड)"),
                               style: GoogleFonts.poppins(
                                 color: Colors.white70,
                                 fontSize: 12,
@@ -313,7 +351,11 @@ class ProfileScreen extends StatelessWidget {
                                 ),
                               ),
                               child: Text(
-                                isAuthenticated ? "सत्यापित भक्त (Verified)" : "अतिथि भक्त (Guest)",
+                                isAuthenticated
+                                    ? (user.provider == 'google.com'
+                                        ? "Google Devotee"
+                                        : loc.tr('cloud_verified'))
+                                    : loc.tr('guest_mode'),
                                 style: GoogleFonts.poppins(
                                   color: isAuthenticated ? Colors.greenAccent : Colors.orangeAccent,
                                   fontSize: 10.5,
@@ -343,7 +385,9 @@ class ProfileScreen extends StatelessWidget {
                           const SizedBox(width: 10),
                           Expanded(
                             child: Text(
-                              "Login to sync Japa history & Gita bookmarks across devices.",
+                              loc.languageCode == 'en'
+                                  ? "Sign in to sync Japa history & Gita bookmarks across devices."
+                                  : "जप साधना और गीता श्लोक सिंक करने के लिए लॉगिन करें।",
                               style: GoogleFonts.poppins(color: Colors.white70, fontSize: 11),
                             ),
                           ),
@@ -359,7 +403,10 @@ class ProfileScreen extends StatelessWidget {
                                 MaterialPageRoute(builder: (_) => const LoginScreen()),
                               );
                             },
-                            child: const Text("Sign In", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 12)),
+                            child: Text(
+                              loc.tr('sign_in'),
+                              style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 12),
+                            ),
                           ),
                         ],
                       ),
@@ -408,30 +455,28 @@ class ProfileScreen extends StatelessWidget {
                           Row(
                             children: [
                               Text(
-                                "भक्त प्राइम पास (Bhakt Prime)",
-                                style: GoogleFonts.poppins(fontSize: 14, fontWeight: FontWeight.bold),
+                                "Bhakt Prime Pass",
+                                style: GoogleFonts.poppins(fontWeight: FontWeight.bold, fontSize: 14),
                               ),
-                              if (appProv.isProUser) ...[
-                                const SizedBox(width: 6),
-                                Container(
-                                  padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
-                                  decoration: BoxDecoration(
-                                    color: AppTheme.divineGold,
-                                    borderRadius: BorderRadius.circular(6),
-                                  ),
-                                  child: const Text(
-                                    "ACTIVE",
-                                    style: TextStyle(color: Colors.black, fontSize: 9, fontWeight: FontWeight.bold),
-                                  ),
+                              const SizedBox(width: 6),
+                              Container(
+                                padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
+                                decoration: BoxDecoration(
+                                  color: appProv.isProUser ? Colors.green : Colors.grey[700],
+                                  borderRadius: BorderRadius.circular(6),
                                 ),
-                              ],
+                                child: Text(
+                                  appProv.isProUser ? "ACTIVE" : "FREE TIER",
+                                  style: const TextStyle(color: Colors.white, fontSize: 9.5, fontWeight: FontWeight.bold),
+                                ),
+                              ),
                             ],
                           ),
                           const SizedBox(height: 2),
                           Text(
                             appProv.isProUser
-                                ? "Ad-free Vedic darshan & watermark-free 4K studio."
-                                : "100% Ad-Free, offline downloads & 4K HD Wallpapers.",
+                                ? (loc.languageCode == 'en' ? "Ad-Free Vedic Experience Active" : "विज्ञापन-मुक्त वैदिक अनुभव सक्रिय")
+                                : (loc.languageCode == 'en' ? "Ad-free experience & uncompressed 4K downloads" : "विज्ञापन-मुक्त अनुभव और 4K डाउनलोड"),
                             style: GoogleFonts.poppins(fontSize: 11, color: AppTheme.textMuted),
                           ),
                         ],
@@ -450,7 +495,10 @@ class ProfileScreen extends StatelessWidget {
                             MaterialPageRoute(builder: (_) => const BhaktPrimeScreen()),
                           );
                         },
-                        child: const Text("Upgrade", style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold)),
+                        child: Text(
+                          loc.languageCode == 'en' ? "Upgrade" : "अपग्रेड",
+                          style: const TextStyle(fontSize: 12, fontWeight: FontWeight.bold),
+                        ),
                       ),
                   ],
                 ),
@@ -463,7 +511,7 @@ class ProfileScreen extends StatelessWidget {
             Align(
               alignment: Alignment.centerLeft,
               child: Text(
-                "आपकी साधना एवं संग्रह (Sadhana & Bookmarks)",
+                loc.tr('spiritual_sadhana'),
                 style: GoogleFonts.poppins(fontSize: 15, fontWeight: FontWeight.bold),
               ),
             ),
@@ -497,7 +545,7 @@ class ProfileScreen extends StatelessWidget {
                           style: GoogleFonts.poppins(fontSize: 22, fontWeight: FontWeight.bold),
                         ),
                         Text(
-                          "माला जप पूर्ण (Japa Malas)",
+                          loc.tr('malas_completed'),
                           style: GoogleFonts.poppins(fontSize: 11, color: AppTheme.textMuted),
                         ),
                       ],
@@ -533,7 +581,7 @@ class ProfileScreen extends StatelessWidget {
                           style: GoogleFonts.poppins(fontSize: 22, fontWeight: FontWeight.bold),
                         ),
                         Text(
-                          "गीता श्लोक सहेजे (Gita Verses)",
+                          loc.tr('verses_bookmarked'),
                           style: GoogleFonts.poppins(fontSize: 11, color: AppTheme.textMuted),
                         ),
                       ],
@@ -549,7 +597,7 @@ class ProfileScreen extends StatelessWidget {
             Align(
               alignment: Alignment.centerLeft,
               child: Text(
-                "व्यक्तिगत धार्मिक प्राथमिकताएं (Preferences)",
+                loc.languageCode == 'en' ? "Personal Preferences" : "व्यक्तिगत प्राथमिकताएं",
                 style: GoogleFonts.poppins(fontSize: 15, fontWeight: FontWeight.bold),
               ),
             ),
@@ -579,15 +627,15 @@ class ProfileScreen extends StatelessWidget {
                       ),
                     ),
                     title: Text(
-                      "इष्ट देव (Ishta Devta)",
+                      loc.tr('ishta_devta'),
                       style: GoogleFonts.poppins(fontWeight: FontWeight.w600, fontSize: 13.5),
                     ),
                     subtitle: Text(
-                      ishtaProv.selectedDeity.name,
+                      loc.languageCode == 'en' ? ishtaProv.selectedDeity.name : ishtaProv.selectedDeity.hindiName,
                       style: GoogleFonts.poppins(fontSize: 12, color: AppTheme.marigold),
                     ),
                     trailing: const Icon(Icons.chevron_right, color: AppTheme.divineGold),
-                    onTap: () => _showChangeDeityDialog(context, ishtaProv),
+                    onTap: () => _showChangeDeityDialog(context, ishtaProv, loc),
                   ),
 
                   const Divider(height: 1),
@@ -604,7 +652,7 @@ class ProfileScreen extends StatelessWidget {
                       child: const Icon(Icons.family_restroom, color: AppTheme.marigold, size: 20),
                     ),
                     title: Text(
-                      "ग्रीटिंग कार्ड परिवार का नाम (Family Name)",
+                      loc.tr('family_name'),
                       style: GoogleFonts.poppins(fontWeight: FontWeight.w600, fontSize: 13.5),
                     ),
                     subtitle: Text(
@@ -612,7 +660,7 @@ class ProfileScreen extends StatelessWidget {
                       style: GoogleFonts.poppins(fontSize: 12, color: AppTheme.marigold),
                     ),
                     trailing: const Icon(Icons.edit_outlined, size: 18, color: AppTheme.divineGold),
-                    onTap: () => _showEditFamilyNameDialog(context, appProv),
+                    onTap: () => _showEditFamilyNameDialog(context, appProv, loc),
                   ),
                 ],
               ),
@@ -626,10 +674,10 @@ class ProfileScreen extends StatelessWidget {
                 width: double.infinity,
                 height: 48,
                 child: OutlinedButton.icon(
-                  onPressed: () => _showSignOutConfirm(context, authProv),
+                  onPressed: () => _showSignOutConfirm(context, authProv, loc),
                   icon: const Icon(Icons.logout, size: 18, color: Colors.redAccent),
                   label: Text(
-                    "खाते से लॉग आउट करें (Sign Out)",
+                    loc.tr('sign_out'),
                     style: GoogleFonts.poppins(color: Colors.redAccent, fontSize: 13, fontWeight: FontWeight.bold),
                   ),
                   style: OutlinedButton.styleFrom(
@@ -648,7 +696,7 @@ class ProfileScreen extends StatelessWidget {
                   },
                   icon: const Icon(Icons.login_rounded, size: 18),
                   label: Text(
-                    "भक्त लॉगिन करें (Sign In)",
+                    loc.tr('sign_in'),
                     style: GoogleFonts.poppins(fontSize: 14, fontWeight: FontWeight.bold),
                   ),
                   style: ElevatedButton.styleFrom(
@@ -668,7 +716,7 @@ class ProfileScreen extends StatelessWidget {
                   },
                   icon: const Icon(Icons.person_add_rounded, size: 18),
                   label: Text(
-                    "नया खाता बनाएं (Create Account)",
+                    loc.tr('create_account'),
                     style: GoogleFonts.poppins(fontSize: 13, fontWeight: FontWeight.w600),
                   ),
                   style: OutlinedButton.styleFrom(

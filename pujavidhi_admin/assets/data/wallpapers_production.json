@@ -1,230 +1,258 @@
 [
   {
-    "id": "wp_mahadev_kailash",
-    "title": "Mahadev Shiva Kailash",
+    "id": "wp_shiva_kailash",
+    "title": "Mahadev Kailash Parvat",
     "deity": "Lord Shiva",
-    "imageUrl": "https://images.unsplash.com/photo-1545063914-a1a6ec821c88?auto=format&fit=crop&w=1400&q=85",
-    "thumbnail": "https://images.unsplash.com/photo-1545063914-a1a6ec821c88?auto=format&fit=crop&w=400&q=80",
-    "mantraSanskrit": "कर्पूरगौरं करुणावतारं संसारसारम् भुजगेन्द्रहारम्। सदावसन्तं हृदयारविन्दे भवं भवानीसहितं नमामि॥",
-    "quoteEnglish": "Om Namah Shivaya. May Lord Shiva bestow ultimate peace, wisdom, and inner strength.",
-    "gradientColors": [
-      "#0F172A",
-      "#1E293B",
-      "#38BDF8"
-    ],
+    "category": "Shiva",
+    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/pujavidhi-app-2026.firebasestorage.app/o/wallpapers%2Fwp_shiva_kailash.jpg?alt=media&token=fac40a48-8f7f-4aae-b569-48b96c10c57d",
+    "mantraSanskrit": "ॐ नमः शिवाय",
     "iconBadge": "🔱",
-    "isFeatured": true,
-    "is4k": true,
-    "downloadsCount": 1840,
-    "category": "Shiva"
+    "gradientColors": [
+      "#0F2027",
+      "#203A43",
+      "#2C5364"
+    ],
+    "downloadsCount": 4520,
+    "updatedAt": "2026-11-09T14:14:55Z"
   },
   {
     "id": "wp_ram_ayodhya",
-    "title": "Shri Ram Ayodhya Dham",
-    "deity": "Shri Ram",
-    "imageUrl": "https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?auto=format&fit=crop&w=1400&q=85",
-    "thumbnail": "https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?auto=format&fit=crop&w=400&q=80",
-    "mantraSanskrit": "रामो राजमणिः सदा विजयते रामं रमेशं भजे। रामेणाभिहता निशाचरचमू रामाय तस्मै नमः॥",
-    "quoteEnglish": "Jai Shri Ram. Maryada Purushottam Bhagwan Ram radiates righteousness and supreme courage.",
-    "gradientColors": [
-      "#78350F",
-      "#B45309",
-      "#F59E0B"
-    ],
+    "title": "Maryada Purushottam Shri Ram",
+    "deity": "Lord Rama",
+    "category": "Rama",
+    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/pujavidhi-app-2026.firebasestorage.app/o/wallpapers%2Fwp_ram_ayodhya.jpg?alt=media&token=647a5a62-b641-4fa2-8116-265edb7c889f",
+    "mantraSanskrit": "श्री राम जय राम जय जय राम",
     "iconBadge": "🏹",
-    "isFeatured": true,
-    "is4k": true,
-    "downloadsCount": 2450,
-    "category": "Ram"
+    "gradientColors": [
+      "#7E191B",
+      "#E65100",
+      "#FFB300"
+    ],
+    "downloadsCount": 5830,
+    "updatedAt": "2026-11-09T14:14:59Z"
   },
   {
     "id": "wp_krishna_vrindavan",
     "title": "Yogeshwar Shri Krishna",
-    "deity": "Shri Krishna",
-    "imageUrl": "https://images.unsplash.com/photo-1606293926075-69a00dbfde81?auto=format&fit=crop&w=1400&q=85",
-    "thumbnail": "https://images.unsplash.com/photo-1606293926075-69a00dbfde81?auto=format&fit=crop&w=400&q=80",
-    "mantraSanskrit": "कस्तूरीतिलकं ललाटपटले वक्षःस्थले कौस्तुभं नासाग्रे वरमौक्तिकं करतले वेणुं करे कङ्कणम्॥",
-    "quoteEnglish": "Radhe Krishna. In every note of His divine flute lies eternal bliss and boundless compassion.",
+    "deity": "Lord Krishna",
+    "category": "Krishna",
+    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/pujavidhi-app-2026.firebasestorage.app/o/wallpapers%2Fwp_krishna_vrindavan.jpg?alt=media&token=212b0d9c-a7fb-4b83-8b74-745260ce26ee",
+    "mantraSanskrit": "हरे कृष्ण हरे राम",
+    "iconBadge": "🦚",
     "gradientColors": [
-      "#1E1B4B",
-      "#312E81",
-      "#6366F1"
+      "#000428",
+      "#004e92",
+      "#F2994A"
     ],
-    "iconBadge": "🪶",
-    "isFeatured": true,
-    "is4k": true,
-    "downloadsCount": 2190,
-    "category": "Krishna"
+    "downloadsCount": 5120,
+    "updatedAt": "2026-11-09T14:15:03Z"
   },
   {
-    "id": "wp_ganesha_siddhivinayak",
-    "title": "Siddhivinayak Ganpati Bappa",
-    "deity": "Bhagwan Ganesha",
-    "imageUrl": "https://images.unsplash.com/photo-1620766182966-c6eb5ed2b788?auto=format&fit=crop&w=1400&q=85",
-    "thumbnail": "https://images.unsplash.com/photo-1620766182966-c6eb5ed2b788?auto=format&fit=crop&w=400&q=80",
-    "mantraSanskrit": "वक्रतुण्ड महाकाय सूर्यकोटि समप्रभ। निर्विघ्नं कुरु मे देव सर्वकार्येषु सर्वदा॥",
-    "quoteEnglish": "Ganpati Bappa Morya. May Vighnaharta Ganesha remove all obstacles and bless with prosperity.",
+    "id": "wp_radha_krishna",
+    "title": "Radha Krishna Prem Darshan",
+    "deity": "Lord Krishna",
+    "category": "Krishna",
+    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/pujavidhi-app-2026.firebasestorage.app/o/wallpapers%2Fwp_radha_krishna.jpg?alt=media&token=147072a7-5986-47b1-9ee6-bb68ecc166b3",
+    "mantraSanskrit": "राधे राधे गोविंद गोविंद राधे",
+    "iconBadge": "🪷",
     "gradientColors": [
-      "#831843",
-      "#9D174D",
-      "#F43F5E"
+      "#3A1C71",
+      "#D76D77",
+      "#FFAF7B"
     ],
+    "downloadsCount": 4910,
+    "updatedAt": "2026-11-09T14:15:08Z"
+  },
+  {
+    "id": "wp_ganesha_siddhi",
+    "title": "Siddhivinayak Ganesha",
+    "deity": "Lord Ganesha",
+    "category": "Ganesha",
+    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/pujavidhi-app-2026.firebasestorage.app/o/wallpapers%2Fwp_ganesha_siddhi.jpg?alt=media&token=8dd9f760-0645-4514-885e-ced4d6eb0756",
+    "mantraSanskrit": "ॐ गं गणपतये नमः",
     "iconBadge": "🐘",
-    "isFeatured": true,
-    "is4k": true,
-    "downloadsCount": 3120,
-    "category": "Ganesha"
+    "gradientColors": [
+      "#780206",
+      "#061161",
+      "#F59E0B"
+    ],
+    "downloadsCount": 6190,
+    "updatedAt": "2026-11-09T14:15:11Z"
   },
   {
     "id": "wp_hanuman_sankatmochan",
-    "title": "Sankat Mochan Mahabali Hanuman",
-    "deity": "Hanuman Ji",
-    "imageUrl": "https://images.unsplash.com/photo-1610484826967-09c5720778c7?auto=format&fit=crop&w=1400&q=85",
-    "thumbnail": "https://images.unsplash.com/photo-1610484826967-09c5720778c7?auto=format&fit=crop&w=400&q=80",
-    "mantraSanskrit": "अतुलितबलधामं हेमशैलाभदेहं दनुजवनकृशानुं ज्ञानिनामग्रगण्यम्। सकलगुणनिधानं वानराणामधीशम्॥",
-    "quoteEnglish": "Jai Bajrangbali. The supreme epitome of devotion, valor, fearlessness and selfless service.",
-    "gradientColors": [
-      "#9A3412",
-      "#C2410C",
-      "#EA580C"
-    ],
+    "title": "Sankat Mochan Hanuman",
+    "deity": "Lord Hanuman",
+    "category": "Hanuman",
+    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/pujavidhi-app-2026.firebasestorage.app/o/wallpapers%2Fwp_hanuman_sankatmochan.jpg?alt=media&token=6252b0ff-3a4a-48a9-b775-359ff43bda39",
+    "mantraSanskrit": "जय बजरंगबली संकटमोचन",
     "iconBadge": "🚩",
-    "isFeatured": true,
-    "is4k": true,
-    "downloadsCount": 2840,
-    "category": "Hanuman"
+    "gradientColors": [
+      "#BF0404",
+      "#DE0000",
+      "#FF8F00"
+    ],
+    "downloadsCount": 7340,
+    "updatedAt": "2026-11-09T14:15:16Z"
+  },
+  {
+    "id": "wp_balaji_tirupati",
+    "title": "Tirupati Balaji Venkateshwara",
+    "deity": "Lord Vishnu",
+    "category": "Vishnu",
+    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/pujavidhi-app-2026.firebasestorage.app/o/wallpapers%2Fwp_balaji_tirupati.jpg?alt=media&token=d38b18d7-6b16-4eaf-b5dc-7d845c071666",
+    "mantraSanskrit": "ॐ नमो नारायणाय",
+    "iconBadge": "🪔",
+    "gradientColors": [
+      "#1F1C18",
+      "#8E0E00",
+      "#FFB300"
+    ],
+    "downloadsCount": 4210,
+    "updatedAt": "2026-11-09T14:15:20Z"
+  },
+  {
+    "id": "wp_durga_mahisasura",
+    "title": "Maa Durga Mahisasuramardini",
+    "deity": "Maa Durga",
+    "category": "Devi",
+    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/pujavidhi-app-2026.firebasestorage.app/o/wallpapers%2Fwp_durga_mahisasura.jpg?alt=media&token=57593b77-35a1-40ad-8d38-738cbe44ef78",
+    "mantraSanskrit": "सर्वमङ्गलमाङ्गल्ये शिवे सर्वार्थसाधिके",
+    "iconBadge": "🌺",
+    "gradientColors": [
+      "#870000",
+      "#190A05",
+      "#F7971E"
+    ],
+    "downloadsCount": 4890,
+    "updatedAt": "2026-11-09T14:15:24Z"
+  },
+  {
+    "id": "wp_lakshmi_divine",
+    "title": "Maa Mahalakshmi Dhan Dayini",
+    "deity": "Maa Lakshmi",
+    "category": "Devi",
+    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/pujavidhi-app-2026.firebasestorage.app/o/wallpapers%2Fwp_lakshmi_divine.jpg?alt=media&token=1d9005ab-7652-4579-b584-9497d415f1ed",
+    "mantraSanskrit": "ॐ श्रीं ह्रीं क्लीं श्री सिद्ध लक्ष्म्यै नमः",
+    "iconBadge": "🪙",
+    "gradientColors": [
+      "#F37335",
+      "#FDC830",
+      "#FFE000"
+    ],
+    "downloadsCount": 5640,
+    "updatedAt": "2026-11-09T14:15:29Z"
+  },
+  {
+    "id": "wp_saraswati_vidya",
+    "title": "Maa Saraswati Vidya Dayini",
+    "deity": "Maa Saraswati",
+    "category": "Devi",
+    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/pujavidhi-app-2026.firebasestorage.app/o/wallpapers%2Fwp_saraswati_vidya.jpg?alt=media&token=f3df8555-3b6d-486f-97bf-2e4120ca6963",
+    "mantraSanskrit": "या कुन्देन्दुतुषारहारधवला या शुभ्रवस्त्रावृता",
+    "iconBadge": "🎶",
+    "gradientColors": [
+      "#ECE9E6",
+      "#FFFFFF",
+      "#FFB300"
+    ],
+    "downloadsCount": 3950,
+    "updatedAt": "2026-11-09T14:15:34Z"
+  },
+  {
+    "id": "wp_jagannath_puri",
+    "title": "Lord Jagannath Puri Darshan",
+    "deity": "Lord Krishna",
+    "category": "Krishna",
+    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/pujavidhi-app-2026.firebasestorage.app/o/wallpapers%2Fwp_jagannath_puri.jpg?alt=media&token=442f4ada-c003-478a-89bc-0f34483b29f8",
+    "mantraSanskrit": "नीलाचलनिवासाय नित्याय परमात्मने",
+    "iconBadge": "☸️",
+    "gradientColors": [
+      "#141E30",
+      "#243B55",
+      "#F2994A"
+    ],
+    "downloadsCount": 4150,
+    "updatedAt": "2026-11-09T14:15:37Z"
   },
   {
     "id": "wp_kashi_vishwanath",
-    "title": "Kashi Vishwanath Maha Aarti",
+    "title": "Kashi Vishwanath Jyotirlinga",
     "deity": "Lord Shiva",
-    "imageUrl": "https://images.unsplash.com/photo-1567157577867-05ccb1388e66?auto=format&fit=crop&w=1400&q=85",
-    "thumbnail": "https://images.unsplash.com/photo-1567157577867-05ccb1388e66?auto=format&fit=crop&w=400&q=80",
-    "mantraSanskrit": "वाराणसी पुरपतेर्विशालनेत्रं, नमामि विश्वनाथं शशिशेखरं च॥",
-    "quoteEnglish": "Har Har Mahadev. In the eternal ancient holy city of Varanasi, Lord Shiva bestows Moksha.",
+    "category": "Shiva",
+    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/pujavidhi-app-2026.firebasestorage.app/o/wallpapers%2Fwp_kashi_vishwanath.jpg?alt=media&token=499d424a-6651-411a-a8f0-deaf3997873a",
+    "mantraSanskrit": "हर हर महादेव शम्भो काशी विश्वनाथ",
+    "iconBadge": "🔱",
     "gradientColors": [
-      "#312E81",
-      "#4338CA",
-      "#6366F1"
+      "#1A2A6C",
+      "#B21F1F",
+      "#FDBB2D"
     ],
-    "iconBadge": "🪔",
-    "isFeatured": true,
-    "is4k": true,
-    "downloadsCount": 1780,
-    "category": "Shiva"
-  },
-  {
-    "id": "wp_tirupati_balaji",
-    "title": "Tirumala Venkateswara Balaji",
-    "deity": "Tirupati Balaji",
-    "imageUrl": "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=1400&q=85",
-    "thumbnail": "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=400&q=80",
-    "mantraSanskrit": "वेङ्कटाद्रिसमं स्थानं ब्रह्माण्डे नास्ति किञ्चन। वेङ्कटेशसमो देवो न भूतो न भविष्यति॥",
-    "quoteEnglish": "Govinda Hari Govinda. May the Supreme Lord of the Seven Hills grant eternal blessings.",
-    "gradientColors": [
-      "#581C87",
-      "#7E22CE",
-      "#A855F7"
-    ],
-    "iconBadge": "🪷",
-    "isFeatured": true,
-    "is4k": true,
-    "downloadsCount": 1950,
-    "category": "Vishnu"
-  },
-  {
-    "id": "wp_maa_durga_shakti",
-    "title": "Maa Durga Bhavani Shakti",
-    "deity": "Maa Durga",
-    "imageUrl": "https://images.unsplash.com/photo-1582510003544-4d00b7f74220?auto=format&fit=crop&w=1400&q=85",
-    "thumbnail": "https://images.unsplash.com/photo-1582510003544-4d00b7f74220?auto=format&fit=crop&w=400&q=80",
-    "mantraSanskrit": "सर्वमङ्गलमाङ्गल्ये शिवे सर्वार्थसाधिके। शरण्ये त्र्यम्बके गौरि नारायणि नमोऽस्तु ते॥",
-    "quoteEnglish": "Jai Mata Di. The supreme divine feminine energy that protects the universe from darkness.",
-    "gradientColors": [
-      "#881337",
-      "#9F1239",
-      "#BE123C"
-    ],
-    "iconBadge": "🌺",
-    "isFeatured": true,
-    "is4k": true,
-    "downloadsCount": 2640,
-    "category": "Devi"
-  },
-  {
-    "id": "wp_maa_lakshmi_diwali",
-    "title": "Maa Mahalakshmi Dhan Vaibhav",
-    "deity": "Maa Lakshmi",
-    "imageUrl": "https://images.unsplash.com/photo-1605371924599-2d0365da1ae0?auto=format&fit=crop&w=1400&q=85",
-    "thumbnail": "https://images.unsplash.com/photo-1605371924599-2d0365da1ae0?auto=format&fit=crop&w=400&q=80",
-    "mantraSanskrit": "ॐ श्रीं ह्रीं श्रीं कमले कमलालये प्रसीद प्रसीद श्रीं ह्रीं श्रीं ॐ महालक्ष्म्यै नमः॥",
-    "quoteEnglish": "Shubh Labh. May Goddess Lakshmi bless your home with unending abundance, purity, and peace.",
-    "gradientColors": [
-      "#713F12",
-      "#A16207",
-      "#EAB308"
-    ],
-    "iconBadge": "🪙",
-    "isFeatured": true,
-    "is4k": true,
-    "downloadsCount": 2310,
-    "category": "Devi"
-  },
-  {
-    "id": "wp_golden_temple_darshan",
-    "title": "Sacred Golden Sanctum Darshan",
-    "deity": "All Deities",
-    "imageUrl": "https://images.unsplash.com/photo-1604079628040-94301bb21b91?auto=format&fit=crop&w=1400&q=85",
-    "thumbnail": "https://images.unsplash.com/photo-1604079628040-94301bb21b91?auto=format&fit=crop&w=400&q=80",
-    "mantraSanskrit": "ॐ द्यौः शान्तिरन्तरिक्षं शान्तिः पृथिवी शान्तिरापः शान्तिरोषधयः शान्तिः॥",
-    "quoteEnglish": "Om Shanti. Experience the serene golden reflection of divine spiritual sanctuary.",
-    "gradientColors": [
-      "#451A03",
-      "#78350F",
-      "#B45309"
-    ],
-    "iconBadge": "✨",
-    "isFeatured": false,
-    "is4k": true,
-    "downloadsCount": 1420,
-    "category": "General"
+    "downloadsCount": 4680,
+    "updatedAt": "2026-11-09T14:15:41Z"
   },
   {
     "id": "wp_surya_narayan",
-    "title": "Bhagwan Surya Narayan",
+    "title": "Surya Narayan Divya Tejas",
     "deity": "Surya Dev",
-    "imageUrl": "https://images.unsplash.com/photo-1599839575945-a9e5af0c3fa5?auto=format&fit=crop&w=1400&q=85",
-    "thumbnail": "https://images.unsplash.com/photo-1599839575945-a9e5af0c3fa5?auto=format&fit=crop&w=400&q=80",
-    "mantraSanskrit": "ॐ आदित्याय विद्महे मार्तण्डाय धीमहि तन्नः सूर्यः प्रचोदयात्॥",
-    "quoteEnglish": "Salutations to the Sun God, the supreme source of life, energy, health and illumination.",
-    "gradientColors": [
-      "#7C2D12",
-      "#C2410C",
-      "#FB923C"
-    ],
+    "category": "Surya",
+    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/pujavidhi-app-2026.firebasestorage.app/o/wallpapers%2Fwp_surya_narayan.jpg?alt=media&token=fe03d5aa-ae2e-4f85-84ce-5b216a6da852",
+    "mantraSanskrit": "ॐ सूर्याय नमः आदित्याय नमः",
     "iconBadge": "☀️",
-    "isFeatured": false,
-    "is4k": true,
-    "downloadsCount": 1150,
-    "category": "Surya"
+    "gradientColors": [
+      "#F12711",
+      "#F5AF19",
+      "#FF512F"
+    ],
+    "downloadsCount": 3720,
+    "updatedAt": "2026-11-09T14:15:45Z"
   },
   {
-    "id": "wp_vedic_bells_aaradhana",
-    "title": "Sacred Mandir Bells Aaradhana",
-    "deity": "All Deities",
-    "imageUrl": "https://images.unsplash.com/photo-1616423640778-28d1b53229bd?auto=format&fit=crop&w=1400&q=85",
-    "thumbnail": "https://images.unsplash.com/photo-1616423640778-28d1b53229bd?auto=format&fit=crop&w=400&q=80",
-    "mantraSanskrit": "आगमार्थं तु देवानां गमनार्थं तु रक्षसाम्। कुर्वे घण्टारवं तत्र देवताह्वानलक्षणम्॥",
-    "quoteEnglish": "The resonating chime of temple bells awakens positive cosmic vibrations within the soul.",
+    "id": "wp_kartikeya_murugan",
+    "title": "Lord Murugan Kartikeya",
+    "deity": "Lord Kartikeya",
+    "category": "Murugan",
+    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/pujavidhi-app-2026.firebasestorage.app/o/wallpapers%2Fwp_kartikeya_murugan.jpg?alt=media&token=ea130406-35c7-4403-9e6a-3071caa66af1",
+    "mantraSanskrit": "ॐ शरवणभवाय नमः",
+    "iconBadge": "🦚",
     "gradientColors": [
-      "#1C1917",
-      "#292524",
-      "#78716C"
+      "#780206",
+      "#061161",
+      "#F5AF19"
     ],
+    "downloadsCount": 3480,
+    "updatedAt": "2026-11-09T14:15:59Z"
+  },
+  {
+    "id": "wp_vedic_temple_bells",
+    "title": "Sanatan Vedic Temple Bells",
+    "deity": "Vedic Sanctum",
+    "category": "Mandir",
+    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/pujavidhi-app-2026.firebasestorage.app/o/wallpapers%2Fwp_vedic_temple_bells.jpg?alt=media&token=851bec38-0557-46fe-8ca2-1ff46d7fc4de",
+    "mantraSanskrit": "सत्यं शिवं सुन्दरम्",
     "iconBadge": "🔔",
-    "isFeatured": false,
-    "is4k": true,
-    "downloadsCount": 1390,
-    "category": "General"
+    "gradientColors": [
+      "#3E5151",
+      "#DECBA4",
+      "#FFB300"
+    ],
+    "downloadsCount": 3810,
+    "updatedAt": "2026-11-09T14:16:04Z"
+  },
+  {
+    "id": "wp_golden_temple",
+    "title": "Sacred Golden Sanctum",
+    "deity": "Harmandir Sahib",
+    "category": "Mandir",
+    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/pujavidhi-app-2026.firebasestorage.app/o/wallpapers%2Fwp_golden_temple.jpg?alt=media&token=20dd928f-0c32-4457-aa18-57d03912d7f1",
+    "mantraSanskrit": "वाहेगुरु जी का खालसा वाहेगुरु जी की फतेह",
+    "iconBadge": "🪔",
+    "gradientColors": [
+      "#200122",
+      "#6f0000",
+      "#FFB300"
+    ],
+    "downloadsCount": 4350,
+    "updatedAt": "2026-11-09T14:16:07Z"
   }
 ]

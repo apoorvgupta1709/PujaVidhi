@@ -14,6 +14,8 @@ class AuthProvider with ChangeNotifier {
   bool get isGuest => _user.isAnonymous;
   String get displayName => _user.isAnonymous ? "Guest Devotee" : _user.displayName;
   String get email => _user.email;
+  String? get photoUrl => _user.photoUrl;
+  String get provider => _user.provider;
 
   AuthProvider() {
     _init();
@@ -33,14 +35,14 @@ class AuthProvider with ChangeNotifier {
     _errorMessage = null;
     notifyListeners();
 
-    final ok = await AuthService.register(name: name, email: email, password: password);
+    final result = await AuthService.register(name: name, email: email, password: password);
     _isLoading = false;
-    if (ok) {
+    if (result['success'] == true) {
       _user = AuthService.currentUser;
       notifyListeners();
       return true;
     } else {
-      _errorMessage = "Registration failed. Please check details.";
+      _errorMessage = result['error']?.toString() ?? "Registration failed. Please check details.";
       notifyListeners();
       return false;
     }
@@ -54,17 +56,39 @@ class AuthProvider with ChangeNotifier {
     _errorMessage = null;
     notifyListeners();
 
-    final ok = await AuthService.signIn(email: email, password: password);
+    final result = await AuthService.signIn(email: email, password: password);
     _isLoading = false;
-    if (ok) {
+    if (result['success'] == true) {
       _user = AuthService.currentUser;
       notifyListeners();
       return true;
     } else {
-      _errorMessage = "Invalid credentials. Please try again.";
+      _errorMessage = result['error']?.toString() ?? "Invalid credentials. Please try again.";
       notifyListeners();
       return false;
     }
+  }
+
+  Future<bool> signInWithGoogle() async {
+    _isLoading = true;
+    _errorMessage = null;
+    notifyListeners();
+
+    final result = await AuthService.signInWithGoogle();
+    _isLoading = false;
+    if (result['success'] == true) {
+      _user = AuthService.currentUser;
+      notifyListeners();
+      return true;
+    } else {
+      _errorMessage = result['error']?.toString() ?? "Google Sign-In failed.";
+      notifyListeners();
+      return false;
+    }
+  }
+
+  Future<bool> sendPasswordReset(String email) async {
+    return await AuthService.sendPasswordReset(email);
   }
 
   Future<void> signOut() async {

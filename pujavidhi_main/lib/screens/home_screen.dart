@@ -146,7 +146,7 @@ class HomeScreen extends StatelessWidget {
             const SizedBox(height: 20),
 
             // 3. Today's Auspicious Muhurat Snippet
-            _buildTodayMuhuratCard(context, todayPanchang, formattedDate, isDark),
+            _buildTodayMuhuratCard(context, todayPanchang, formattedDate, isDark, loc),
 
             const SizedBox(height: 18),
 
@@ -399,7 +399,7 @@ class HomeScreen extends StatelessWidget {
         _buildPortalItem(
           icon: Icons.menu_book_rounded,
           color: const Color(0xFFB91C1C),
-          label: "श्रीमद्भगवद्गीता",
+          label: loc.languageCode == 'en' ? "Bhagavad Gita" : "श्रीमद्भगवद्गीता",
           onTap: () => Navigator.of(context).push(
             MaterialPageRoute(
               builder: (_) => const GitaHomeScreen(),
@@ -460,7 +460,13 @@ class HomeScreen extends StatelessWidget {
   }
 
   // --- Today's Panchang & Muhurat Card ---
-  Widget _buildTodayMuhuratCard(BuildContext context, dynamic panchang, String formattedDate, bool isDark) {
+  Widget _buildTodayMuhuratCard(
+    BuildContext context,
+    dynamic panchang,
+    String formattedDate,
+    bool isDark,
+    LocalizationService loc,
+  ) {
     return Container(
       decoration: BoxDecoration(
         color: isDark ? AppTheme.templeCardDark : Colors.white,
@@ -508,29 +514,31 @@ class HomeScreen extends StatelessWidget {
                           Row(
                             children: [
                               Text(
-                                "Today's Panchang",
+                                loc.tr('today_panchang'),
                                 style: GoogleFonts.poppins(
                                   fontWeight: FontWeight.bold,
                                   fontSize: 14.5,
                                 ),
                               ),
-                              const SizedBox(width: 6),
-                              Container(
-                                padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
-                                decoration: BoxDecoration(
-                                  color: AppTheme.sacredMaroon.withValues(alpha: 0.1),
-                                  borderRadius: BorderRadius.circular(6),
-                                  border: Border.all(color: AppTheme.divineGold.withValues(alpha: 0.4)),
-                                ),
-                                child: Text(
-                                  "पंचांग",
-                                  style: GoogleFonts.martel(
-                                    fontSize: 10,
-                                    fontWeight: FontWeight.bold,
-                                    color: AppTheme.marigold,
+                              if (loc.languageCode != 'hi') ...[
+                                const SizedBox(width: 6),
+                                Container(
+                                  padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
+                                  decoration: BoxDecoration(
+                                    color: AppTheme.sacredMaroon.withValues(alpha: 0.1),
+                                    borderRadius: BorderRadius.circular(6),
+                                    border: Border.all(color: AppTheme.divineGold.withValues(alpha: 0.4)),
+                                  ),
+                                  child: Text(
+                                    "पंचांग",
+                                    style: GoogleFonts.martel(
+                                      fontSize: 10,
+                                      fontWeight: FontWeight.bold,
+                                      color: AppTheme.marigold,
+                                    ),
                                   ),
                                 ),
-                              ),
+                              ],
                             ],
                           ),
                           Text(
@@ -551,7 +559,7 @@ class HomeScreen extends StatelessWidget {
                         mainAxisSize: MainAxisSize.min,
                         children: [
                           Text(
-                            "Full View",
+                            loc.tr('full_view'),
                             style: GoogleFonts.poppins(
                               fontSize: 11,
                               fontWeight: FontWeight.w600,
@@ -607,7 +615,7 @@ class HomeScreen extends StatelessWidget {
                     // Tithi Card
                     Expanded(
                       child: _buildPanchangTile(
-                        label: "तिथि (Tithi)",
+                        label: loc.languageCode == 'en' ? "Tithi" : "तिथि (Tithi)",
                         value: panchang.tithi,
                         subtext: "${panchang.paksha} Paksha",
                         icon: "🌙",
@@ -618,7 +626,7 @@ class HomeScreen extends StatelessWidget {
                     // Nakshatra Card
                     Expanded(
                       child: _buildPanchangTile(
-                        label: "नक्षत्र (Nakshatra)",
+                        label: loc.languageCode == 'en' ? "Nakshatra" : "नक्षत्र (Nakshatra)",
                         value: panchang.nakshatra,
                         subtext: "Yoga: ${panchang.yoga}",
                         icon: "✨",
@@ -636,9 +644,9 @@ class HomeScreen extends StatelessWidget {
                     // Abhijit Muhurat (Auspicious)
                     Expanded(
                       child: _buildPanchangTile(
-                        label: "अभिजीत (Shubh)",
+                        label: loc.languageCode == 'en' ? "Abhijit (Shubh)" : "अभिजीत (शुभ)",
                         value: panchang.abhijitMuhurat,
-                        subtext: "Auspicious Timing",
+                        subtext: loc.languageCode == 'en' ? "Auspicious Timing" : "शुभ समय",
                         icon: "🟢",
                         highlightColor: Colors.green,
                         isDark: isDark,
@@ -648,9 +656,9 @@ class HomeScreen extends StatelessWidget {
                     // Rahu Kaal (Inauspicious)
                     Expanded(
                       child: _buildPanchangTile(
-                        label: "राहु काल (Varjya)",
+                        label: loc.languageCode == 'en' ? "Rahu Kaal (Varjya)" : "राहु काल (अशुभ)",
                         value: panchang.rahuKaal,
-                        subtext: "Inauspicious Timing",
+                        subtext: loc.languageCode == 'en' ? "Inauspicious Timing" : "अशुभ समय",
                         icon: "🔴",
                         highlightColor: Colors.redAccent,
                         isDark: isDark,

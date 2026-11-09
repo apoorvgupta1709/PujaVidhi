@@ -19,10 +19,18 @@ import 'providers/gita_provider.dart';
 import 'providers/wallpaper_provider.dart';
 import 'services/localization_service.dart';
 import 'screens/home_screen.dart';
+import 'package:firebase_core/firebase_core.dart';
 
 void main() {
   runZonedGuarded(() async {
     WidgetsFlutterBinding.ensureInitialized();
+
+    // Initialize Firebase Core
+    try {
+      await Firebase.initializeApp();
+    } catch (e) {
+      debugPrint('Firebase Core init notice: $e');
+    }
 
     // Production error logging: intercept all Flutter framework errors
     FlutterError.onError = (FlutterErrorDetails details) {

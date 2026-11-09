@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import '../core/app_theme.dart';
 import '../providers/auth_provider.dart';
+import '../services/localization_service.dart';
 import 'register_screen.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -47,7 +48,7 @@ class _LoginScreenState extends State<LoginScreen> {
     if (success) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text("स्वागत है, ${authProv.displayName}! Welcome back."),
+          content: Text("Welcome back, ${authProv.displayName}!"),
           backgroundColor: Colors.green[800],
         ),
       );
@@ -59,7 +60,34 @@ class _LoginScreenState extends State<LoginScreen> {
     }
   }
 
-  void _showForgotPasswordDialog() {
+  Future<void> _handleGoogleSignIn() async {
+    setState(() {
+      _isSubmitting = true;
+      _errorMessage = null;
+    });
+
+    final authProv = Provider.of<AuthProvider>(context, listen: false);
+    final success = await authProv.signInWithGoogle();
+
+    if (!mounted) return;
+    setState(() => _isSubmitting = false);
+
+    if (success) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text("Welcome, ${authProv.displayName}! Google Sign-In successful."),
+          backgroundColor: Colors.green[800],
+        ),
+      );
+      Navigator.of(context).pop();
+    } else {
+      setState(() {
+        _errorMessage = authProv.errorMessage ?? "Google Sign-In failed.";
+      });
+    }
+  }
+
+  void _showForgotPasswordDialog(LocalizationService loc) {
     final resetEmailCtrl = TextEditingController(text: _emailCtrl.text.trim());
     showDialog(
       context: context,
@@ -70,7 +98,7 @@ class _LoginScreenState extends State<LoginScreen> {
             const Icon(Icons.lock_reset, color: AppTheme.divineGold),
             const SizedBox(width: 8),
             Text(
-              "Reset Password",
+              loc.tr('forgot_password'),
               style: GoogleFonts.poppins(fontSize: 16, fontWeight: FontWeight.bold),
             ),
           ],
@@ -88,9 +116,10 @@ class _LoginScreenState extends State<LoginScreen> {
               controller: resetEmailCtrl,
               keyboardType: TextInputType.emailAddress,
               decoration: InputDecoration(
-                labelText: "Email Address",
+                labelText: loc.tr('email'),
+                hintText: "devotee@example.com",
                 prefixIcon: const Icon(Icons.email_outlined, color: AppTheme.marigold),
-                border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
+                border: OutlineInputBorder(borderRadius: BorderRadius.circular(14)),
               ),
             ),
           ],
@@ -98,7 +127,7 @@ class _LoginScreenState extends State<LoginScreen> {
         actions: [
           TextButton(
             onPressed: () => Navigator.of(ctx).pop(),
-            child: const Text("Cancel"),
+            child: Text(loc.tr('cancel')),
           ),
           ElevatedButton(
             style: ElevatedButton.styleFrom(
@@ -106,15 +135,24 @@ class _LoginScreenState extends State<LoginScreen> {
               foregroundColor: Colors.white,
               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
             ),
-            onPressed: () {
-              Navigator.of(ctx).pop();
-              ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(
-                  content: Text("Password recovery email sent. Please check your inbox."),
-                ),
-              );
+            onPressed: () async {
+              if (resetEmailCtrl.text.trim().isNotEmpty) {
+                final authProv = Provider.of<AuthProvider>(context, listen: false);
+                await authProv.sendPasswordReset(resetEmailCtrl.text.trim());
+                if (ctx.mounted) {
+                  Navigator.of(ctx).pop();
+                }
+                if (mounted) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                      content: Text("Password reset email sent! Please check your inbox."),
+                      backgroundColor: Colors.green,
+                    ),
+                  );
+                }
+              }
             },
-            child: const Text("Send Instructions"),
+            child: const Text("Send Reset Link"),
           ),
         ],
       ),
@@ -123,12 +161,13 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final loc = Provider.of<LocalizationService>(context);
     final isDark = Theme.of(context).brightness == Brightness.dark;
 
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "भक्त लॉगिन (Devotee Sign In)",
+          loc.tr('login_title'),
           style: GoogleFonts.poppins(fontSize: 17, fontWeight: FontWeight.bold),
         ),
       ),
@@ -148,11 +187,11 @@ class _LoginScreenState extends State<LoginScreen> {
                 height: 90,
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
-                  gradient: RadialGradient(
+                  gradient: const RadialGradient(
                     colors: [
                       AppTheme.divineGold,
                       AppTheme.sacredMaroon,
-                      const Color(0xFF3B0709),
+                      Color(0xFF3B0709),
                     ],
                   ),
                   boxShadow: [
@@ -172,7 +211,8 @@ class _LoginScreenState extends State<LoginScreen> {
               const SizedBox(height: 16),
 
               Text(
-                "पूजाविधि में आपका स्वागत है",
+                loc.tr('welcome_title'),
+                textAlign: TextAlign.center,
                 style: GoogleFonts.martel(
                   fontSize: 22,
                   fontWeight: FontWeight.bold,
@@ -181,12 +221,70 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
               const SizedBox(height: 6),
               Text(
-                "Sign in to sync your Japa Sadhana, Bhagavad Gita bookmarks, and customized festival cards across devices.",
+                loc.tr('login_subtitle'),
                 textAlign: TextAlign.center,
                 style: GoogleFonts.poppins(fontSize: 12.5, color: AppTheme.textMuted, height: 1.4),
               ),
 
-              const SizedBox(height: 28),
+              const SizedBox(height: 24),
+
+              // 1. One-Tap Google Sign-In Button
+              SizedBox(
+                width: double.infinity,
+                height: 50,
+                child: OutlinedButton(
+                  onPressed: _isSubmitting ? null : _handleGoogleSignIn,
+                  style: OutlinedButton.styleFrom(
+                    backgroundColor: isDark ? Colors.white.withValues(alpha: 0.05) : Colors.white,
+                    side: BorderSide(color: isDark ? Colors.white24 : Colors.grey.shade300, width: 1.2),
+                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Image.network(
+                        'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/768px-Google_%22G%22_logo.svg.png',
+                        width: 20,
+                        height: 20,
+                        errorBuilder: (context, error, stackTrace) => const Icon(Icons.g_mobiledata, color: Colors.blue, size: 24),
+                      ),
+                      const SizedBox(width: 12),
+                      Text(
+                        loc.tr('continue_google'),
+                        style: GoogleFonts.poppins(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w600,
+                          color: isDark ? Colors.white : Colors.black87,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+
+              const SizedBox(height: 18),
+
+              // Or Divider
+              Row(
+                children: [
+                  const Expanded(child: Divider()),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 14),
+                    child: Text(
+                      loc.languageCode == 'en' ? "OR WITH EMAIL" : "अथवा ईमेल से",
+                      style: GoogleFonts.poppins(
+                        color: AppTheme.textMuted,
+                        fontSize: 11,
+                        fontWeight: FontWeight.bold,
+                        letterSpacing: 0.8,
+                      ),
+                    ),
+                  ),
+                  const Expanded(child: Divider()),
+                ],
+              ),
+
+              const SizedBox(height: 18),
 
               if (_errorMessage != null)
                 Container(
@@ -216,7 +314,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 controller: _emailCtrl,
                 keyboardType: TextInputType.emailAddress,
                 decoration: InputDecoration(
-                  labelText: "ईमेल पता (Email Address)",
+                  labelText: loc.tr('email'),
                   hintText: "devotee@example.com",
                   prefixIcon: const Icon(Icons.email_outlined, color: AppTheme.marigold),
                   border: OutlineInputBorder(borderRadius: BorderRadius.circular(14)),
@@ -237,7 +335,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 controller: _passwordCtrl,
                 obscureText: _obscurePassword,
                 decoration: InputDecoration(
-                  labelText: "पासवर्ड (Password)",
+                  labelText: loc.tr('password'),
                   prefixIcon: const Icon(Icons.lock_outline, color: AppTheme.marigold),
                   suffixIcon: IconButton(
                     icon: Icon(
@@ -263,9 +361,9 @@ class _LoginScreenState extends State<LoginScreen> {
               Align(
                 alignment: Alignment.centerRight,
                 child: TextButton(
-                  onPressed: _showForgotPasswordDialog,
+                  onPressed: () => _showForgotPasswordDialog(loc),
                   child: Text(
-                    "पासवर्ड भूल गए? (Forgot Password?)",
+                    loc.tr('forgot_password'),
                     style: GoogleFonts.poppins(
                       fontSize: 12,
                       fontWeight: FontWeight.w600,
@@ -301,7 +399,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             const Icon(Icons.login_rounded, size: 20),
                             const SizedBox(width: 8),
                             Text(
-                              "लॉगिन करें (Sign In)",
+                              loc.tr('sign_in'),
                               style: GoogleFonts.poppins(fontSize: 15, fontWeight: FontWeight.bold),
                             ),
                           ],
@@ -309,24 +407,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
               ),
 
-              const SizedBox(height: 20),
-
-              // Or divider
-              Row(
-                children: [
-                  const Expanded(child: Divider()),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 14),
-                    child: Text(
-                      "अथवा",
-                      style: GoogleFonts.poppins(color: AppTheme.textMuted, fontSize: 12),
-                    ),
-                  ),
-                  const Expanded(child: Divider()),
-                ],
-              ),
-
-              const SizedBox(height: 20),
+              const SizedBox(height: 18),
 
               // Continue as Guest Button
               SizedBox(
@@ -336,7 +417,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   onPressed: () => Navigator.of(context).pop(),
                   icon: const Icon(Icons.person_outline, size: 18),
                   label: Text(
-                    "अतिथि रूप में जारी रखें (Continue as Guest)",
+                    loc.tr('continue_guest'),
                     style: GoogleFonts.poppins(fontSize: 13, fontWeight: FontWeight.w600),
                   ),
                   style: OutlinedButton.styleFrom(
@@ -347,14 +428,14 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
               ),
 
-              const SizedBox(height: 32),
+              const SizedBox(height: 28),
 
               // Register Link
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    "नया खाता बनाना है? ",
+                    loc.languageCode == 'en' ? "Don't have an account? " : "खाता नहीं है? ",
                     style: GoogleFonts.poppins(fontSize: 13, color: AppTheme.textMuted),
                   ),
                   InkWell(
@@ -364,7 +445,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       );
                     },
                     child: Text(
-                      "रजिस्टर करें (Sign Up)",
+                      loc.languageCode == 'en' ? "Sign Up" : "पंजीकरण करें",
                       style: GoogleFonts.poppins(
                         fontSize: 13,
                         fontWeight: FontWeight.bold,

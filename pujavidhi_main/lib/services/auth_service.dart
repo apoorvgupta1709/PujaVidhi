@@ -82,7 +82,10 @@ class AuthService {
       'https://firestore.googleapis.com/v1/projects/$projectId/databases/(default)/documents';
 
   static final FirebaseAuth _auth = FirebaseAuth.instance;
-  static final GoogleSignIn _googleSignIn = GoogleSignIn(scopes: ['email', 'profile']);
+  static final GoogleSignIn _googleSignIn = GoogleSignIn(
+    serverClientId: '316916193859-grntv8loerin7ur3nl2nnorempcalffv.apps.googleusercontent.com',
+    scopes: ['email', 'profile'],
+  );
 
   static DevoteeUser? _currentUser;
 
